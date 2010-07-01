@@ -6,8 +6,8 @@ import name.pehl.totoe.client.NodeType;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * @author $Author:$
- * @version $Date:$ $Revision:$
+ * @author $Author$
+ * @version $Date$ $Revision$
  */
 public final class NodeFactory
 {
@@ -33,9 +33,9 @@ public final class NodeFactory
             switch (type)
             {
                 case ELEMENT:
-                    break;
+                    result = new ElementImpl(jso);
                 case ATTRIBUTE:
-                    break;
+                    result = new AttributeImpl(jso);
                 case TEXT:
                     break;
                 case CDATA:
