@@ -15,9 +15,8 @@ import com.google.gwt.junit.client.GWTTestCase;
  */
 public class TotoeTest extends GWTTestCase
 {
-    static final String NAMESPACES_STRING = "xmlns=\"http://code.google.com/p/totoe\" " +
-    		"xmlns:foo=\"http://code.google.com/p/totoe/foo\" " +
-    		"xmlns:bar=\"http://code.google.com/p/totoe/bar\"";
+    static final String NAMESPACES_STRING = "xmlns=\"http://code.google.com/p/totoe\" "
+            + "xmlns:foo=\"http://code.google.com/p/totoe/foo\" " + "xmlns:bar=\"http://code.google.com/p/totoe/bar\"";
     static final Map<String, String> NAMESPACES_MAP = new HashMap<String, String>();
     static
     {
@@ -40,22 +39,21 @@ public class TotoeTest extends GWTTestCase
         System.out.println("Running " + getClass().getName());
     }
 
-    
+
     public void testParse()
     {
-        Node document = parse();
+        Document document = parse();
 
         // Document node
-        assertEquals(NodeType.DOCUMENT, document.getNodeType());
-        assertNull(document.getNodeValue());
-        List<Node> children = document.getChildNodes();
+        assertEquals(NodeType.DOCUMENT, document.getType());
+        List<Node> children = document.getChildren();
         assertEquals(1, children.size());
-
+        
         // Root node
-        Node root = children.get(0);
-        assertEquals(ROOT_NAME, root.getNodeName());
-        assertEquals(NodeType.ELEMENT, root.getNodeType());
-        assertNull(root.getNodeValue());
+        Element root = (Element) children.get(0);
+        assertEquals(root, document.getRoot());
+        assertEquals(ROOT_NAME, root.getName());
+        assertEquals(NodeType.ELEMENT, root.getType());
         assertEquals(ASIN, root.getAttribute("id"));
     }
 
@@ -66,11 +64,11 @@ public class TotoeTest extends GWTTestCase
     }
 
 
-    private Node parse()
+    private Document parse()
     {
         String xml = TotoeResources.INSTANCE.swissArmyKnife().getText();
-        XmlParser xmlParser = XmlParserFactory.getXmlParser();
-        Node document = xmlParser.parse(xml, NAMESPACES_STRING);
+        XmlParser xmlParser = new XmlParser();
+        Document document = xmlParser.parse(xml, NAMESPACES_STRING);
         return document;
     }
 }

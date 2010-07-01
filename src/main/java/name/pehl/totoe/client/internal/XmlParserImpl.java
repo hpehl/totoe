@@ -1,12 +1,9 @@
 package name.pehl.totoe.client.internal;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+import name.pehl.totoe.client.Document;
+import name.pehl.totoe.client.XmlParseException;
 
-import name.pehl.totoe.client.Node;
-import name.pehl.totoe.client.XmlParser;
-
+import com.google.gwt.core.client.JavaScriptException;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
@@ -14,91 +11,41 @@ import com.google.gwt.core.client.JavaScriptObject;
  * @version $Date$ $Revision: 629
  *          $
  */
-public class XmlParserImpl implements XmlParser
+public class XmlParserImpl
 {
-    private static final JavaScriptObject xmlParser = XmlParserImpl.initialize();
+    // ------------------------------------------------------------------- JSNI
 
+    private static final JavaScriptObject nativeParser = XmlParserImpl.initialize();
 
-    // ---------------------------------------------------------- parse methods
-
-    @Override
-    public Node parse(String xml)
-    {
-        return parseImpl(xml, null);
-    }
-
-
-    @Override
-    public Node parse(String xml, String namespaces)
-    {
-        return parseImpl(xml, namespaces);
-    }
-
-
-    @Override
-    public Node parse(String xml, Map<String, String> namespaces)
-    {
-        return parseImpl(xml, getNamespaces(namespaces));
-    }
-
-
-    // --------------------------------------------------------- helper methods
-
-    /**
-     * Converts the specifed namespaces in the map to a whilespace-seperated
-     * list of namespace declarations as those would appear in an XML document.
-     * 
-     * @param namespaces
-     *            Namespaces with the namespace prefix as key and the namespace
-     *            uri as value.
-     * @return a whilespace-seperated list of namespace declarations as those
-     *         would appear in an XML document or <code>null</code> if the
-     *         namespaces argument was <code>null</code> or empty.
-     */
-    private String getNamespaces(Map<String, String> namespaces)
-    {
-        String result = null;
-        if (namespaces != null && !namespaces.isEmpty())
-        {
-            StringBuilder builder = new StringBuilder();
-            for (Iterator<Entry<String, String>> iter = namespaces.entrySet().iterator(); iter.hasNext();)
-            {
-                Entry<String, String> entry = iter.next();
-                String prefix = entry.getKey();
-                String uri = entry.getValue();
-                if (prefix != null && prefix.length() != 0 && uri != null && uri.length() != 0)
-                {
-                    builder.append("xmlns:");
-                    builder.append(prefix);
-                    builder.append("=\"");
-                    builder.append(uri);
-                    builder.append("\"");
-                    if (iter.hasNext())
-                    {
-                        builder.append(" ");
-                    }
-                }
-            }
-            result = builder.toString();
-        }
-        return result;
-    }
-
-
-    // ----------------------------------------------------------- JSNI methods
 
     private static native JavaScriptObject initialize() /*-{
         return new $wnd.DOMParser();
     }-*/;
 
 
-    private native Node parseImpl(String xml, String namespaces) /*-{
+    // ---------------------------------------------------------- parse methods
+
+    public Document parse(String xml, String namespaces)
+    {
+        try
+        {
+            JavaScriptObject documentJso = parseImpl(xml, namespaces);
+            return NodeFactory.create(documentJso);
+        }
+        catch (JavaScriptException e)
+        {
+            throw new XmlParseException(e.getMessage(), e);
+        }
+    }
+
+
+    private native JavaScriptObject parseImpl(String xml, String namespaces) /*-{
         if (xml == null || xml == "")
         {
             return null;
         }
 
-        var domDoc = @name.pehl.totoe.client.internal.XmlParserImpl::xmlParser.parseFromString(xml, "text/xml");
+        var domDoc = @name.pehl.totoe.client.internal.XmlParserImpl::nativeParser.parseFromString(xml, "text/xml");
         var error = $wnd.Sarissa.getParseErrorText(domDoc);
         if (error != $wnd.Sarissa.PARSED_OK) 
         {
@@ -117,7 +64,10 @@ public class XmlParserImpl implements XmlParser
             return null;
         }
 
-        $wnd.Sarissa.setXpathNamespaces(domDoc, namespaces);
-        return @name.pehl.totoe.client.internal.NodeImpl::create(Lcom/google/gwt/core/client/JavaScriptObject;)(domDoc);
+        if (namespaces != null)
+        {
+            $wnd.Sarissa.setXpathNamespaces(domDoc, namespaces);
+        }
+        return domDoc;
     }-*/;
 }

@@ -3,77 +3,74 @@ package name.pehl.totoe.client;
 import java.util.List;
 
 /**
+ * Base interface for DOM nodes. Methods for iterating over and accessing values
+ * from nodes are supplied here.
+ * 
  * @author $Author$
  * @version $Date$ $Revision: 623
  *          $
  */
 public interface Node
 {
-    // -------------------------------------------------- basic node operations
+    // ------------------------------------------------------- basic attributes
 
     /**
-     * Get the name of this node.
+     * Returns the name of this node.
      * 
-     * @return The name
+     * @return the name of this node.
      */
-    String getNodeName();
-
-
-    /**
-     * Get the value of this node as a string. If this node is a text node, the
-     * text is returned. In case of an attribute the value of the attribute is
-     * returned. For an element <code>null</code> is returned.
-     * 
-     * @return The node value.
-     */
-    String getNodeValue();
+    String getName();
 
 
     /**
      * Returns the type of this node.
      * 
-     * @return The node type.
+     * @return the type of this node.
      */
-    NodeType getNodeType();
+    NodeType getType();
+
+
+    // ------------------------------------------- document / parent / siblings
+
+    /**
+     * Returns the document this node belongs to.
+     * 
+     * @return the document this node belongs to.
+     */
+    Document getDocument();
 
 
     /**
-     * Get the value of an attribute of this node.
+     * Returns the parent of this node.
      * 
-     * @param name
-     *            The name of the attribute
-     * @return The value of the attribute, <code>null</code> if not found.
+     * @return the parent of this node or <code>null</code> if this node has no
+     *         parent.
      */
-    String getAttribute(String name);
+    Node getParent();
 
 
     /**
-     * Returns the root node of the document in case the current node is the
-     * document node. If the current node is not the document node,
-     * <code>null</code> is returned.
+     * Returns the previous sibling of this node.
      * 
-     * @return the root node if the current node is the document node,
-     *         <code>null</code> otherwise.
+     * @return the previous sibling of this node or <code>null</code> if this
+     *         node has no previous sibling.
      */
-    Node getRoot();
+    Node getPreviousSibling();
 
-
-    // ----------------------------------------------- nodes as direct children
 
     /**
-     * Returns all nodes which are direct children of the specified node.
-     * Returns an empty list if the node has no children.
+     * Returns the next sibling of this node.
      * 
-     * @return all nodes which are direct children of the specified node or an
-     *         empty list, if the node is null or has no children.
+     * @return the next sibling of this node or <code>null</code> if this node
+     *         has no next sibling.
      */
-    List<Node> getChildNodes();
+    Node getNextSibling();
 
 
     // ------------------------------------------------------- node(s) by xpath
 
     /**
-     * Returns a list of nodes for the specifed xpath or an empty list if
+     * Returns a list of nodes for the specifed xpath or an empty list if no
      * matching nodes were found.
      * 
      * @param xpath
@@ -89,7 +86,7 @@ public interface Node
      * 
      * @param xpath
      * @return The node matching the xpath or <code>null</code> if no matching
-     *         element was found.
+     *         node was found.
      */
     Node selectNode(String xpath);
 
@@ -98,7 +95,7 @@ public interface Node
 
     /**
      * Returns the string values for the specified xpath. The nodes selected by
-     * the xpath expression must be attribute or a text nodes. Returns an empty
+     * the xpath expression must implement {@link HasText}. Returns an empty
      * array if no mathing nodes were found.
      * 
      * @param xpath
@@ -110,7 +107,7 @@ public interface Node
 
     /**
      * Returns the string value for the specified xpath. The node selected by
-     * the xpath expression must be an attribute or a text node.
+     * the xpath expression must implement {@link HasText}.
      * 
      * @param xpath
      * @return The string value matched by the xpath or <code>null</code> if no

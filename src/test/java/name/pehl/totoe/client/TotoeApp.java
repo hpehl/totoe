@@ -83,9 +83,9 @@ public class TotoeApp implements EntryPoint
             namespacesValue = null;
         }
 
-        XmlParser xmlParser = XmlParserFactory.getXmlParser();
+        XmlParser xmlParser = new XmlParser();
         Node document = xmlParser.parse(xmlValue, namespacesValue);
-        Node root = document.getRoot();
+        Document root = document.getDocument();
         List<Node> nodes = root.selectNodes(xpathValue);
         if (!nodes.isEmpty())
         {
@@ -101,7 +101,7 @@ public class TotoeApp implements EntryPoint
 
 
     private native String serialize(Node node)/*-{
-        var jsNode = node.@name.pehl.totoe.client.internal.NodeImpl::jsNode;
+        var jsNode = node.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return new $wnd.XMLSerializer().serializeToString(jsNode);
     }-*/;
 }

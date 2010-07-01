@@ -3,6 +3,8 @@ package name.pehl.totoe.client.internal;
 import java.util.ArrayList;
 import java.util.List;
 
+import name.pehl.totoe.client.Document;
+import name.pehl.totoe.client.HasText;
 import name.pehl.totoe.client.Node;
 import name.pehl.totoe.client.NodeType;
 
@@ -15,95 +17,126 @@ import com.google.gwt.core.client.JavaScriptObject;
  */
 public class NodeImpl implements Node
 {
-    private JavaScriptObject jsNode;
+    protected JavaScriptObject jso;
 
 
     // ----------------------------------------------------------- constructors
 
-    private NodeImpl(JavaScriptObject jso)
+    /**
+     * Construct a new instance of this class using the specified
+     * {@link JavaScriptObject}.
+     * 
+     * @param jso
+     */
+    protected NodeImpl(JavaScriptObject jso)
     {
-        this.jsNode = jso;
+        this.jso = jso;
     }
 
 
-    public static Node create(JavaScriptObject jso)
+    // -------------------------------------------------------- object identity
+
+    /**
+     * Based on the underlying {@link JavaScriptObject}.
+     * 
+     * @param o
+     *            the other object being tested for equality.
+     * @return true if the two objects are equal.
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(final Object o)
     {
-        return new NodeImpl(jso);
+        if (o instanceof NodeImpl)
+        {
+            return jso == ((NodeImpl) o).jso;
+        }
+        return false;
     }
 
 
-    // -------------------------------------------------- basic node operations
+    /**
+     * Based on the underlying {@link JavaScriptObject}.
+     * 
+     * @return the hashcode based on the underlying {@link JavaScriptObject}.
+     */
+    public int hashCode()
+    {
+        return jso.hashCode();
+    }
+
+
+    // ------------------------------------------------------- basic attributes
 
     @Override
-    public native String getNodeName() /*-{
-        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jsNode;
+    public native String getName() /*-{
+        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return node.nodeName;
     }-*/;
 
 
     @Override
-    public native String getNodeValue() /*-{
-        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jsNode;
-        return node.nodeValue;
-    }-*/;
-
-
-    @Override
-    public native NodeType getNodeType() /*-{
-        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jsNode;
-        return @name.pehl.totoe.client.NodeType::typeOf(I)(node.nodeType);
-    }-*/;
-
-
-    @Override
-    public native String getAttribute(String name) /*-{
-        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jsNode;
-        return node.getAttribute(name);
-    }-*/;
-
-
-    @Override
-    public Node getRoot()
+    public NodeType getType()
     {
-        if (NodeType.DOCUMENT.equals(getNodeType()))
-        {
-            List<Node> children = getChildNodes();
-            for (Node child : children)
-            {
-                if (NodeType.ELEMENT.equals(child.getNodeType()))
-                {
-                    return child;
-                }
-            }
-        }
-        return null;
+        return NodeType.typeOf(NodeFactory.nativeTypeOf(jso));
     }
 
 
-    // ----------------------------------------------- nodes as direct children
+    // ------------------------------------------- document / parent / siblings
 
     @Override
-    public List<Node> getChildNodes()
+    public Document getDocument()
     {
-        List<Node> result = new ArrayList<Node>();
-        getChildNodesImpl(result);
-        return result;
+        JavaScriptObject documentJso = getDocumentImpl();
+        return NodeFactory.create(documentJso);
     }
 
 
-    private native void getChildNodesImpl(List<Node> result) /*-{
-        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jsNode;
-        var nodes = node.childNodes;
-        if (nodes != null && nodes.length != 0)
-        {
-            for (var i = 0; i < nodes.length; i++) 
-            {
-                var currentNode = nodes[i];
-                result.@java.util.List::add(Ljava/lang/Object;)
-                    (@name.pehl.totoe.client.internal.NodeImpl::create(Lcom/google/gwt/core/client/JavaScriptObject;)
-                        (currentNode));
-            }
-        }
+    public native JavaScriptObject getDocumentImpl() /*-{
+        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
+        return node.ownerDocument;
+    }-*/;
+
+
+    @Override
+    public Node getParent()
+    {
+        JavaScriptObject parentJso = getParentImpl();
+        return NodeFactory.create(parentJso);
+    }
+
+
+    public native JavaScriptObject getParentImpl() /*-{
+        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
+        return node.parentNode;
+    }-*/;
+
+
+    @Override
+    public Node getPreviousSibling()
+    {
+        JavaScriptObject previousSiblingJso = getPreviousSiblingImpl();
+        return NodeFactory.create(previousSiblingJso);
+    }
+
+
+    public native JavaScriptObject getPreviousSiblingImpl() /*-{
+        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
+        return node.previousSibling;
+    }-*/;
+
+
+    @Override
+    public Node getNextSibling()
+    {
+        JavaScriptObject nextSiblingJso = getNextSiblingImpl();
+        return NodeFactory.create(nextSiblingJso);
+    }
+
+
+    public native JavaScriptObject getNextSiblingImpl() /*-{
+        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
+        return node.nextSibling;
     }-*/;
 
 
@@ -113,36 +146,41 @@ public class NodeImpl implements Node
     public List<Node> selectNodes(String xpath)
     {
         List<Node> result = new ArrayList<Node>();
-        selectNodesImpl(xpath, result);
+        List<JavaScriptObject> jsos = new ArrayList<JavaScriptObject>();
+
+        selectNodesImpl(xpath, jsos);
+        for (JavaScriptObject jso : jsos)
+        {
+            result.add(NodeFactory.create(jso));
+        }
         return result;
     }
 
 
-    private native void selectNodesImpl(String xpath, List<Node> result) /*-{
-        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jsNode;
+    private native void selectNodesImpl(String xpath, List<JavaScriptObject> result) /*-{
+        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         var nodes = node.selectNodes(xpath);
         if (nodes != null && nodes.length != 0)
         {
             for (var i = 0; i < nodes.length; i++) 
             {
-                var currentNode = nodes[i];
-                result.@java.util.List::add(Ljava/lang/Object;)
-                    (@name.pehl.totoe.client.internal.NodeImpl::create(Lcom/google/gwt/core/client/JavaScriptObject;)
-                        (currentNode));
+                result.@java.util.List::add(Ljava/lang/Object;)(nodes[i]);
             }
         }
     }-*/;
 
 
     @Override
-    public native Node selectNode(String xpath) /*-{
-        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jsNode;
+    public Node selectNode(String xpath)
+    {
+        return NodeFactory.create(selectNodeImpl(xpath));
+    }
+
+
+    private native JavaScriptObject selectNodeImpl(String xpath) /*-{
+        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         var singleNode = node.selectSingleNode(xpath);
-        if (n == null || n == undefined)
-        {
-            return null;
-        }
-        return @name.pehl.totoe.client.internal.NodeImpl::create(Lcom/google/gwt/core/client/JavaScriptObject;)(singleNode);
+        return singleNode;
     }-*/;
 
 
@@ -155,9 +193,9 @@ public class NodeImpl implements Node
         List<String> result = new ArrayList<String>();
         for (Node currentNode : nodes)
         {
-            if (currentNode.getNodeType() == NodeType.ATTRIBUTE || currentNode.getNodeType() == NodeType.TEXT)
+            if (currentNode instanceof HasText)
             {
-                result.add(currentNode.getNodeValue());
+                result.add(((HasText) currentNode).getText());
             }
         }
         return result.toArray(new String[] {});
@@ -168,10 +206,9 @@ public class NodeImpl implements Node
     public String selectValue(String xpath)
     {
         Node singleNode = selectNode(xpath);
-        if (singleNode != null
-                && (singleNode.getNodeType() == NodeType.ATTRIBUTE || singleNode.getNodeType() == NodeType.TEXT))
+        if (singleNode instanceof HasText)
         {
-            return singleNode.getNodeValue();
+            return ((HasText) singleNode).getText();
         }
         return null;
     }

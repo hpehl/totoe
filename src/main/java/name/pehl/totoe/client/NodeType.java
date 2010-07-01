@@ -21,7 +21,7 @@ public enum NodeType
     DOCUMENT_TYPE(10),
     DOCUMENT_FRAGMENT(11),
     NOTATION(12),
-    UNDEFINED(Integer.MAX_VALUE);
+    UNDEFINED(-1);
 
     private int type;
 
