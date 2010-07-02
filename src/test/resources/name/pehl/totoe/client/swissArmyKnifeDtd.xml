@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE swissArmyKnife [
+<!ELEMENT swissArmyKnife (description,dimensions,weight,functions)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT dimensions (#PCDATA)>
+<!ELEMENT weight (#PCDATA)>
+<!ELEMENT functions (rocketLauncher,calculator,fluxCapacitor)>
+<!ELEMENT rocketLauncher (#PCDATA)>
+<!ELEMENT calculator (#PCDATA)>
+<!ELEMENT fluxCapacitor (power)>
+<!ELEMENT power (#PCDATA)>
+
+<!ATTLIST swissArmyKnife id ID #REQUIRED>
+<!ATTLIST dimensions unit CDATA #IMPLIED>
+<!ATTLIST weight unit CDATA #IMPLIED>
+<!ATTLIST functions number CDATA #IMPLIED>
+<!ATTLIST rocketLauncher kind CDATA #IMPLIED>
+<!ATTLIST rocketLauncher range CDATA #IMPLIED>
+<!ATTLIST rocketLauncher dangerous CDATA #IMPLIED>
+<!ATTLIST calculator eval CDATA #IMPLIED>
+<!ATTLIST power unit CDATA #IMPLIED>
+
+<!ENTITY ASIN "B001DZTJRQ">
+]>
+
+<swissArmyKnife id="&ASIN;">
+    <!--
+        XML that has erything inside. Just like the Wenger 16999 Swiss Army Knife
+        http://www.amazon.com/Wenger-16999-Swiss-Army-Knife/dp/B001DZTJRQ/
+    -->
+    <?processing instruction with="two" attri="butes" ?>
+    <description><![CDATA[
+        Call it what you will, it's a knife that's unrivaled, impractical, 
+        and enormous, it's more knife than one can carry or would fit in one's pocket
+    ]]></description>
+    <!-- long live the metric system! -->
+    <dimensions unit="cm">11.8 x 10.8 x 4.3</dimensions>
+    <weight unit="g">700</weight>
+    <functions number="more than you'll ever need">
+        <rocketLauncher kind="advanced" range="intercontinental" dangerous="indeed">5</rocketLauncher>
+        <calculator eval="1 &lt; 2">2 &gt; 1</calculator>
+        <fluxCapacitor>
+            <power unit="gigawatts">1.21</power>
+        </fluxCapacitor>
+    </functions>
+</swissArmyKnife>
+ 

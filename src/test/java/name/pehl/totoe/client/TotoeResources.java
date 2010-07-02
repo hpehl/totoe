@@ -17,14 +17,17 @@ public interface TotoeResources extends ClientBundle
     String ID = "id";
     String ASIN = "B001DZTJRQ";
     String DESCRIPTION = "description";
-    String HIDE_AND_SEEK = "hide-and-seek";
-    int ROOT_ELEMENT_CHILDREN = 13;
+    int ROOT_ELEMENT_CHILDREN = 14;
 
     // ------------------------------------------------------- deferred binding
 
     TotoeResources INSTANCE = GWT.create(TotoeResources.class);
 
 
-    @Source("swissArmyKnife.xml")
-    public TextResource swissArmyKnife();
+    @Source("swissArmyKnifeDtd.xml")
+    public TextResource swissArmyKnifeDtd();
+
+
+    @Source("swissArmyKnifeNs.xml")
+    public TextResource swissArmyKnifeNs();
 }

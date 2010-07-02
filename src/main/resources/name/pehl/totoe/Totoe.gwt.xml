@@ -11,7 +11,7 @@
     <source path="client">
         <exclude name="**/TotoeApp.java" />
         <exclude name="**/TotoeResources.java" />
-        <exclude name="**/TotoeTest.java" />
+        <exclude name="**/*Test.java" />
     </source>
 
     <script src="sarissa.js" />

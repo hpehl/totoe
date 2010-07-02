@@ -40,7 +40,7 @@ public class XmlParserImpl
 
 
     private native JavaScriptObject parseImpl(String xml, String namespaces) /*-{
-        if (xml == null || xml == "")
+        if (xml == null)
         {
             return null;
         }

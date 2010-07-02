@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?processing instruction with="two" attri="butes" ?>
-<!DOCTYPE swissArmyKnife [
-<!ENTITY ASIN "B001DZTJRQ">
-]>
 
 <swissArmyKnife xmlns="http://code.google.com/p/totoe" xmlns:foo="http://code.google.com/p/totoe/foo"
-    xmlns:bar="http://code.google.com/p/totoe/bar" id="&ASIN;">
-    <!--
-        XML that has erything inside. Just like the Wenger 16999 Swiss Army Knife
-        http://www.amazon.com/Wenger-16999-Swiss-Army-Knife/dp/B001DZTJRQ/
+    xmlns:bar="http://code.google.com/p/totoe/bar" id="B001DZTJRQ">
+    <!-- 
+        XML that has erything inside. Just like the Wenger 16999 Swiss Army Knife 
+        http://www.amazon.com/Wenger-16999-Swiss-Army-Knife/dp/B001DZTJRQ/ 
     -->
-    <description id="hide-and-seek"><![CDATA[
+    <?processing instruction with="two" attri="butes" ?>
+    <description><![CDATA[
         Call it what you will, it's a knife that's unrivaled, impractical, 
         and enormous, it's more knife than one can carry or would fit in one's pocket
     ]]></description>
