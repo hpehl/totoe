@@ -17,13 +17,15 @@ public class TotoeTest extends GWTTestCase
 {
     static final String NAMESPACES_STRING = "xmlns:default=\"http://code.google.com/p/totoe\" "
             + "xmlns:foo=\"http://code.google.com/p/totoe/foo\" " 
-            + "xmlns:bar=\"http://code.google.com/p/totoe/bar\"";
+            + "xmlns:bar=\"http://code.google.com/p/totoe/bar\" "
+            + "xmlns:bttf=\"http://en.wikipedia.org/wiki/Back_to_the_Future\"";
     static final Map<String, String> NAMESPACES_MAP = new HashMap<String, String>();
     static
     {
         NAMESPACES_MAP.put("default", "http://code.google.com/p/totoe");
         NAMESPACES_MAP.put("foo", "http://code.google.com/p/totoe/foo");
         NAMESPACES_MAP.put("bar", "http://code.google.com/p/totoe/bar");
+        NAMESPACES_MAP.put("bttf", "http://en.wikipedia.org/wiki/Back_to_the_Future");
     }
 
 

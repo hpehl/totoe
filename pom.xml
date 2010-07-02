@@ -145,6 +145,88 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <configuration>
+                            <warSourceDirectory>src/test/webapp</warSourceDirectory>
+                        </configuration>
+                        <goals>
+                            <goal>exploded</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>name/pehl/totoe/TotoeGwtTestSuite.java</exclude>
+                        <exclude>name/pehl/totoe/client/*Test.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>(******** ff3-dev ********)</id>
+                        <configuration>
+                            <testTimeOut>300</testTimeOut>
+                            <runStyle>HtmlUnit:FF3</runStyle>
+                            <productionMode>false</productionMode>
+                            <gwtVersion>${gwt.version}</gwtVersion>
+                            <module>name.pehl.totoe.TotoeTest</module>
+                            <includes>name/pehl/totoe/TotoeGwtTestSuite.java</includes>
+                        </configuration>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>(******** ff3-prod ********)</id>
+                        <configuration>
+                            <testTimeOut>300</testTimeOut>
+                            <userAgents>gecko1_8</userAgents>
+                            <runStyle>HtmlUnit:FF3</runStyle>
+                            <productionMode>true</productionMode>
+                            <gwtVersion>${gwt.version}</gwtVersion>
+                            <module>name.pehl.totoe.TotoeTest</module>
+                            <includes>name/pehl/totoe/TotoeGwtTestSuite.java</includes>
+                        </configuration>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                    <!--
+                        <execution> <id>(******** ie6-dev ********)</id> <configuration> <testTimeOut>600</testTimeOut>
+                        <runStyle>HtmlUnit:IE6</runStyle> <productionMode>false</productionMode>
+                        <gwtVersion>${gwt.version}</gwtVersion> <module>name.pehl.totoe.TotoeTest</module>
+                        <includes>name/pehl/totoe/TotoeGwtTestSuite.java</includes> </configuration> <goals>
+                        <goal>test</goal> </goals> </execution> <execution> <id>(******** ie6-prod ********)</id>
+                        <configuration> <testTimeOut>600</testTimeOut> <userAgents>ie6</userAgents>
+                        <runStyle>HtmlUnit:IE6</runStyle> <productionMode>true</productionMode>
+                        <gwtVersion>${gwt.version}</gwtVersion> <module>name.pehl.totoe.TotoeTest</module>
+                        <includes>name/pehl/totoe/TotoeGwtTestSuite.java</includes> </configuration> <goals>
+                        <goal>test</goal> </goals> </execution> <execution> <id>(******** ie7_8-dev ********)</id>
+                        <configuration> <testTimeOut>600</testTimeOut> <runStyle>HtmlUnit:IE7</runStyle>
+                        <productionMode>false</productionMode> <gwtVersion>${gwt.version}</gwtVersion>
+                        <module>name.pehl.totoe.TotoeTest</module>
+                        <includes>name/pehl/totoe/TotoeGwtTestSuite.java</includes> </configuration> <goals>
+                        <goal>test</goal> </goals> </execution> <execution> <id>(******** ie7_8-prod ********)</id>
+                        <configuration> <testTimeOut>600</testTimeOut> <userAgents>ie8</userAgents>
+                        <runStyle>HtmlUnit:IE7</runStyle> <productionMode>true</productionMode>
+                        <gwtVersion>${gwt.version}</gwtVersion> <module>name.pehl.totoe.TotoeTest</module>
+                        <includes>name/pehl/totoe/TotoeGwtTestSuite.java</includes> </configuration> <goals>
+                        <goal>test</goal> </goals> </execution>
+                    -->
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-eclipse-plugin</artifactId>
                 <configuration>
                     <downloadSources>true</downloadSources>

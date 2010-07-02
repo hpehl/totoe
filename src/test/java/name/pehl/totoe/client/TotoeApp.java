@@ -22,6 +22,12 @@ import com.google.gwt.user.client.ui.TextBox;
  */
 public class TotoeApp implements EntryPoint
 {
+    static final String EXAMPLE_XPATH = "default:functions/bttf:fluxCapacitor/bttf:power/@unit";
+    static final String EXAMPLE_NAMESPACES = "xmlns:default=\"http://code.google.com/p/totoe\" " +
+    		"xmlns:foo=\"http://code.google.com/p/totoe/foo\" " +
+    		"xmlns:bar=\"http://code.google.com/p/totoe/bar\" " +
+    		"xmlns:bttf=\"http://en.wikipedia.org/wiki/Back_to_the_Future\"";
+    
     interface Binder extends UiBinder<DockLayoutPanel, TotoeApp>
     {
     }
@@ -53,6 +59,10 @@ public class TotoeApp implements EntryPoint
         // Load sample xml
         String xml = TotoeResources.INSTANCE.swissArmyKnife().getText();
         xmlIn.setText(xml);
+        
+        // Set some default values
+        xpath.setText(EXAMPLE_XPATH);
+        namespaces.setText(EXAMPLE_NAMESPACES);
 
         // Add the outer panel to the RootLayoutPanel, so that it will be
         // displayed.
@@ -84,8 +94,8 @@ public class TotoeApp implements EntryPoint
         }
 
         XmlParser xmlParser = new XmlParser();
-        Node document = xmlParser.parse(xmlValue, namespacesValue);
-        Document root = document.getDocument();
+        Document document = xmlParser.parse(xmlValue, namespacesValue);
+        Element root = document.getRoot();
         List<Node> nodes = root.selectNodes(xpathValue);
         if (!nodes.isEmpty())
         {

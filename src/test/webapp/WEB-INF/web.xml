@@ -7,7 +7,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>jUnitHostImpl</servlet-name>
-        <url-pattern>/xmlparser/junithost</url-pattern>
+        <url-pattern>/totoe/junithost</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
