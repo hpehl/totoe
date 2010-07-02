@@ -118,8 +118,8 @@ public class XmlParser
     {
         return impl.parse(xml, getNamespaces(namespaces));
     }
-    
-    
+
+
     // --------------------------------------------------------- helper methods
 
     /**

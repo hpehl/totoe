@@ -92,7 +92,7 @@ public class NodeImpl implements Node
     }
 
 
-    public native JavaScriptObject getDocumentImpl() /*-{
+    private native JavaScriptObject getDocumentImpl() /*-{
         var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return node.ownerDocument;
     }-*/;
@@ -106,7 +106,7 @@ public class NodeImpl implements Node
     }
 
 
-    public native JavaScriptObject getParentImpl() /*-{
+    private native JavaScriptObject getParentImpl() /*-{
         var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return node.parentNode;
     }-*/;
@@ -120,7 +120,7 @@ public class NodeImpl implements Node
     }
 
 
-    public native JavaScriptObject getPreviousSiblingImpl() /*-{
+    private native JavaScriptObject getPreviousSiblingImpl() /*-{
         var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return node.previousSibling;
     }-*/;
@@ -134,7 +134,7 @@ public class NodeImpl implements Node
     }
 
 
-    public native JavaScriptObject getNextSiblingImpl() /*-{
+    private native JavaScriptObject getNextSiblingImpl() /*-{
         var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return node.nextSibling;
     }-*/;

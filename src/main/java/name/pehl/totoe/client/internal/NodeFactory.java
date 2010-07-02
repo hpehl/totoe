@@ -37,24 +37,34 @@ public final class NodeFactory
                 case ATTRIBUTE:
                     result = new AttributeImpl(jso);
                 case TEXT:
+                    result = new TextImpl(jso);
                     break;
                 case CDATA:
+                    result = new CDATAImpl(jso);
                     break;
                 case ENTITY_REFERENCE:
+                    result = new EntityReferenceImpl(jso);
                     break;
                 case ENTITY:
+                    result = new EntityImpl(jso);
                     break;
                 case PROCESSING_INSTRUCTION:
+                    result = new ProcessingInstructionImpl(jso);
                     break;
                 case COMMENT:
+                    result = new CommentImpl(jso);
                     break;
                 case DOCUMENT:
+                    result = new DocumentImpl(jso);
                     break;
                 case DOCUMENT_TYPE:
+                    result = new DocumentTypeImpl(jso);
                     break;
                 case DOCUMENT_FRAGMENT:
+                    result = new DocumentFragmentImpl(jso);
                     break;
                 case NOTATION:
+                    result = new NotationImpl(jso);
                     break;
                 case UNDEFINED:
                 default:

@@ -13,8 +13,8 @@ import name.pehl.totoe.client.Node;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * @author $Author:$
- * @version $Date:$ $Revision:$
+ * @author $Author$
+ * @version $Date$ $Revision$
  */
 public class ElementImpl extends NodeImpl implements Element
 {
@@ -24,6 +24,15 @@ public class ElementImpl extends NodeImpl implements Element
     {
         super(jso);
     }
+
+
+    // ------------------------------------------------------- basic attributes
+
+    @Override
+    public native String getName() /*-{
+        var element = this.@name.pehl.totoe.client.internal.ElementImpl::jso;
+        return element.tagName;
+    }-*/;
 
 
     // ------------------------------------------------------------- attributes
@@ -43,10 +52,15 @@ public class ElementImpl extends NodeImpl implements Element
 
 
     @Override
-    public native String getAttributeValue(String name) /*-{
-        var element = this.@name.pehl.totoe.client.internal.ElementImpl::jso;
-        return element.getAttribute(name);
-    }-*/;
+    public String getAttributeValue(String name)
+    {
+        Attribute attribute = getAttribute(name);
+        if (attribute != null)
+        {
+            return attribute.getText();
+        }
+        return null;
+    }
 
 
     @Override
@@ -108,6 +122,36 @@ public class ElementImpl extends NodeImpl implements Element
     }
 
 
+    // --------------------------------------------------------------- children
+
+    @Override
+    public List<Node> getChildren()
+    {
+        return XmlParserUtils.getChildren(jso);
+    }
+
+
+    @Override
+    public boolean hasChildren()
+    {
+        return XmlParserUtils.hasChildren(jso);
+    }
+
+
+    @Override
+    public Node getFirstChild()
+    {
+        return XmlParserUtils.getFirstChild(jso);
+    }
+
+
+    @Override
+    public Node getLastChild()
+    {
+        return XmlParserUtils.getLastChild(jso);
+    }
+
+
     // ------------------------------------------------------------------- text
 
     /**
@@ -122,69 +166,6 @@ public class ElementImpl extends NodeImpl implements Element
     @Override
     public String getText()
     {
-        Node firstChild = getFirstChild();
-        if (firstChild != null && firstChild instanceof HasText)
-        {
-            return ((HasText) firstChild).getText();
-        }
-        return null;
+        return XmlParserUtils.getTextFromFirstChild(this);
     }
-
-
-    // --------------------------------------------------------------- children
-
-    @Override
-    public List<Node> getChildren()
-    {
-        List<Node> result = new ArrayList<Node>();
-        List<JavaScriptObject> jsos = new ArrayList<JavaScriptObject>();
-
-        getChildrenImpl(jsos);
-        for (JavaScriptObject jso : jsos)
-        {
-            result.add(NodeFactory.create(jso));
-        }
-        return result;
-    }
-
-
-    private native void getChildrenImpl(List<JavaScriptObject> result) /*-{
-        var element = this.@name.pehl.totoe.client.internal.ElementImpl::jso;
-        var children = element.childNodes;
-        if (children != null && children.length != 0)
-        {
-            for (var i = 0; i < children.length; i++) 
-            {
-                result.@java.util.List::add(Ljava/lang/Object;)(children[i]);
-            }
-        }
-    }-*/;
-
-
-    @Override
-    public Node getFirstChild()
-    {
-        JavaScriptObject firstChildJso = getFirstChildImpl();
-        return NodeFactory.create(firstChildJso);
-    }
-
-
-    private native JavaScriptObject getFirstChildImpl() /*-{
-        var element = this.@name.pehl.totoe.client.internal.ElementImpl::jso;
-        return element.firstChild;
-    }-*/;
-
-
-    @Override
-    public Node getLastChild()
-    {
-        JavaScriptObject lastChildJso = getLastChildImpl();
-        return NodeFactory.create(lastChildJso);
-    }
-
-
-    private native JavaScriptObject getLastChildImpl() /*-{
-        var element = this.@name.pehl.totoe.client.internal.ElementImpl::jso;
-        return node.lastChild;
-    }-*/;
 }

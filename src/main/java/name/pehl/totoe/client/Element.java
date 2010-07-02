@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author $Author:$
- * @version $Date:$ $Revision:$
+ * @author $Author$
+ * @version $Date$ $Revision$
  */
-public interface Element extends Node, HasText, HasChildren
+public interface Element extends Node, HasChildren, HasText
 {
     /**
      * Returns the specifed attribute.

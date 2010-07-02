@@ -4,7 +4,7 @@ package name.pehl.totoe.client;
  * @author $Author$
  * @version $Date$ $Revision$
  */
-public interface DocumentFragment extends Node, HasChildren, HasText
+public interface CDATA extends Node, HasText
 {
 
 }
