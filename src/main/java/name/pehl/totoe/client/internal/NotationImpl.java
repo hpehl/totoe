@@ -6,8 +6,8 @@ import name.pehl.totoe.client.Notation;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * @author $Author:$
- * @version $Date:$ $Revision:$
+ * @author $Author$
+ * @version $Date$ $Revision$
  */
 public class NotationImpl extends NodeImpl implements Notation
 {
@@ -23,14 +23,14 @@ public class NotationImpl extends NodeImpl implements Notation
 
     @Override
     public native String getPublicId() /*-{
-        var notation = this.@name.pehl.totoe.client.internal.NotationImpl::jso;
+        var notation = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return notation.publicId;
     }-*/;
 
 
     @Override
     public native String getSystemId() /*-{
-        var notation = this.@name.pehl.totoe.client.internal.NotationImpl::jso;
+        var notation = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return notation.systemId;
     }-*/;
 

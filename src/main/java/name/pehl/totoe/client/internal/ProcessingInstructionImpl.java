@@ -5,8 +5,8 @@ import name.pehl.totoe.client.ProcessingInstruction;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * @author $Author:$
- * @version $Date:$ $Revision:$
+ * @author $Author$
+ * @version $Date$ $Revision$
  */
 public class ProcessingInstructionImpl extends NodeImpl implements ProcessingInstruction
 {
@@ -22,7 +22,7 @@ public class ProcessingInstructionImpl extends NodeImpl implements ProcessingIns
 
     @Override
     public native String getTarget()/*-{
-        var pi = this.@name.pehl.totoe.client.internal.ProcessingInstructionImpl::jso;
+        var pi = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return pi.target;
     }-*/;
 
@@ -31,7 +31,7 @@ public class ProcessingInstructionImpl extends NodeImpl implements ProcessingIns
 
     @Override
     public native String getText()/*-{
-        var pi = this.@name.pehl.totoe.client.internal.ProcessingInstructionImpl::jso;
+        var pi = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return pi.data;
     }-*/;
 }

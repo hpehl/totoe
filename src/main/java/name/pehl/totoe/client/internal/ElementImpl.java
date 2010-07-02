@@ -30,7 +30,7 @@ public class ElementImpl extends NodeImpl implements Element
 
     @Override
     public native String getName() /*-{
-        var element = this.@name.pehl.totoe.client.internal.ElementImpl::jso;
+        var element = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return element.tagName;
     }-*/;
 
@@ -46,7 +46,7 @@ public class ElementImpl extends NodeImpl implements Element
 
 
     private native JavaScriptObject getAttributeImpl(String name) /*-{
-        var element = this.@name.pehl.totoe.client.internal.ElementImpl::jso;
+        var element = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return element.getAttributeNode(name);
     }-*/;
 
@@ -87,7 +87,7 @@ public class ElementImpl extends NodeImpl implements Element
 
 
     private native void getAttributesImpl(List<JavaScriptObject> result)/*-{
-        var element = this.@name.pehl.totoe.client.internal.ElementImpl::jso;
+        var element = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         if (element.attributes != null && element.attributes.length != 0)
         {
             for (var i = 0; i < element.attributes.length; i++) 

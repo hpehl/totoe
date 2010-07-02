@@ -6,7 +6,7 @@ import java.util.List;
  * @author $Author$
  * @version $Date$ $Revision$
  */
-public interface Document extends Node, HasChildren, HasText
+public interface Document extends Node, HasChildren
 {
     /**
      * Returns the root element.
@@ -33,6 +33,15 @@ public interface Document extends Node, HasChildren, HasText
      *         elements were found.
      */
     List<Element> getElementsByName(String name);
+
+
+    /**
+     * Returns all nodes with the specifed type.
+     * 
+     * @return all nodes with the specifed type or an empty list if no such
+     *         nodes were found.
+     */
+    List<Node> getNodesByType(NodeType type);
 
 
     /**

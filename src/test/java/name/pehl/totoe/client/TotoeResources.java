@@ -13,8 +13,12 @@ public interface TotoeResources extends ClientBundle
 {
     // -------------------------------------------------------------- constants
 
-    String ROOT_NAME = "swissArmyKnife";
+    String SWISS_ARMY_KNIFE = "swissArmyKnife";
+    String ID = "id";
     String ASIN = "B001DZTJRQ";
+    String DESCRIPTION = "description";
+    String HIDE_AND_SEEK = "hide-and-seek";
+    int ROOT_ELEMENT_CHILDREN = 13;
 
     // ------------------------------------------------------- deferred binding
 

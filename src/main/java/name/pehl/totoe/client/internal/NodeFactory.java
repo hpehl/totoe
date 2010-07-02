@@ -34,8 +34,10 @@ public final class NodeFactory
             {
                 case ELEMENT:
                     result = new ElementImpl(jso);
+                    break;
                 case ATTRIBUTE:
                     result = new AttributeImpl(jso);
+                    break;
                 case TEXT:
                     result = new TextImpl(jso);
                     break;
@@ -69,6 +71,7 @@ public final class NodeFactory
                 case UNDEFINED:
                 default:
                     result = new NodeImpl(jso);
+                    break;
             }
         }
         return (T) result;

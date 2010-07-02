@@ -5,8 +5,8 @@ import name.pehl.totoe.client.Text;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * @author $Author:$
- * @version $Date:$ $Revision:$
+ * @author $Author$
+ * @version $Date$ $Revision$
  */
 public class TextImpl extends NodeImpl implements Text
 {
@@ -21,9 +21,9 @@ public class TextImpl extends NodeImpl implements Text
     // ------------------------------------------------------------------- text
 
     /**
-     * Retunrs the value of this CDATA.
+     * Retunrs the value of this Text.
      * 
-     * @return the value of this CDATA.
+     * @return the value of this Text.
      * @see name.pehl.totoe.client.HasText#getText()
      */
     @Override

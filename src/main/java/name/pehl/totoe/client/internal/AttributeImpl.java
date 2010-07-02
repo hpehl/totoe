@@ -24,7 +24,7 @@ public class AttributeImpl extends NodeImpl implements Attribute
 
     @Override
     public native String getName() /*-{
-        var attribute = this.@name.pehl.totoe.client.internal.AttributeImpl::jso;
+        var attribute = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return attribute.name;
     }-*/;
 
@@ -38,7 +38,7 @@ public class AttributeImpl extends NodeImpl implements Attribute
 
 
     private native JavaScriptObject getElementImpl()/*-{
-        var attribute = this.@name.pehl.totoe.client.internal.AttributeImpl::jso;
+        var attribute = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return attribute.ownerElement;
     }-*/;
 
@@ -92,7 +92,7 @@ public class AttributeImpl extends NodeImpl implements Attribute
      */
     @Override
     public native String getText()/*-{
-        var attribute = this.@name.pehl.totoe.client.internal.AttributeImpl::jso;
+        var attribute = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return attribute.value;
     }-*/;
 }

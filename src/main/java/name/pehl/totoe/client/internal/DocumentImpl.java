@@ -6,14 +6,15 @@ import java.util.List;
 import name.pehl.totoe.client.Document;
 import name.pehl.totoe.client.DocumentType;
 import name.pehl.totoe.client.Element;
-import name.pehl.totoe.client.HasText;
+import name.pehl.totoe.client.HasChildren;
 import name.pehl.totoe.client.Node;
+import name.pehl.totoe.client.NodeType;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * @author $Author:$
- * @version $Date:$ $Revision:$
+ * @author $Author$
+ * @version $Date$ $Revision$
  */
 public class DocumentImpl extends NodeImpl implements Document
 {
@@ -62,7 +63,7 @@ public class DocumentImpl extends NodeImpl implements Document
 
 
     private native JavaScriptObject getDocumentTypeImpl() /*-{
-        var doc = this.@name.pehl.totoe.client.internal.DocumentImpl::jso;
+        var doc = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return doc.doctype;
     }-*/;
 
@@ -76,7 +77,7 @@ public class DocumentImpl extends NodeImpl implements Document
 
 
     private native JavaScriptObject getRootImpl() /*-{
-        var doc = this.@name.pehl.totoe.client.internal.DocumentImpl::jso;
+        var doc = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return doc.documentElement;
     }-*/;
 
@@ -90,7 +91,7 @@ public class DocumentImpl extends NodeImpl implements Document
 
 
     private native JavaScriptObject getElementByIdImpl(String id) /*-{
-        var doc = this.@name.pehl.totoe.client.internal.DocumentImpl::jso;
+        var doc = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return doc.getElementById(id);
     }-*/;
 
@@ -111,7 +112,7 @@ public class DocumentImpl extends NodeImpl implements Document
 
 
     private native JavaScriptObject getElementsByNameImpl(String name, List<JavaScriptObject> result) /*-{
-        var doc = this.@name.pehl.totoe.client.internal.DocumentImpl::jso;
+        var doc = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         var nodes = doc.getElementsByTagName(name);
         if (nodes != null && nodes.length != 0)
         {
@@ -121,6 +122,35 @@ public class DocumentImpl extends NodeImpl implements Document
             }
         }
     }-*/;
+
+
+    @Override
+    public List<Node> getNodesByType(NodeType type)
+    {
+        List<Node> nodes = new ArrayList<Node>();
+        collectNodes(this, nodes, type);
+        return nodes;
+    }
+
+
+    private void collectNodes(HasChildren start, List<Node> nodes, NodeType type)
+    {
+        for (Node node : start.getChildren())
+        {
+            if (type == node.getType())
+            {
+                nodes.add(node);
+            }
+            if (type == NodeType.ATTRIBUTE && node instanceof Element)
+            {
+                nodes.addAll(((Element) node).getAttributes());
+            }
+            if (node instanceof HasChildren)
+            {
+                collectNodes((HasChildren) node, nodes, type);
+            }
+        }
+    }
 
 
     // --------------------------------------------------------------- children
@@ -150,23 +180,5 @@ public class DocumentImpl extends NodeImpl implements Document
     public Node getLastChild()
     {
         return XmlParserUtils.getLastChild(jso);
-    }
-
-
-    // ------------------------------------------------------------------- text
-
-    /**
-     * Returns the text of the first child in case the first child implements
-     * {@link HasText}. In all other cases this method returns <code>null</code>
-     * .
-     * 
-     * @return the text of the first child in case the first child implements
-     *         {@link HasText}, <code>null</code> otherwise.
-     * @see name.pehl.totoe.client.HasText#getText()
-     */
-    @Override
-    public String getText()
-    {
-        return XmlParserUtils.getTextFromFirstChild(this);
     }
 }

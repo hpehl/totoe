@@ -10,8 +10,8 @@ import name.pehl.totoe.client.Notation;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * @author $Author:$
- * @version $Date:$ $Revision:$
+ * @author $Author$
+ * @version $Date$ $Revision$
  */
 public class DocumentTypeImpl extends NodeImpl implements DocumentType
 {
@@ -27,21 +27,21 @@ public class DocumentTypeImpl extends NodeImpl implements DocumentType
 
     @Override
     public native String getName() /*-{
-        var documentType = this.@name.pehl.totoe.client.internal.DocumentTypeImpl::jso;
+        var documentType = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return documentType.name;
     }-*/;
 
 
     @Override
     public native String getPublicId() /*-{
-        var documentType = this.@name.pehl.totoe.client.internal.DocumentTypeImpl::jso;
+        var documentType = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return documentType.publicId;
     }-*/;
 
 
     @Override
     public native String getSystemId() /*-{
-        var documentType = this.@name.pehl.totoe.client.internal.DocumentTypeImpl::jso;
+        var documentType = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return documentType.systemId;
     }-*/;
 
@@ -62,7 +62,7 @@ public class DocumentTypeImpl extends NodeImpl implements DocumentType
 
 
     private native void getEntitiesImpl(List<JavaScriptObject> result) /*-{
-        var documentType = this.@name.pehl.totoe.client.internal.DocumentTypeImpl::jso;
+        var documentType = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         var entities = documentType.entities;
         if (entities != null && entities.length != 0)
         {
@@ -90,7 +90,7 @@ public class DocumentTypeImpl extends NodeImpl implements DocumentType
 
 
     private native void getNotationImpl(List<JavaScriptObject> result) /*-{
-        var documentType = this.@name.pehl.totoe.client.internal.DocumentTypeImpl::jso;
+        var documentType = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         var notations = documentType.notations;
         if (notations != null && notations.length != 0)
         {

@@ -6,8 +6,8 @@ import name.pehl.totoe.client.Node;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * @author $Author:$
- * @version $Date:$ $Revision:$
+ * @author $Author$
+ * @version $Date$ $Revision$
  */
 public class EntityImpl extends NodeImpl implements Entity
 {
@@ -23,21 +23,21 @@ public class EntityImpl extends NodeImpl implements Entity
 
     @Override
     public native String getPublicId() /*-{
-        var entity = this.@name.pehl.totoe.client.internal.EntityImpl::jso;
+        var entity = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return entity.publicId;
     }-*/;
 
 
     @Override
     public native String getSystemId() /*-{
-        var entity = this.@name.pehl.totoe.client.internal.EntityImpl::jso;
+        var entity = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return entity.systemId;
     }-*/;
 
 
     @Override
     public native String getNotationName()/*-{
-        var entity = this.@name.pehl.totoe.client.internal.EntityImpl::jso;
+        var entity = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return entity.notationName;
     }-*/;
 
