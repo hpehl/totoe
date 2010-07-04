@@ -47,4 +47,10 @@ public class XmlParserNsTest extends AbstractXmlParserTest
         assertRootElement(document, document.getRoot());
         assertIdAttribute(document, document.getRoot(), document.getRoot().getAttribute(ID));
     }
+
+
+    public void testSelect()
+    {
+
+    }
 }

@@ -41,4 +41,10 @@ public class XmlParserDtdTest extends AbstractXmlParserTest
         assertTrue(documentType.getEntities().isEmpty());
         assertTrue(documentType.getNotations().isEmpty());
     }
+    
+    
+    public void testSelect()
+    {
+        
+    }
 }
