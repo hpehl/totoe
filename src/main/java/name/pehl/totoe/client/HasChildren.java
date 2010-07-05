@@ -3,13 +3,13 @@ package name.pehl.totoe.client;
 import java.util.List;
 
 /**
- * @userAgent There are differences between browsers regarding white-spaces and
- *            new lines. See <a
+ * @userAgent There are differences between browsers when reading child nodes
+ *            regarding white-spaces and new lines. See <a
  *            href="http://www.w3schools.com/dom/dom_mozilla_vs_ie.asp"
- *            >http://www.w3schools.com/dom/dom_mozilla_vs_ie.asp</a> for more
- *            information.
+ *            >www.w3schools.com</a> for more information.
  * @author $Author$
- * @version $Date$ $Revision$
+ * @version $Date$ $Revision: 43
+ *          $
  */
 public interface HasChildren
 {
