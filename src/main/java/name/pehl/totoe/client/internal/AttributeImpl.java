@@ -23,13 +23,6 @@ public class AttributeImpl extends NodeImpl implements Attribute
     // ------------------------------------------------------- basic attributes
 
     @Override
-    public native String getName() /*-{
-        var attribute = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
-        return attribute.name;
-    }-*/;
-
-
-    @Override
     public Element getElement()
     {
         JavaScriptObject elementJso = getElementImpl();

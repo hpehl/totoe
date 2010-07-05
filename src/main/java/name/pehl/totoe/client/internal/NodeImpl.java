@@ -7,7 +7,9 @@ import name.pehl.totoe.client.Document;
 import name.pehl.totoe.client.HasText;
 import name.pehl.totoe.client.Node;
 import name.pehl.totoe.client.NodeType;
+import name.pehl.totoe.client.XPathException;
 
+import com.google.gwt.core.client.JavaScriptException;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
@@ -82,6 +84,29 @@ public class NodeImpl implements Node
     }
 
 
+    // ------------------------------------------------------------- namespaces
+
+    @Override
+    public native String getLocalName() /*-{
+        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
+        return node.localName;
+    }-*/;
+
+
+    @Override
+    public native String getNamespacePrefix() /*-{
+        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
+        return node.prefix;
+    }-*/;
+
+
+    @Override
+    public native String getNamespaceUri() /*-{
+        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
+        return node.namespaceURI;
+    }-*/;
+
+
     // ------------------------------------------- document / parent / siblings
 
     @Override
@@ -145,27 +170,40 @@ public class NodeImpl implements Node
     @Override
     public List<Node> selectNodes(String xpath)
     {
-        List<Node> result = new ArrayList<Node>();
-        List<JavaScriptObject> jsos = new ArrayList<JavaScriptObject>();
-
-        selectNodesImpl(xpath, jsos);
-        for (JavaScriptObject jso : jsos)
+        try
         {
-            result.add(NodeFactory.create(jso));
+            List<Node> result = new ArrayList<Node>();
+            List<JavaScriptObject> jsos = new ArrayList<JavaScriptObject>();
+            selectNodesImpl(xpath, jsos);
+            for (JavaScriptObject currentJso : jsos)
+            {
+                result.add(NodeFactory.create(currentJso));
+            }
+            return result;
         }
-        return result;
+        catch (JavaScriptException e)
+        {
+            throw new XPathException(e.getMessage(), e);
+        }
     }
 
 
     private native void selectNodesImpl(String xpath, List<JavaScriptObject> result) /*-{
         var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
-        var nodes = node.selectNodes(xpath);
-        if (nodes != null && nodes.length != 0)
+        try
         {
-            for (var i = 0; i < nodes.length; i++) 
+            var nodes = node.selectNodes(xpath);
+            if (nodes != null && nodes.length != 0)
             {
-                result.@java.util.List::add(Ljava/lang/Object;)(nodes[i]);
+                for (var i = 0; i < nodes.length; i++) 
+                {
+                    result.@java.util.List::add(Ljava/lang/Object;)(nodes[i]);
+                }
             }
+        }
+        catch (e)
+        {
+            throw new Error(e);
         }
     }-*/;
 
@@ -173,14 +211,28 @@ public class NodeImpl implements Node
     @Override
     public Node selectNode(String xpath)
     {
-        return NodeFactory.create(selectNodeImpl(xpath));
+        try
+        {
+            return NodeFactory.create(selectNodeImpl(xpath));
+        }
+        catch (JavaScriptException e)
+        {
+            throw new XPathException(e.getMessage(), e);
+        }
     }
 
 
     private native JavaScriptObject selectNodeImpl(String xpath) /*-{
         var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
-        var singleNode = node.selectSingleNode(xpath);
-        return singleNode;
+        try
+        {
+            var singleNode = node.selectSingleNode(xpath);
+            return singleNode;
+        }
+        catch (e)
+        {
+            throw new Error(e);
+        }
     }-*/;
 
 
@@ -189,27 +241,56 @@ public class NodeImpl implements Node
     @Override
     public String[] selectValues(String xpath)
     {
-        List<Node> nodes = selectNodes(xpath);
-        List<String> result = new ArrayList<String>();
-        for (Node currentNode : nodes)
+        try
         {
-            if (currentNode instanceof HasText)
+            List<Node> nodes = selectNodes(xpath);
+            List<String> result = new ArrayList<String>();
+            for (Node currentNode : nodes)
             {
-                result.add(((HasText) currentNode).getText());
+                if (currentNode instanceof HasText)
+                {
+                    result.add(((HasText) currentNode).getText());
+                }
             }
+            return result.toArray(new String[] {});
         }
-        return result.toArray(new String[] {});
+        catch (JavaScriptException e)
+        {
+            throw new XPathException(e.getMessage(), e);
+        }
     }
 
 
     @Override
     public String selectValue(String xpath)
     {
-        Node singleNode = selectNode(xpath);
-        if (singleNode instanceof HasText)
+        try
         {
-            return ((HasText) singleNode).getText();
+            Node singleNode = selectNode(xpath);
+            if (singleNode instanceof HasText)
+            {
+                return ((HasText) singleNode).getText();
+            }
+            return null;
         }
-        return null;
+        catch (JavaScriptException e)
+        {
+            throw new XPathException(e.getMessage(), e);
+        }
     }
+
+
+    // -------------------------------------------------------------- serialize
+
+    @Override
+    public String serialize()
+    {
+        return serializeImpl();
+    }
+
+
+    private native String serializeImpl()/*-{
+        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
+        return new $wnd.XMLSerializer().serializeToString(node);
+    }-*/;
 }

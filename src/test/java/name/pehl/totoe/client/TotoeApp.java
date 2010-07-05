@@ -22,12 +22,11 @@ import com.google.gwt.user.client.ui.TextBox;
  */
 public class TotoeApp implements EntryPoint
 {
-    static final String EXAMPLE_XPATH = "default:functions/bttf:fluxCapacitor/bttf:power/@unit";
-    static final String EXAMPLE_NAMESPACES = "xmlns:default=\"http://code.google.com/p/totoe\" " +
-    		"xmlns:foo=\"http://code.google.com/p/totoe/foo\" " +
-    		"xmlns:bar=\"http://code.google.com/p/totoe/bar\" " +
-    		"xmlns:bttf=\"http://en.wikipedia.org/wiki/Back_to_the_Future\"";
-    
+    static final String EXAMPLE_XPATH = "//dns:functions/bttf:fluxCapacitor/bttf:power/@unit";
+    static final String EXAMPLE_NAMESPACES = "xmlns:dns=\"http://code.google.com/p/totoe\" "
+            + "xmlns:foo=\"http://code.google.com/p/totoe/foo\" " + "xmlns:bar=\"http://code.google.com/p/totoe/bar\" "
+            + "xmlns:bttf=\"http://en.wikipedia.org/wiki/Back_to_the_Future\"";
+
     interface Binder extends UiBinder<DockLayoutPanel, TotoeApp>
     {
     }
@@ -57,9 +56,9 @@ public class TotoeApp implements EntryPoint
         DockLayoutPanel outer = binder.createAndBindUi(this);
 
         // Load sample xml
-        String xml = TotoeResources.INSTANCE.swissArmyKnifeDtd().getText();
+        String xml = TotoeResources.INSTANCE.swissArmyKnifeNs().getText();
         xmlIn.setText(xml);
-        
+
         // Set some default values
         xpath.setText(EXAMPLE_XPATH);
         namespaces.setText(EXAMPLE_NAMESPACES);
@@ -93,25 +92,17 @@ public class TotoeApp implements EntryPoint
             namespacesValue = null;
         }
 
-        XmlParser xmlParser = new XmlParser();
-        Document document = xmlParser.parse(xmlValue, namespacesValue);
-        Element root = document.getRoot();
-        List<Node> nodes = root.selectNodes(xpathValue);
+        Document document = new XmlParser().parse(xmlValue, namespacesValue);
+        List<Node> nodes = document.selectNodes(xpathValue);
         if (!nodes.isEmpty())
         {
             StringBuilder builder = new StringBuilder();
             for (Node node : nodes)
             {
-                builder.append(serialize(node)).append("\n");
+                builder.append(node.serialize()).append("\n");
             }
             result = builder.toString();
         }
         xmlOut.setText(result);
     }
-
-
-    private native String serialize(Node node)/*-{
-        var jsNode = node.@name.pehl.totoe.client.internal.NodeImpl::jso;
-        return new $wnd.XMLSerializer().serializeToString(jsNode);
-    }-*/;
 }

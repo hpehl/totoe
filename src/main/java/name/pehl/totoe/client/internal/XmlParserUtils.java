@@ -13,8 +13,8 @@ import com.google.gwt.core.client.JavaScriptObject;
  * Collection of static helper methods used by the different node
  * implementations.
  * 
- * @author $Author:$
- * @version $Date:$ $Revision:$
+ * @author $Author$
+ * @version $Date$ $Revision$
  */
 final class XmlParserUtils
 {

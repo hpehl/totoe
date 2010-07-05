@@ -13,11 +13,17 @@ public interface TotoeResources extends ClientBundle
 {
     // -------------------------------------------------------------- constants
 
-    String SWISS_ARMY_KNIFE = "swissArmyKnife";
-    String ID = "id";
+    int UNITS_SIZE = 3;
+    String[] UNITS = new String[] {"cm", "g", "gigawatts"};
+
+    String SWISS_ARMY_KNIFE_ELEMENT = "swissArmyKnife";
+    String ID_ATTRIBUTE = "id";
     String ASIN = "B001DZTJRQ";
-    String DESCRIPTION = "description";
-    int ROOT_ELEMENT_CHILDREN = 14;
+    String DESCRIPTION_ELEMENT = "description";
+    String CALL_IT_WHAT_YOU_WILL = "Call it what you will, it's a knife that's unrivaled";
+    String NUMBER_ATTRIBUTE = "number";
+    String MORE_THAN_YOU_WILL_EVER_NEED = "more than you'll ever need";
+    String GIGAWATTS = "gigawatts";
 
     // ------------------------------------------------------- deferred binding
 

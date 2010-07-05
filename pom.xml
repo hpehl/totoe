@@ -202,27 +202,46 @@
                         </goals>
                     </execution>
                     <!--
-                        <execution> <id>(******** ie6-dev ********)</id> <configuration> <testTimeOut>600</testTimeOut>
+                        <execution> <id>(******** ie6-dev ********)</id> <configuration> <testTimeOut>300</testTimeOut>
                         <runStyle>HtmlUnit:IE6</runStyle> <productionMode>false</productionMode>
                         <gwtVersion>${gwt.version}</gwtVersion> <module>name.pehl.totoe.TotoeTest</module>
                         <includes>name/pehl/totoe/TotoeGwtTestSuite.java</includes> </configuration> <goals>
                         <goal>test</goal> </goals> </execution> <execution> <id>(******** ie6-prod ********)</id>
-                        <configuration> <testTimeOut>600</testTimeOut> <userAgents>ie6</userAgents>
+                        <configuration> <testTimeOut>300</testTimeOut> <userAgents>ie6</userAgents>
                         <runStyle>HtmlUnit:IE6</runStyle> <productionMode>true</productionMode>
-                        <gwtVersion>${gwt.version}</gwtVersion> <module>name.pehl.totoe.TotoeTest</module>
-                        <includes>name/pehl/totoe/TotoeGwtTestSuite.java</includes> </configuration> <goals>
-                        <goal>test</goal> </goals> </execution> <execution> <id>(******** ie7_8-dev ********)</id>
-                        <configuration> <testTimeOut>600</testTimeOut> <runStyle>HtmlUnit:IE7</runStyle>
-                        <productionMode>false</productionMode> <gwtVersion>${gwt.version}</gwtVersion>
-                        <module>name.pehl.totoe.TotoeTest</module>
-                        <includes>name/pehl/totoe/TotoeGwtTestSuite.java</includes> </configuration> <goals>
-                        <goal>test</goal> </goals> </execution> <execution> <id>(******** ie7_8-prod ********)</id>
-                        <configuration> <testTimeOut>600</testTimeOut> <userAgents>ie8</userAgents>
-                        <runStyle>HtmlUnit:IE7</runStyle> <productionMode>true</productionMode>
                         <gwtVersion>${gwt.version}</gwtVersion> <module>name.pehl.totoe.TotoeTest</module>
                         <includes>name/pehl/totoe/TotoeGwtTestSuite.java</includes> </configuration> <goals>
                         <goal>test</goal> </goals> </execution>
                     -->
+                    <execution>
+                        <id>(******** ie7_8-dev ********)</id>
+                        <configuration>
+                            <testTimeOut>300</testTimeOut>
+                            <runStyle>HtmlUnit:IE7</runStyle>
+                            <productionMode>false</productionMode>
+                            <gwtVersion>${gwt.version}</gwtVersion>
+                            <module>name.pehl.totoe.TotoeTest</module>
+                            <includes>name/pehl/totoe/TotoeGwtTestSuite.java</includes>
+                        </configuration>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>(******** ie7_8-prod ********)</id>
+                        <configuration>
+                            <testTimeOut>300</testTimeOut>
+                            <userAgents>ie8</userAgents>
+                            <runStyle>HtmlUnit:IE7</runStyle>
+                            <productionMode>true</productionMode>
+                            <gwtVersion>${gwt.version}</gwtVersion>
+                            <module>name.pehl.totoe.TotoeTest</module>
+                            <includes>name/pehl/totoe/TotoeGwtTestSuite.java</includes>
+                        </configuration>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
@@ -303,6 +322,13 @@ encoding/<project>=${project.build.sourceEncoding}]]>
                     <links>
                         <link>http://google-web-toolkit.googlecode.com/svn/javadoc/2.0/</link>
                     </links>
+                    <tags>
+                        <tag>
+                            <name>userAgent</name>
+                            <placement>tcm</placement>
+                            <head>Attention - user agent specific behaviour:</head>
+                        </tag>
+                    </tags>
                 </configuration>
             </plugin>
             <plugin>

@@ -14,5 +14,4 @@
     <script src="sarissa_ieemu_xpath.js" />
 
     <entry-point class="name.pehl.totoe.client.TotoeApp" />
-
 </module>

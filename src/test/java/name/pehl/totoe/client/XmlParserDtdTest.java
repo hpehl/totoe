@@ -2,6 +2,8 @@ package name.pehl.totoe.client;
 
 import static name.pehl.totoe.client.TotoeResources.*;
 
+import java.util.List;
+
 /**
  * @author $Author$
  * @version $Date$ $Revision: 629
@@ -11,22 +13,19 @@ public class XmlParserDtdTest extends AbstractXmlParserTest
 {
     public void testParse()
     {
-        String xml = TotoeResources.INSTANCE.swissArmyKnifeDtd().getText();
-        XmlParser xmlParser = new XmlParser();
-        Document document = xmlParser.parse(xml);
-
+        Document document = parse();
         assertDocument(document);
         assertDocumentType(document, document.getDocumentType());
         assertRootElement(document, document.getRoot());
-        assertIdAttribute(document, document.getRoot(), document.getRoot().getAttribute(ID));
+        assertIdAttribute(document, document.getRoot(), document.getRoot().getAttribute(ID_ATTRIBUTE));
     }
-    
-    
+
+
     protected void assertDocumentType(Document document, DocumentType documentType)
     {
         // Basic stuff
         assertNotNull(documentType);
-        assertEquals(SWISS_ARMY_KNIFE, documentType.getName());
+        assertEquals(SWISS_ARMY_KNIFE_ELEMENT, documentType.getName());
         assertEquals(NodeType.DOCUMENT_TYPE, documentType.getType());
         assertEquals(document, documentType.getDocument());
 
@@ -41,10 +40,64 @@ public class XmlParserDtdTest extends AbstractXmlParserTest
         assertTrue(documentType.getEntities().isEmpty());
         assertTrue(documentType.getNotations().isEmpty());
     }
-    
-    
-    public void testSelect()
+
+
+    public void testSelectNodes()
     {
-        
+        Document document = parse();
+        List<Node> functions = document.selectNodes("//functions");
+        assertFunctionsNodes(functions);
+
+        Element root = document.getRoot();
+        functions = root.selectNodes("functions");
+        assertFunctionsNodes(functions);
+    }
+
+
+    public void testSelectNode()
+    {
+        Document document = parse();
+        Node functions = document.selectNode("//functions");
+        assertFunctionsNode(functions);
+
+        Element root = document.getRoot();
+        functions = root.selectNode("functions");
+        assertFunctionsNode(functions);
+    }
+
+
+    public void testSelectDescriptionText()
+    {
+        Document document = parse();
+        Node description = document.selectNode("//description/text()");
+        assertDescriptionText(description);
+    }
+
+
+    public void testSelectValues()
+    {
+        Document document = parse();
+        String[] units = document.selectValues("//@unit");
+        assertNotNull(units);
+        assertEquals(UNITS_SIZE, units.length);
+        for (int i = 0; i < UNITS_SIZE; i++)
+        {
+            assertEquals(UNITS[i], units[i]);
+        }
+    }
+
+
+    public void testSelectValue()
+    {
+        Document document = parse();
+        String units = document.selectValue("//power/@unit");
+        assertUnitValue(units);
+    }
+
+
+    private Document parse()
+    {
+        String xml = TotoeResources.INSTANCE.swissArmyKnifeDtd().getText();
+        return new XmlParser().parse(xml);
     }
 }

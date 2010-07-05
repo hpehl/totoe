@@ -26,15 +26,6 @@ public class ElementImpl extends NodeImpl implements Element
     }
 
 
-    // ------------------------------------------------------- basic attributes
-
-    @Override
-    public native String getName() /*-{
-        var element = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
-        return element.tagName;
-    }-*/;
-
-
     // ------------------------------------------------------------- attributes
 
     @Override
