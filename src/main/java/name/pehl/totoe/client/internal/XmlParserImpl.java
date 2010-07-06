@@ -66,7 +66,14 @@ public class XmlParserImpl
 
         if (namespaces != null)
         {
-            $wnd.Sarissa.setXpathNamespaces(domDoc, namespaces);
+            try
+            {
+                $wnd.Sarissa.setXpathNamespaces(domDoc, namespaces);
+            }
+            catch (e)
+            {
+                throw (new Error(e));
+            }
         }
         return domDoc;
     }-*/;
