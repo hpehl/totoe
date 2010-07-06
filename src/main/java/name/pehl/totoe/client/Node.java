@@ -154,6 +154,22 @@ public interface Node
 
 
     /**
+     * Like {@link #selectValues(String)} but white-spaces and new-lines are
+     * stripped from the bgeinning and end of the values.
+     * 
+     * @param xpath
+     * @param stripWsnl
+     *            whether to strip white-spaces and new-lines from the values.
+     * @return the string values matched by the xpath or an empty array if no
+     *         mathing nodes were found.
+     * @throws XPathException
+     *             if the XPath expression could not be evaluated (e.g. no
+     *             namespace URI was found for a given prefix).
+     */
+    String[] selectValues(String xpath, boolean stripWsnl) throws XPathException;
+
+
+    /**
      * Returns the string value for the specified xpath. The node selected by
      * the xpath expression must implement {@link HasText}.
      * 
@@ -165,6 +181,22 @@ public interface Node
      *             namespace URI was found for a given prefix).
      */
     String selectValue(String xpath) throws XPathException;
+
+
+    /**
+     * Like {@link #selectValue(String)} but white-spaces and new-lines are
+     * stripped from the bgeinning and end of the values.
+     * 
+     * @param xpath
+     * @param stripWsnl
+     *            whether to strip white-spaces and new-lines from the value.
+     * @return the string value matched by the xpath or <code>null</code> if no
+     *         mathing node were found.
+     * @throws XPathException
+     *             if the XPath expression could not be evaluated (e.g. no
+     *             namespace URI was found for a given prefix).
+     */
+    String selectValue(String xpath, boolean stripWsnl) throws XPathException;
 
 
     // -------------------------------------------------------------- serialize
