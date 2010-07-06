@@ -206,18 +206,18 @@ public class NodeImpl implements Node
         var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         try
         {
-        var nodes = node.selectNodes(xpath);
-        if (nodes != null && nodes.length != 0)
-        {
-        for (var i = 0; i < nodes.length; i++) 
-        {
-        result.@java.util.List::add(Ljava/lang/Object;)(nodes[i]);
-        }
-        }
+            var nodes = node.selectNodes(xpath);
+            if (nodes != null && nodes.length != 0)
+            {
+                for (var i = 0; i < nodes.length; i++) 
+                {
+                    result.@java.util.List::add(Ljava/lang/Object;)(nodes[i]);
+                }
+            }
         }
         catch (e)
         {
-        throw new Error(e);
+            throw new Error(e);
         }
     }-*/;
 
@@ -240,12 +240,12 @@ public class NodeImpl implements Node
         var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         try
         {
-        var singleNode = node.selectSingleNode(xpath);
-        return singleNode;
+            var singleNode = node.selectSingleNode(xpath);
+            return singleNode;
         }
         catch (e)
         {
-        throw new Error(e);
+            throw new Error(e);
         }
     }-*/;
 
