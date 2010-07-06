@@ -86,26 +86,26 @@ public class NodeImpl implements Node
 
     // ------------------------------------------------------------- namespaces
 
-    @Override
-    public native String getLocalName() /*-{
-        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
-        return node.localName;
-    }-*/;
+    // The following properties are not supported in IE so they are not part
+    // of this node implementation. If you need them feel free to uncomment
+    // them.
+    // @Override
+    // public native String getLocalName() /*-{
+    // var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
+    // return node.localName;
+    // }-*/;
 
+    // @Override
+    // public native String getNamespacePrefix() /*-{
+    // var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
+    // return node.prefix;
+    // }-*/;
 
-    @Override
-    public native String getNamespacePrefix() /*-{
-        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
-        return node.prefix;
-    }-*/;
-
-
-    @Override
-    public native String getNamespaceUri() /*-{
-        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
-        return node.namespaceURI;
-    }-*/;
-
+    // @Override
+    // public native String getNamespaceUri() /*-{
+    // var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
+    // return node.namespaceURI;
+    // }-*/;
 
     // ------------------------------------------- document / parent / siblings
 
@@ -192,18 +192,18 @@ public class NodeImpl implements Node
         var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         try
         {
-            var nodes = node.selectNodes(xpath);
-            if (nodes != null && nodes.length != 0)
-            {
-                for (var i = 0; i < nodes.length; i++) 
-                {
-                    result.@java.util.List::add(Ljava/lang/Object;)(nodes[i]);
-                }
-            }
+        var nodes = node.selectNodes(xpath);
+        if (nodes != null && nodes.length != 0)
+        {
+        for (var i = 0; i < nodes.length; i++) 
+        {
+        result.@java.util.List::add(Ljava/lang/Object;)(nodes[i]);
+        }
+        }
         }
         catch (e)
         {
-            throw new Error(e);
+        throw new Error(e);
         }
     }-*/;
 
@@ -223,17 +223,17 @@ public class NodeImpl implements Node
 
 
     private native JavaScriptObject selectNodeImpl(String xpath) /*-{
-        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
-        try
-        {
-            var singleNode = node.selectSingleNode(xpath);
-            return singleNode;
-        }
-        catch (e)
-        {
-            throw new Error(e);
-        }
-    }-*/;
+                                                                 var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
+                                                                 try
+                                                                 {
+                                                                 var singleNode = node.selectSingleNode(xpath);
+                                                                 return singleNode;
+                                                                 }
+                                                                 catch (e)
+                                                                 {
+                                                                 throw new Error(e);
+                                                                 }
+                                                                 }-*/;
 
 
     // ------------------------------------------------------ value(s) by xpath
@@ -290,7 +290,7 @@ public class NodeImpl implements Node
 
 
     private native String serializeImpl()/*-{
-        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
-        return new $wnd.XMLSerializer().serializeToString(node);
-    }-*/;
+                                         var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
+                                         return new $wnd.XMLSerializer().serializeToString(node);
+                                         }-*/;
 }

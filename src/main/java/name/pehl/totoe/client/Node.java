@@ -35,35 +35,29 @@ public interface Node
     // The following properties are not supported in IE so they are not part
     // of the official node interface. If you need them feel free to uncomment
     // them.
-    /**
+    /*
      * Returns the local part of the qualified name of this node. If no
-     * namespace is bound to this node this returns the same as
-     * {@link #getName()}.
-     * 
+     * namespace is bound to this node this returns the same as {@link
+     * #getName()}.
      * @return Returns the local part of the qualified name of this node.
      */
-    String getLocalName();
+    // String getLocalName();
 
-
-    /**
+    /*
      * The namespace prefix of this node, or <code>null</code> if it is
      * unspecified.
-     * 
      * @return the namespace prefix of this node, or <code>null</code> if it is
-     *         unspecified.
+     * unspecified.
      */
-    String getNamespacePrefix();
+    // String getNamespacePrefix();
 
-
-    /**
+    /*
      * The namespace URI of this node, or <code>null</code> if it is
      * unspecified.
-     * 
      * @return the namespace URI of this node, or <code>null</code> if it is
-     *         unspecified.
+     * unspecified.
      */
-    String getNamespaceUri();
-
+    // String getNamespaceUri();
 
     // ------------------------------------------- document / parent / siblings
 
