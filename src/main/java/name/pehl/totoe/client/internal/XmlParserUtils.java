@@ -6,6 +6,7 @@ import java.util.List;
 import name.pehl.totoe.client.HasChildren;
 import name.pehl.totoe.client.HasText;
 import name.pehl.totoe.client.Node;
+import name.pehl.totoe.client.NodeType;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
@@ -25,34 +26,58 @@ final class XmlParserUtils
 
     // --------------------------------------------------------------- children
 
-    static List<Node> getChildren(JavaScriptObject node)
+    static <T extends Node> List<T> getChildren(JavaScriptObject node)
     {
-        List<Node> result = new ArrayList<Node>();
-        List<JavaScriptObject> jsos = new ArrayList<JavaScriptObject>();
+        return getChildren(node, null);
+    }
 
-        getChildrenImpl(node, jsos);
+
+    @SuppressWarnings("unchecked")
+    static <T extends Node> List<T> getChildren(JavaScriptObject node, NodeType nodeType)
+    {
+        List<T> result = new ArrayList<T>();
+        List<JavaScriptObject> jsos = new ArrayList<JavaScriptObject>();
+        int internalNodeType = nodeType != null ? nodeType.type() : NodeType.UNDEFINED.type();
+
+        getChildrenImpl(node, internalNodeType, jsos);
         for (JavaScriptObject jso : jsos)
         {
-            result.add(NodeFactory.create(jso));
+            result.add((T) NodeFactory.create(jso));
         }
         return result;
     }
 
 
-    static native boolean hasChildren(JavaScriptObject node) /*-{
-        return node.hasChildNodes();
-    }-*/;
-
-
-    private static native void getChildrenImpl(JavaScriptObject node, List<JavaScriptObject> result) /*-{
+    private static native void getChildrenImpl(JavaScriptObject node, int nodeType, List<JavaScriptObject> result) /*-{
         var children = node.childNodes;
         if (children != null && children.length != 0)
         {
             for (var i = 0; i < children.length; i++) 
             {
-                result.@java.util.List::add(Ljava/lang/Object;)(children[i]);
+                var addChild = nodeType != -1 ? children[i].nodeType == nodeType : true;
+                if (addChild)
+                {
+                    result.@java.util.List::add(Ljava/lang/Object;)(children[i]);
+                }
             }
         }
+    }-*/;
+
+
+    static boolean hasChildren(JavaScriptObject node)
+    {
+        return hasChildrenImpl(node);
+    }
+
+
+    static boolean hasChildren(JavaScriptObject node, NodeType nodeType)
+    {
+        return !getChildren(node, nodeType).isEmpty();
+    }
+
+
+    private static native boolean hasChildrenImpl(JavaScriptObject node) /*-{
+        return node.hasChildNodes();
     }-*/;
 
 
@@ -105,5 +130,29 @@ final class XmlParserUtils
             return ((HasText) firstChild).getText();
         }
         return null;
+    }
+
+
+    static String stripWsnl(String value)
+    {
+        String stripped = value;
+        if (stripped != null && stripped.length() != 0)
+        {
+            int start = 0;
+            int length = stripped.length();
+            String wsnl = " \n\r\t";
+            while ((start != length) && (wsnl.indexOf(stripped.charAt(start)) != -1))
+            {
+                start++;
+            }
+            stripped = stripped.substring(start);
+            int end = stripped.length();
+            while ((end != 0) && (wsnl.indexOf(stripped.charAt(end - 1)) != -1))
+            {
+                end--;
+            }
+            stripped = stripped.substring(0, end);
+        }
+        return stripped;
     }
 }

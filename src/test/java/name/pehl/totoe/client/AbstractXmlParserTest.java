@@ -63,14 +63,17 @@ public abstract class AbstractXmlParserTest extends GWTTestCase
 
         // parent / child / siblings
         assertEquals(document, rootElement.getParent());
-        assertTrue(rootElement.hasChildren());
         assertNotNull(rootElement.getFirstChild());
         assertNotNull(rootElement.getLastChild());
         assertNull(rootElement.getPreviousSibling());
         assertNull(rootElement.getNextSibling());
-        // IE counts 6, FF 14 children :-(
         assertTrue(rootElement.hasChildren());
-        assertTrue(rootElement.getChildren().size() > 5);
+        assertTrue(rootElement.getChildren().size() > 5); // IE counts 6, FF 14
+                                                          // children :-(
+        assertTrue(rootElement.hasChildren(NodeType.ELEMENT));
+        assertEquals(4, rootElement.getChildren(NodeType.ELEMENT).size());
+        assertTrue(rootElement.hasChildren(NodeType.COMMENT));
+        assertEquals(2, rootElement.getChildren(NodeType.COMMENT).size());
 
         // attributes
         assertTrue(rootElement.hasAttributes());

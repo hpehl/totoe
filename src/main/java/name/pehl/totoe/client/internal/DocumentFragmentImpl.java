@@ -5,12 +5,13 @@ import java.util.List;
 import name.pehl.totoe.client.DocumentFragment;
 import name.pehl.totoe.client.HasText;
 import name.pehl.totoe.client.Node;
+import name.pehl.totoe.client.NodeType;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * @author $Author:$
- * @version $Date:$ $Revision:$
+ * @author $Author$
+ * @version $Date$ $Revision$
  */
 public class DocumentFragmentImpl extends NodeImpl implements DocumentFragment
 {
@@ -44,12 +45,26 @@ public class DocumentFragmentImpl extends NodeImpl implements DocumentFragment
     {
         return XmlParserUtils.getChildren(jso);
     }
-    
-    
+
+
+    @Override
+    public <T extends Node> List<T> getChildren(NodeType type)
+    {
+        return XmlParserUtils.getChildren(jso, type);
+    }
+
+
     @Override
     public boolean hasChildren()
     {
         return XmlParserUtils.hasChildren(jso);
+    }
+
+
+    @Override
+    public boolean hasChildren(NodeType type)
+    {
+        return XmlParserUtils.hasChildren(jso, type);
     }
 
 

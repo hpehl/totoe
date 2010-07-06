@@ -9,6 +9,7 @@ import name.pehl.totoe.client.Attribute;
 import name.pehl.totoe.client.Element;
 import name.pehl.totoe.client.HasText;
 import name.pehl.totoe.client.Node;
+import name.pehl.totoe.client.NodeType;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
@@ -123,9 +124,23 @@ public class ElementImpl extends NodeImpl implements Element
 
 
     @Override
+    public <T extends Node> List<T> getChildren(NodeType type)
+    {
+        return XmlParserUtils.getChildren(jso, type);
+    }
+
+
+    @Override
     public boolean hasChildren()
     {
         return XmlParserUtils.hasChildren(jso);
+    }
+
+
+    @Override
+    public boolean hasChildren(NodeType type)
+    {
+        return XmlParserUtils.hasChildren(jso, type);
     }
 
 

@@ -24,6 +24,22 @@ public interface HasChildren
 
 
     /**
+     * Returns all nodes which are direct children of the implementing node and
+     * which are of the specified type. Returns an empty list if the node has no
+     * children.
+     * 
+     * @param <T>
+     *            the instance type to filter for
+     * @param type
+     *            the node type to filter for
+     * @return all nodes which are direct children of the implementing node and
+     *         which are of the specified type or an empty list, if the node has
+     *         no children.
+     */
+    <T extends Node> List<T> getChildren(NodeType type);
+
+
+    /**
      * Returns <code>true</code> if the implementing node has children,
      * <code>false</code> otherwise.
      * 
@@ -31,6 +47,16 @@ public interface HasChildren
      *         <code>false</code> otherwise.
      */
     boolean hasChildren();
+
+
+    /**
+     * Returns <code>true</code> if the implementing node has children of the
+     * specified type, <code>false</code> otherwise.
+     * 
+     * @return <code>true</code> if the implementing node has children of the
+     *         specified type, <code>false</code> otherwise.
+     */
+    boolean hasChildren(NodeType type);
 
 
     /**

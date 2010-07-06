@@ -163,9 +163,23 @@ public class DocumentImpl extends NodeImpl implements Document
 
 
     @Override
+    public <T extends Node> List<T> getChildren(NodeType type)
+    {
+        return XmlParserUtils.getChildren(jso, type);
+    }
+
+
+    @Override
     public boolean hasChildren()
     {
         return XmlParserUtils.hasChildren(jso);
+    }
+    
+
+    @Override
+    public boolean hasChildren(NodeType type)
+    {
+        return XmlParserUtils.hasChildren(jso, type);
     }
 
 
