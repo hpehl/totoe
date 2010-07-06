@@ -36,7 +36,7 @@ public class NodeImpl implements Node
     }
 
 
-    // -------------------------------------------------------- object identity
+    // --------------------------------------------------------- object methods
 
     /**
      * Based on the underlying {@link JavaScriptObject}.
@@ -65,6 +65,20 @@ public class NodeImpl implements Node
     public int hashCode()
     {
         return jso.hashCode();
+    }
+
+
+    /**
+     * Returns a string representation containing the internal
+     * {@link JavaScriptObject} and the result of {@link #serialize()}.
+     * 
+     * @return
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString()
+    {
+        return new StringBuilder().append(jso).append(": ").append(serialize()).toString();
     }
 
 
@@ -223,23 +237,30 @@ public class NodeImpl implements Node
 
 
     private native JavaScriptObject selectNodeImpl(String xpath) /*-{
-                                                                 var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
-                                                                 try
-                                                                 {
-                                                                 var singleNode = node.selectSingleNode(xpath);
-                                                                 return singleNode;
-                                                                 }
-                                                                 catch (e)
-                                                                 {
-                                                                 throw new Error(e);
-                                                                 }
-                                                                 }-*/;
+        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
+        try
+        {
+        var singleNode = node.selectSingleNode(xpath);
+        return singleNode;
+        }
+        catch (e)
+        {
+        throw new Error(e);
+        }
+    }-*/;
 
 
     // ------------------------------------------------------ value(s) by xpath
 
     @Override
     public String[] selectValues(String xpath)
+    {
+        return selectValues(xpath, false);
+    }
+
+
+    @Override
+    public String[] selectValues(String xpath, boolean stripWsnl)
     {
         try
         {
@@ -249,7 +270,12 @@ public class NodeImpl implements Node
             {
                 if (currentNode instanceof HasText)
                 {
-                    result.add(((HasText) currentNode).getText());
+                    String text = ((HasText) currentNode).getText();
+                    if (stripWsnl)
+                    {
+                        text = XmlParserUtils.stripWsnl(text);
+                    }
+                    result.add(text);
                 }
             }
             return result.toArray(new String[] {});
@@ -264,12 +290,24 @@ public class NodeImpl implements Node
     @Override
     public String selectValue(String xpath)
     {
+        return selectValue(xpath, false);
+    }
+
+
+    @Override
+    public String selectValue(String xpath, boolean stripWsnl)
+    {
         try
         {
             Node singleNode = selectNode(xpath);
             if (singleNode instanceof HasText)
             {
-                return ((HasText) singleNode).getText();
+                String text = ((HasText) singleNode).getText();
+                if (stripWsnl)
+                {
+                    text = XmlParserUtils.stripWsnl(text);
+                }
+                return text;
             }
             return null;
         }
@@ -290,7 +328,7 @@ public class NodeImpl implements Node
 
 
     private native String serializeImpl()/*-{
-                                         var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
-                                         return new $wnd.XMLSerializer().serializeToString(node);
-                                         }-*/;
+        var node = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
+        return new $wnd.XMLSerializer().serializeToString(node);
+    }-*/;
 }
