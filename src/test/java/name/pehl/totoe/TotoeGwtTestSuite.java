@@ -3,6 +3,7 @@ package name.pehl.totoe;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import name.pehl.totoe.client.XmlParserDtdTest;
+import name.pehl.totoe.client.XmlParserNsTest;
 
 import com.google.gwt.junit.tools.GWTTestSuite;
 
@@ -18,8 +19,7 @@ public class TotoeGwtTestSuite extends GWTTestSuite
         TestSuite suite = new TestSuite("GWT tests for totoe");
 
         suite.addTestSuite(XmlParserDtdTest.class);
-        // There are some strange errors regarding the default namespace.
-        // suite.addTestSuite(XmlParserNsTest.class);
+        suite.addTestSuite(XmlParserNsTest.class);
 
         return suite;
     }

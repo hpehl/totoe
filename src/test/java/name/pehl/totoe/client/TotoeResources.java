@@ -36,4 +36,8 @@ public interface TotoeResources extends ClientBundle
 
     @Source("swissArmyKnifeNs.xml")
     public TextResource swissArmyKnifeNs();
+
+
+    @Source("swissArmyKnifeDns.xml")
+    public TextResource swissArmyKnifeDns();
 }

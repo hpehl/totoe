@@ -7,18 +7,20 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author $Author: harald.pehl $
- * @version $Date: 2010-07-02 15:52:54 +0200 (Fr, 02. Jul 2010) $ $Revision: 629
+ * @author $Author$
+ * @version $Date$ $Revision: 629
  *          $
  */
-public class XmlParserNsTest extends AbstractXmlParserTest
+public class XmlParserDnsTest extends AbstractXmlParserTest
 {
-    static final String NAMESPACES_STRING = "xmlns:foo=\"http://code.google.com/p/totoe/foo\" "
+    static final String NAMESPACES_STRING = "xmlns:dns=\"http://code.google.com/p/totoe\" "
+            + "xmlns:foo=\"http://code.google.com/p/totoe/foo\" " 
             + "xmlns:bar=\"http://code.google.com/p/totoe/bar\" "
             + "xmlns:bttf=\"http://en.wikipedia.org/wiki/Back_to_the_Future\"";
     static final Map<String, String> NAMESPACES_MAP = new HashMap<String, String>();
     static
     {
+        NAMESPACES_MAP.put("dns", "http://code.google.com/p/totoe");
         NAMESPACES_MAP.put("foo", "http://code.google.com/p/totoe/foo");
         NAMESPACES_MAP.put("bar", "http://code.google.com/p/totoe/bar");
         NAMESPACES_MAP.put("bttf", "http://en.wikipedia.org/wiki/Back_to_the_Future");
@@ -27,7 +29,7 @@ public class XmlParserNsTest extends AbstractXmlParserTest
 
     public void testParseWithNamespacesAsMap()
     {
-        String xml = TotoeResources.INSTANCE.swissArmyKnifeNs().getText();
+        String xml = TotoeResources.INSTANCE.swissArmyKnifeDns().getText();
         Document document = new XmlParser().parse(xml, NAMESPACES_MAP);
         assertDocument(document);
         assertRootElement(document, document.getRoot());
@@ -47,11 +49,11 @@ public class XmlParserNsTest extends AbstractXmlParserTest
     public void testSelectNodes()
     {
         Document document = parse();
-        List<Node> functions = document.selectNodes("//functions");
+        List<Node> functions = document.selectNodes("//dns:functions");
         assertFunctionsNodes(functions);
 
         Element root = document.getRoot();
-        functions = root.selectNodes("functions");
+        functions = root.selectNodes("dns:functions");
         assertFunctionsNodes(functions);
     }
 
@@ -59,11 +61,11 @@ public class XmlParserNsTest extends AbstractXmlParserTest
     public void testSelectNode()
     {
         Document document = parse();
-        Node functions = document.selectNode("//functions");
+        Node functions = document.selectNode("//dns:functions");
         assertFunctionsNode(functions);
 
         Element root = document.getRoot();
-        functions = root.selectNode("functions");
+        functions = root.selectNode("dns:functions");
         assertFunctionsNode(functions);
     }
 
@@ -71,7 +73,7 @@ public class XmlParserNsTest extends AbstractXmlParserTest
     public void testSelectDescriptionText()
     {
         Document document = parse();
-        Node description = document.selectNode("//description/text()");
+        Node description = document.selectNode("//dns:description/text()");
         assertDescriptionText(description);
     }
 
@@ -97,7 +99,7 @@ public class XmlParserNsTest extends AbstractXmlParserTest
 
     private Document parse()
     {
-        String xml = TotoeResources.INSTANCE.swissArmyKnifeNs().getText();
+        String xml = TotoeResources.INSTANCE.swissArmyKnifeDns().getText();
         return new XmlParser().parse(xml, NAMESPACES_STRING);
     }
 }
