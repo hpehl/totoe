@@ -122,11 +122,6 @@
             <version>${easymock.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium.client-drivers</groupId>
-            <artifactId>selenium-client-drivers</artifactId>
-            <version>1.0.2</version>
-        </dependency>
     </dependencies>
 
 
@@ -370,6 +365,14 @@ encoding/<project>=${project.build.sourceEncoding}]]>
                 machine!
             -->
             <id>firefox</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.seleniumhq.selenium.client-drivers</groupId>
+                    <artifactId>selenium-client-drivers</artifactId>
+                    <version>1.0.2</version>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
             <build>
                 <plugins>
                     <plugin>
