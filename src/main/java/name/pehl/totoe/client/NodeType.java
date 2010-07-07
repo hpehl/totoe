@@ -1,7 +1,9 @@
 package name.pehl.totoe.client;
 
 /**
- * Enum which refers to the types as specified by the W3C.
+ * Enum which refers to the <a
+ * href="http://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-1950641247">node
+ * types</a> as specified by the W3C.
  * 
  * @see http://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-1950641247
  * @author $Author$

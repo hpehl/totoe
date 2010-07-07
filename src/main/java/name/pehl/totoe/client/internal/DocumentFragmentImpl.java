@@ -3,7 +3,6 @@ package name.pehl.totoe.client.internal;
 import java.util.List;
 
 import name.pehl.totoe.client.DocumentFragment;
-import name.pehl.totoe.client.HasText;
 import name.pehl.totoe.client.Node;
 import name.pehl.totoe.client.NodeType;
 
@@ -79,23 +78,5 @@ public class DocumentFragmentImpl extends NodeImpl implements DocumentFragment
     public Node getLastChild()
     {
         return XmlParserUtils.getLastChild(jso);
-    }
-
-
-    // ------------------------------------------------------------------- text
-
-    /**
-     * Returns the text of the first child in case the first child implements
-     * {@link HasText}. In all other cases this method returns <code>null</code>
-     * .
-     * 
-     * @return the text of the first child in case the first child implements
-     *         {@link HasText}, <code>null</code> otherwise.
-     * @see name.pehl.totoe.client.HasText#getText()
-     */
-    @Override
-    public String getText()
-    {
-        return XmlParserUtils.getTextFromFirstChild(this);
     }
 }

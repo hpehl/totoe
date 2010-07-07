@@ -3,8 +3,8 @@ package name.pehl.totoe.client;
 import java.util.List;
 
 /**
- * Base interface for DOM nodes. Methods for iterating over and accessing values
- * from nodes are supplied here.
+ * The Node interface is the primary datatype for the entire Document Object
+ * Model. It represents a single node in the document tree.
  * 
  * @author $Author$
  * @version $Date$ $Revision: 623
@@ -17,6 +17,8 @@ public interface Node
     /**
      * Returns the name of this node.
      * 
+     * @w3cDiff This method refers to the property <code>nodeName</code>
+     *          in the DOM Level 2 specification.
      * @return the name of this node.
      */
     String getName();
@@ -25,6 +27,8 @@ public interface Node
     /**
      * Returns the type of this node.
      * 
+     * @w3cDiff This method refers to the property <code>nodeType</code>
+     *          in the DOM Level 2 specification.
      * @return the type of this node.
      */
     NodeType getType();
@@ -64,6 +68,8 @@ public interface Node
     /**
      * Returns the document this node belongs to.
      * 
+     * @w3cDiff This method refers to the property <code>ownerDocument</code>
+     *          in the DOM Level 2 specification.
      * @return the document this node belongs to.
      */
     Document getDocument();
@@ -72,6 +78,8 @@ public interface Node
     /**
      * Returns the parent of this node.
      * 
+     * @w3cDiff This method refers to the property <code>parentNode</code>
+     *          in the DOM Level 2 specification.
      * @return the parent of this node or <code>null</code> if this node has no
      *         parent.
      */

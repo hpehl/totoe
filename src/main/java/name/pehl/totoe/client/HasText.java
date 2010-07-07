@@ -1,8 +1,10 @@
 package name.pehl.totoe.client;
 
 /**
- * @author $Author:$
- * @version $Date:$ $Revision:$
+ * Interface for providing a text value.
+ * 
+ * @author $Author$
+ * @version $Date$ $Revision$
  */
 public interface HasText
 {

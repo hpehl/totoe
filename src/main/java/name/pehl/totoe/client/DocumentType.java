@@ -3,8 +3,12 @@ package name.pehl.totoe.client;
 import java.util.List;
 
 /**
- * @author $Author:$
- * @version $Date:$ $Revision:$
+ * Each Document has a doctype attribute whose value is either <code>null</code>
+ * or a DocumentType object. The DocumentType interface in the DOM Core provides
+ * an interface to the list of entities that are defined for the document.
+ * 
+ * @author $Author$
+ * @version $Date$ $Revision$
  */
 public interface DocumentType extends Node
 {
@@ -44,5 +48,4 @@ public interface DocumentType extends Node
      *         notations.
      */
     List<Notation> getNotations();
-
 }

@@ -1,8 +1,10 @@
 package name.pehl.totoe.client;
 
 /**
- * @author $Author:$
- * @version $Date:$ $Revision:$
+ * Exception thrown by {@link XmlParser#parse(String)} methods.
+ * 
+ * @author $Author$
+ * @version $Date$ $Revision$
  */
 public class XmlParseException extends RuntimeException
 {

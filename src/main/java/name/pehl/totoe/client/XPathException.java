@@ -1,6 +1,8 @@
 package name.pehl.totoe.client;
 
 /**
+ * Exception thrown by <code>Node.select*()</code> methods.
+ * 
  * @author $Author$
  * @version $Date$ $Revision$
  */

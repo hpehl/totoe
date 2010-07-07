@@ -4,6 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * The Element interface represents an element in an XML document. Elements may
+ * have attributes associated with them. There are methods on the Element
+ * interface to retrieve either an {@linkplain Attribute attribute instance} or
+ * attribute value by name.
+ * 
  * @author $Author$
  * @version $Date$ $Revision$
  */
@@ -12,6 +17,8 @@ public interface Element extends Node, HasChildren, HasText
     /**
      * Returns the specifed attribute.
      * 
+     * @w3cDiff This method refers to the method <code>getAttributeNode()</code>
+     *          in the DOM Level 2 specification.
      * @param name
      *            The name of the attribute
      * @return the attribute or <code>null</code> if no such attribute was
@@ -23,6 +30,8 @@ public interface Element extends Node, HasChildren, HasText
     /**
      * Returns the value of the specifed attribute.
      * 
+     * @w3cDiff This method refers to the method <code>getAttribute()</code> in
+     *          the DOM Level 2 specification.
      * @param name
      *            The name of the attribute
      * @return the value of the attribute or <code>null</code> if no such

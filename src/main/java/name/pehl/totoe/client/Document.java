@@ -3,6 +3,10 @@ package name.pehl.totoe.client;
 import java.util.List;
 
 /**
+ * The Document interface represents the entire XML document. Conceptually, it
+ * is the root of the document tree, and provides the primary access to the
+ * document's data.
+ * 
  * @author $Author$
  * @version $Date$ $Revision$
  */
@@ -11,6 +15,8 @@ public interface Document extends Node, HasChildren
     /**
      * Returns the root element.
      * 
+     * @w3cDiff This method refers to the property <code>documentElement</code>
+     *          in the DOM Level 2 specification.
      * @return the root element.
      */
     Element getRoot();

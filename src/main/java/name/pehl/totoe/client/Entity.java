@@ -1,8 +1,11 @@
 package name.pehl.totoe.client;
 
 /**
- * @author $Author:$
- * @version $Date:$ $Revision:$
+ * This interface represents an entity, either parsed or unparsed, in an XML
+ * document. Note that this models the entity itself not the entity declaration.
+ * 
+ * @author $Author$
+ * @version $Date$ $Revision$
  */
 public interface Entity extends Node
 {
