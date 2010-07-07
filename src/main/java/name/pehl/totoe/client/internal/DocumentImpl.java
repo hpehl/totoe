@@ -1,6 +1,7 @@
 package name.pehl.totoe.client.internal;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import name.pehl.totoe.client.Document;
@@ -83,26 +84,26 @@ public class DocumentImpl extends NodeImpl implements Document
 
 
     @Override
-    public Element getElementById(String id)
+    public Element findById(String id)
     {
-        JavaScriptObject elementByIdJso = getElementByIdImpl(id);
+        JavaScriptObject elementByIdJso = findByIdImpl(id);
         return NodeFactory.create(elementByIdJso);
     }
 
 
-    private native JavaScriptObject getElementByIdImpl(String id) /*-{
+    private native JavaScriptObject findByIdImpl(String id) /*-{
         var doc = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return doc.getElementById(id);
     }-*/;
 
 
     @Override
-    public List<Element> getElementsByName(String name)
+    public List<Element> findByName(String name)
     {
         List<Element> result = new ArrayList<Element>();
         List<JavaScriptObject> jsos = new ArrayList<JavaScriptObject>();
 
-        getElementsByNameImpl(name, jsos);
+        findByNameImpl(name, jsos);
         for (JavaScriptObject jso : jsos)
         {
             result.add((Element) NodeFactory.create(jso));
@@ -111,7 +112,7 @@ public class DocumentImpl extends NodeImpl implements Document
     }
 
 
-    private native JavaScriptObject getElementsByNameImpl(String name, List<JavaScriptObject> result) /*-{
+    private native JavaScriptObject findByNameImpl(String name, List<JavaScriptObject> result) /*-{
         var doc = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         var nodes = doc.getElementsByTagName(name);
         if (nodes != null && nodes.length != 0)
@@ -125,25 +126,27 @@ public class DocumentImpl extends NodeImpl implements Document
 
 
     @Override
-    public List<Node> getNodesByType(NodeType type)
+    public <T extends Node> List<T> findByType(NodeType type)
     {
-        List<Node> nodes = new ArrayList<Node>();
-        collectNodes(this, nodes, type);
-        return nodes;
+        List<T> result = new ArrayList<T>();
+        collectNodes(this, result, type);
+        return result;
     }
 
 
-    private void collectNodes(HasChildren start, List<Node> nodes, NodeType type)
+    @SuppressWarnings("unchecked")
+    private <T extends Node> void collectNodes(HasChildren start, List<T> nodes, NodeType type)
     {
         for (Node node : start.getChildren())
         {
             if (type == node.getType())
             {
-                nodes.add(node);
+                nodes.add((T) node);
             }
             if (type == NodeType.ATTRIBUTE && node instanceof Element)
             {
-                nodes.addAll(((Element) node).getAttributes());
+                Element element = (Element) node;
+                nodes.addAll((Collection<? extends T>) element.getAttributes());
             }
             if (node instanceof HasChildren)
             {
@@ -174,7 +177,7 @@ public class DocumentImpl extends NodeImpl implements Document
     {
         return XmlParserUtils.hasChildren(jso);
     }
-    
+
 
     @Override
     public boolean hasChildren(NodeType type)

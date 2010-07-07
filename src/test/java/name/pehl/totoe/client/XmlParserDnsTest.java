@@ -92,8 +92,8 @@ public class XmlParserDnsTest extends AbstractXmlParserTest
     public void testSelectValue()
     {
         Document document = parse();
-        String units = document.selectValue("//bttf:power/@unit");
-        assertUnitValue(units);
+        String unit = document.selectValue("//bttf:power/@unit");
+        assertUnitValue(unit);
     }
 
 

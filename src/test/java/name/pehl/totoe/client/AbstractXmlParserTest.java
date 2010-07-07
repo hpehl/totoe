@@ -44,10 +44,10 @@ public abstract class AbstractXmlParserTest extends GWTTestCase
         assertNull(document.getNextSibling());
 
         // document specific
-        List<Element> elementsByName = document.getElementsByName(DESCRIPTION_ELEMENT);
+        List<Element> elementsByName = document.findByName(DESCRIPTION_ELEMENT);
         assertEquals(1, elementsByName.size());
         assertEquals(DESCRIPTION_ELEMENT, elementsByName.get(0).getName());
-        List<Node> nodesByType = document.getNodesByType(NodeType.COMMENT);
+        List<Node> nodesByType = document.findByType(NodeType.COMMENT);
         assertEquals(2, nodesByType.size());
     }
 

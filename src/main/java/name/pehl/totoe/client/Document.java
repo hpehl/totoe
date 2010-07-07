@@ -8,7 +8,8 @@ import java.util.List;
  * document's data.
  * 
  * @author $Author$
- * @version $Date$ $Revision$
+ * @version $Date$ $Revision: 78
+ *          $
  */
 public interface Document extends Node, HasChildren
 {
@@ -25,29 +26,37 @@ public interface Document extends Node, HasChildren
     /**
      * Returns the element which has the specified id.
      * 
+     * @w3cDiff This method refers to the method <code>getelementById</code> in
+     *          the DOM Level 2 specification.
      * @param id
      * @return the element which has the specified id or <code>null</code> if no
      *         element was found.
      */
-    Element getElementById(String id);
+    Element findById(String id);
 
 
     /**
      * Returns the elements with the specifed name.
      * 
+     * @w3cDiff This method refers to the method <code>getElementsByName</code> in
+     *          the DOM Level 2 specification.
      * @return the elements with the specifed name or an empty list if no such
      *         elements were found.
      */
-    List<Element> getElementsByName(String name);
+    List<Element> findByName(String name);
 
 
     /**
      * Returns all nodes with the specifed type.
      * 
+     * @param <T>
+     *            the instance type to filter for
+     * @param type
+     *            the node type to filter for
      * @return all nodes with the specifed type or an empty list if no such
      *         nodes were found.
      */
-    List<Node> getNodesByType(NodeType type);
+    <T extends Node> List<T> findByType(NodeType type);
 
 
     /**
