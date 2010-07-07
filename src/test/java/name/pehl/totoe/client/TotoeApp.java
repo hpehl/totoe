@@ -56,7 +56,7 @@ public class TotoeApp implements EntryPoint
         DockLayoutPanel outer = binder.createAndBindUi(this);
 
         // Load sample xml
-        String xml = TotoeResources.INSTANCE.swissArmyKnifeNs().getText();
+        String xml = TotoeResources.INSTANCE.swissArmyKnifeDns().getText();
         xmlIn.setText(xml);
 
         // Set some default values

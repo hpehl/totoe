@@ -23,7 +23,7 @@
                     <div class="{style.spacerTop}">
                         <g:Button ui:field="select">Select</g:Button>
                     </div>
-                    <h1>Ergebnis</h1>
+                    <h1>Result</h1>
                     <g:TextArea ui:field="xmlOut" visibleLines="15" readOnly="true" addStyleNames="{style.input} {style.fullSize}"/>
                 </div>
             </g:HTMLPanel>
