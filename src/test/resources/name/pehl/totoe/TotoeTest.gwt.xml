@@ -9,6 +9,10 @@
     <inherits name="com.google.gwt.user.User" />
     <inherits name="com.google.gwt.xml.XML" />
 
+    <source path="client">
+        <exclude name="**/TotoeApp.java" />
+    </source>
+
     <script src="sarissa.js" />
     <script src="sarissa_ieemu_xpath.js" />
 </module>
