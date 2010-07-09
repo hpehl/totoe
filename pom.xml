@@ -282,16 +282,28 @@
                     <additionalConfig>
                         <file>
                             <name>.settings/org.eclipse.core.resources.prefs</name>
-                            <content>
-                                <![CDATA[
+                            <content><![CDATA[
 eclipse.preferences.version=1
 encoding/<project>=${project.build.sourceEncoding}]]>
                             </content>
                         </file>
+                        <file>
+                            <name>.settings/com.google.gdt.eclipse.core.prefs</name>
+                            <content><![CDATA[
+warSrcDir=src/test/webapp
+warSrcDirIsOutput=false]]>
+                            </content>
+                        </file>
+                        <file>
+                            <name>.settings/com.google.gwt.eclipse.core.prefs</name>
+                            <content><![CDATA[
+entryPointModules=name.pehl.totoe.TotoeApp]]>
+                            </content>
+                        </file>
                     </additionalConfig>
                     <excludes>
-                        <exclude>com.google.gwt/gwt-user</exclude>
-                        <exclude>com.google.gwt/gwt-dev</exclude>
+                        <exclude>com.google.gwt:gwt-user</exclude>
+                        <exclude>com.google.gwt:gwt-dev</exclude>
                     </excludes>
                 </configuration>
             </plugin>
