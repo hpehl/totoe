@@ -8,9 +8,14 @@ import java.util.Map;
  * have attributes associated with them. There are methods on the Element
  * interface to retrieve either an {@linkplain Attribute attribute instance} or
  * attribute value by name.
+ * <p>
+ * This interface implements {@link HasText} and returns the text of the first
+ * child in case the first child itself implements {@link HasText}. In all other
+ * cases the {@link HasText#getText()} method returns <code>null</code> .
  * 
  * @author $Author$
- * @version $Date$ $Revision$
+ * @version $Date$ $Revision: 78
+ *          $
  */
 public interface Element extends Node, HasChildren, HasText
 {
