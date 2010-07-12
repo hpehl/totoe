@@ -266,15 +266,12 @@ public class NodeImpl implements Node
         {
             List<Node> nodes = selectNodes(xpath);
             List<String> result = new ArrayList<String>();
-            for (Node currentNode : nodes)
+            for (Node node : nodes)
             {
-                if (currentNode instanceof HasText)
+                if (node instanceof HasText)
                 {
-                    String text = ((HasText) currentNode).getText();
-                    if (stripWsnl)
-                    {
-                        text = XmlParserUtils.stripWsnl(text);
-                    }
+                    HasText textNode = (HasText) node;
+                    String text = stripWsnl ? textNode.getTextStripped() : textNode.getText();
                     result.add(text);
                 }
             }
@@ -302,11 +299,8 @@ public class NodeImpl implements Node
             Node singleNode = selectNode(xpath);
             if (singleNode instanceof HasText)
             {
-                String text = ((HasText) singleNode).getText();
-                if (stripWsnl)
-                {
-                    text = XmlParserUtils.stripWsnl(text);
-                }
+                HasText textNode = (HasText) singleNode;
+                String text = stripWsnl ? textNode.getTextStripped() : textNode.getText();
                 return text;
             }
             return null;

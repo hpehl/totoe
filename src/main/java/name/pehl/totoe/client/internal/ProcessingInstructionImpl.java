@@ -34,4 +34,11 @@ public class ProcessingInstructionImpl extends NodeImpl implements ProcessingIns
         var pi = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return pi.data;
     }-*/;
+
+
+    @Override
+    public String getTextStripped()
+    {
+        return XmlParserUtils.stripWsnl(getText());
+    }
 }

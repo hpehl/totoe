@@ -5,8 +5,8 @@ import name.pehl.totoe.client.Comment;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * @author $Author:$
- * @version $Date:$ $Revision:$
+ * @author $Author$
+ * @version $Date$ $Revision$
  */
 public class CommentImpl extends NodeImpl implements Comment
 {
@@ -30,5 +30,12 @@ public class CommentImpl extends NodeImpl implements Comment
     public String getText()
     {
         return XmlParserUtils.getNodeValue(jso);
+    }
+
+
+    @Override
+    public String getTextStripped()
+    {
+        return XmlParserUtils.stripWsnl(getText());
     }
 }

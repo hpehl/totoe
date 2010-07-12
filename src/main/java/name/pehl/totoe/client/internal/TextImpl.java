@@ -31,4 +31,11 @@ public class TextImpl extends NodeImpl implements Text
     {
         return XmlParserUtils.getNodeValue(jso);
     }
+
+
+    @Override
+    public String getTextStripped()
+    {
+        return XmlParserUtils.stripWsnl(getText());
+    }
 }

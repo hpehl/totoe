@@ -174,4 +174,11 @@ public class ElementImpl extends NodeImpl implements Element
     {
         return XmlParserUtils.getTextFromFirstChild(this);
     }
+
+
+    @Override
+    public String getTextStripped()
+    {
+        return XmlParserUtils.stripWsnl(getText());
+    }
 }

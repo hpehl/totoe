@@ -5,8 +5,8 @@ import name.pehl.totoe.client.CDATA;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * @author $Author:$
- * @version $Date:$ $Revision:$
+ * @author $Author$
+ * @version $Date$ $Revision$
  */
 public class CDATAImpl extends NodeImpl implements CDATA
 {
@@ -30,5 +30,12 @@ public class CDATAImpl extends NodeImpl implements CDATA
     public String getText()
     {
         return XmlParserUtils.getNodeValue(jso);
+    }
+
+
+    @Override
+    public String getTextStripped()
+    {
+        return XmlParserUtils.stripWsnl(getText());
     }
 }

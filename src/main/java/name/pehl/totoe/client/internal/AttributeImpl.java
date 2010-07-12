@@ -88,4 +88,11 @@ public class AttributeImpl extends NodeImpl implements Attribute
         var attribute = this.@name.pehl.totoe.client.internal.NodeImpl::jso;
         return attribute.value;
     }-*/;
+
+
+    @Override
+    public String getTextStripped()
+    {
+        return XmlParserUtils.stripWsnl(getText());
+    }
 }
