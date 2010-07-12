@@ -8,7 +8,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
@@ -73,36 +72,57 @@ public class TotoeApp implements EntryPoint
     @UiHandler("select")
     void onSelect(ClickEvent e)
     {
-        String result = "No matching nodes found";
+        String result = null;
         String xmlValue = xmlIn.getText();
         String xpathValue = xpath.getText();
         String namespacesValue = namespaces.getText();
         if (xmlValue == null || xmlValue.trim().length() == 0)
         {
-            Window.alert("No xml input given");
-            return;
+            result = "No xml input given";
         }
-        if (xpathValue == null || xpathValue.trim().length() == 0)
+        else if (xpathValue == null || xpathValue.trim().length() == 0)
         {
-            Window.alert("No xpath given");
-            return;
+            result = "No xpath given";
         }
-        if (namespacesValue != null && namespacesValue.trim().length() == 0)
+        else if (namespacesValue != null && namespacesValue.trim().length() == 0)
         {
             namespacesValue = null;
         }
+        else
+        {
+            Document document = new XmlParser().parse(xmlValue, namespacesValue);
+            List<Node> nodes = document.selectNodes(xpathValue);
+            result = buildResult(nodes);
+            xmlOut.setText(result);
+        }
+    }
 
-        Document document = new XmlParser().parse(xmlValue, namespacesValue);
-        List<Node> nodes = document.selectNodes(xpathValue);
+
+    private String buildResult(List<Node> nodes)
+    {
+        StringBuilder builder = new StringBuilder();
         if (!nodes.isEmpty())
         {
-            StringBuilder builder = new StringBuilder();
+            int index = 0;
+            StringBuilder xml = new StringBuilder();
+            builder.append("Result contains ").append(nodes.size()).append(" node(s).\n");
             for (Node node : nodes)
             {
-                builder.append(node.serialize()).append("\n");
+                builder.append("\nNode #").append(index++).append(": ");
+                builder.append("Name: ").append(node.getName());
+                builder.append(", Type: ").append(node.getType());
+                if (node instanceof HasText)
+                {
+                    builder.append(", Text: '").append(((HasText) node).getText()).append("'");
+                }
+                xml.append(node.serialize()).append("\n");
             }
-            result = builder.toString();
+            builder.append("\n\nResult of serialize() over all nodes:\n").append(xml.toString());
         }
-        xmlOut.setText(result);
+        else
+        {
+            builder.append("No matching nodes found").append(false);
+        }
+        return builder.toString();
     }
 }
