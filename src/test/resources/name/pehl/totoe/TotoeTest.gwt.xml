@@ -13,6 +13,6 @@
         <exclude name="**/TotoeApp.java" />
     </source>
 
-    <script src="sarissa.js" />
-    <script src="sarissa_ieemu_xpath.js" />
+    <script src="sarissa-compressed.js" />
+    <script src="sarissa_ieemu_xpath-compressed.js" />
 </module>

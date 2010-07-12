@@ -14,8 +14,8 @@
         <exclude name="**/*Test.java" />
     </source>
 
-    <script src="sarissa.js" />
-    <script src="sarissa_ieemu_xpath.js" />
+    <script src="sarissa-compressed.js" />
+    <script src="sarissa_ieemu_xpath-compressed.js" />
 
     <entry-point class="name.pehl.totoe.client.TotoeApp" />
 </module>
