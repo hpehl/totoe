@@ -70,7 +70,7 @@ public class TotoeApp implements EntryPoint
 
 
     @UiHandler("select")
-    void onSelect(ClickEvent e)
+    void onSelect(ClickEvent event)
     {
         String result = null;
         String xmlValue = xmlIn.getText();
@@ -90,10 +90,17 @@ public class TotoeApp implements EntryPoint
         }
         else
         {
-            Document document = new XmlParser().parse(xmlValue, namespacesValue);
-            List<Node> nodes = document.selectNodes(xpathValue);
-            result = buildResult(nodes);
-            xmlOut.setText(result);
+        	try
+        	{
+	            Document document = new XmlParser().parse(xmlValue, namespacesValue);
+	            List<Node> nodes = document.selectNodes(xpathValue);
+	            result = buildResult(nodes);
+        	}
+        	catch (XPathException e)
+        	{
+        		result = "Exception:\n" + e.getMessage();
+        	}
+        	xmlOut.setText(result);
         }
     }
 
@@ -121,7 +128,7 @@ public class TotoeApp implements EntryPoint
         }
         else
         {
-            builder.append("No matching nodes found").append(false);
+            builder.append("No matching nodes found");
         }
         return builder.toString();
     }
