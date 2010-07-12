@@ -17,8 +17,8 @@ public interface Node
     /**
      * Returns the name of this node.
      * 
-     * @w3cDiff This method refers to the property <code>nodeName</code>
-     *          in the DOM Level 2 specification.
+     * @w3cDiff This method refers to the property <code>nodeName</code> in the
+     *          DOM Level 2 specification.
      * @return the name of this node.
      */
     String getName();
@@ -27,8 +27,8 @@ public interface Node
     /**
      * Returns the type of this node.
      * 
-     * @w3cDiff This method refers to the property <code>nodeType</code>
-     *          in the DOM Level 2 specification.
+     * @w3cDiff This method refers to the property <code>nodeType</code> in the
+     *          DOM Level 2 specification.
      * @return the type of this node.
      */
     NodeType getType();
@@ -68,8 +68,8 @@ public interface Node
     /**
      * Returns the document this node belongs to.
      * 
-     * @w3cDiff This method refers to the property <code>ownerDocument</code>
-     *          in the DOM Level 2 specification.
+     * @w3cDiff This method refers to the property <code>ownerDocument</code> in
+     *          the DOM Level 2 specification.
      * @return the document this node belongs to.
      */
     Document getDocument();
@@ -78,8 +78,8 @@ public interface Node
     /**
      * Returns the parent of this node.
      * 
-     * @w3cDiff This method refers to the property <code>parentNode</code>
-     *          in the DOM Level 2 specification.
+     * @w3cDiff This method refers to the property <code>parentNode</code> in
+     *          the DOM Level 2 specification.
      * @return the parent of this node or <code>null</code> if this node has no
      *         parent.
      */
@@ -89,11 +89,10 @@ public interface Node
     /**
      * Returns the previous sibling of this node.
      * 
-     * @userAgent There are differences between browsers regarding white-spaces
-     *            and new lines. See <a
+     * @userAgent There are differences between browsers when reading child
+     *            nodes regarding white-spaces and new lines. See <a
      *            href="http://www.w3schools.com/dom/dom_mozilla_vs_ie.asp"
-     *            >http://www.w3schools.com/dom/dom_mozilla_vs_ie.asp</a> for
-     *            more information.
+     *            >www.w3schools.com</a> for more information.
      * @return the previous sibling of this node or <code>null</code> if this
      *         node has no previous sibling.
      */
@@ -103,11 +102,10 @@ public interface Node
     /**
      * Returns the next sibling of this node.
      * 
-     * @userAgent There are differences between browsers regarding white-spaces
-     *            and new lines. See <a
+     * @userAgent There are differences between browsers when reading child
+     *            nodes regarding white-spaces and new lines. See <a
      *            href="http://www.w3schools.com/dom/dom_mozilla_vs_ie.asp"
-     *            >http://www.w3schools.com/dom/dom_mozilla_vs_ie.asp</a> for
-     *            more information.
+     *            >www.w3schools.com</a> for more information.
      * @return the next sibling of this node or <code>null</code> if this node
      *         has no next sibling.
      */
@@ -162,8 +160,9 @@ public interface Node
 
 
     /**
-     * Like {@link #selectValues(String)} but white-spaces and new-lines are
-     * stripped from the bgeinning and end of the values.
+     * Like {@link #selectValues(String)}, but white-spaces and new-lines are
+     * stripped from the bgeinning and end of the values if specified by the
+     * paramter <code>stripWsnl</code>.
      * 
      * @param xpath
      * @param stripWsnl
@@ -193,7 +192,8 @@ public interface Node
 
     /**
      * Like {@link #selectValue(String)} but white-spaces and new-lines are
-     * stripped from the bgeinning and end of the values.
+     * stripped from the bgeinning and end of the values if specified by the
+     * paramter <code>stripWsnl</code>.
      * 
      * @param xpath
      * @param stripWsnl
