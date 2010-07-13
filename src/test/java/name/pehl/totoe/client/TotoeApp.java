@@ -84,24 +84,22 @@ public class TotoeApp implements EntryPoint
         {
             result = "No xpath given";
         }
-        else if (namespacesValue != null && namespacesValue.trim().length() == 0)
+        
+        if (namespacesValue != null && namespacesValue.trim().length() == 0)
         {
             namespacesValue = null;
         }
-        else
-        {
-        	try
-        	{
-	            Document document = new XmlParser().parse(xmlValue, namespacesValue);
-	            List<Node> nodes = document.selectNodes(xpathValue);
-	            result = buildResult(nodes);
-        	}
-        	catch (XPathException e)
-        	{
-        		result = "Exception:\n" + e.getMessage();
-        	}
-        	xmlOut.setText(result);
-        }
+    	try
+    	{
+            Document document = new XmlParser().parse(xmlValue, namespacesValue);
+            List<Node> nodes = document.selectNodes(xpathValue);
+            result = buildResult(nodes);
+    	}
+    	catch (XPathException e)
+    	{
+    		result = "Exception:\n" + e.getMessage();
+    	}
+    	xmlOut.setText(result);
     }
 
 
