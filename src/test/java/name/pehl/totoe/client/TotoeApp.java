@@ -39,6 +39,9 @@ public class TotoeApp implements EntryPoint
     TextBox xpath;
 
     @UiField
+    TextBox context;
+
+    @UiField
     TextBox namespaces;
 
     @UiField
@@ -73,8 +76,11 @@ public class TotoeApp implements EntryPoint
     void onSelect(ClickEvent event)
     {
         String result = null;
+        Node contextNode = null;
+
         String xmlValue = xmlIn.getText();
         String xpathValue = xpath.getText();
+        String contextValue = context.getText();
         String namespacesValue = namespaces.getText();
         if (xmlValue == null || xmlValue.trim().length() == 0)
         {
@@ -84,22 +90,30 @@ public class TotoeApp implements EntryPoint
         {
             result = "No xpath given";
         }
-        
+
         if (namespacesValue != null && namespacesValue.trim().length() == 0)
         {
             namespacesValue = null;
         }
-    	try
-    	{
+        try
+        {
             Document document = new XmlParser().parse(xmlValue, namespacesValue);
-            List<Node> nodes = document.selectNodes(xpathValue);
+            if (contextValue != null && contextValue.trim().length() != 0)
+            {
+                contextNode = document.selectNode(contextValue);
+            }
+            else
+            {
+                contextNode = document;
+            }
+            List<Node> nodes = contextNode.selectNodes(xpathValue);
             result = buildResult(nodes);
-    	}
-    	catch (XPathException e)
-    	{
-    		result = "Exception:\n" + e.getMessage();
-    	}
-    	xmlOut.setText(result);
+        }
+        catch (XPathException e)
+        {
+            result = "Exception:\n" + e.getMessage();
+        }
+        xmlOut.setText(result);
     }
 
 
