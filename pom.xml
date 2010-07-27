@@ -92,7 +92,7 @@
 
 
     <properties>
-        <gwt.version>2.0.3</gwt.version>
+        <gwt.version>2.0.4</gwt.version>
         <junit.version>4.7</junit.version>
         <easymock.version>2.4</easymock.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
