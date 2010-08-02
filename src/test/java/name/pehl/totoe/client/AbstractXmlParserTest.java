@@ -12,6 +12,12 @@ import com.google.gwt.junit.client.GWTTestCase;
  */
 public abstract class AbstractXmlParserTest extends GWTTestCase
 {
+    public static final String NULL_STRING = null;
+    public static final String EMPTY_STRING = "";
+    public static final String BLANK_STRING = "          ";
+    public static final String INVALID_XML_STRING = "________invalid________";
+
+
     @Override
     public String getModuleName()
     {
@@ -23,6 +29,41 @@ public abstract class AbstractXmlParserTest extends GWTTestCase
     protected void gwtSetUp() throws Exception
     {
         System.out.println("Running " + getClass().getName() + "." + getName() + "()");
+    }
+
+
+    public void testParseNull()
+    {
+        Document document = new XmlParser().parse(NULL_STRING);
+        assertNull(document);
+    }
+
+
+    public void testParseEmpty()
+    {
+        Document document = new XmlParser().parse(EMPTY_STRING);
+        assertNull(document);
+    }
+
+
+    public void testParseBlank()
+    {
+        Document document = new XmlParser().parse(BLANK_STRING);
+        assertNull(document);
+    }
+
+
+    public void testParseInvalid()
+    {
+        try
+        {
+            new XmlParser().parse(INVALID_XML_STRING);
+            fail(XmlParseException.class.getName() + " expected!");
+        }
+        catch (XmlParseException e)
+        {
+
+        }
     }
 
 
