@@ -69,7 +69,7 @@ public class XmlParser
      * Parses the given xml to an instance of {@link Document}.
      * 
      * @param xml
-     * @return
+     * @return 
      * @throws XmlParseException
      *             if an error occured while parsing
      */

@@ -27,6 +27,10 @@ public class XmlParserImpl
 
     public Document parse(String xml, String namespaces)
     {
+        if (xml == null || xml.trim().length() == 0)
+        {
+            return null;
+        }
         try
         {
             JavaScriptObject documentJso = parseImpl(xml, namespaces);
@@ -40,18 +44,13 @@ public class XmlParserImpl
 
 
     private native JavaScriptObject parseImpl(String xml, String namespaces) /*-{
-        if (xml == null)
-        {
-            return null;
-        }
-
         var domDoc = @name.pehl.totoe.client.internal.XmlParserImpl::nativeParser.parseFromString(xml, "text/xml");
         var error = $wnd.Sarissa.getParseErrorText(domDoc);
         if (error != $wnd.Sarissa.PARSED_OK) 
         {
             if (error == $wnd.Sarissa.PARSED_EMPTY) 
             {
-                throw (new Error("XML file is empty."));
+                return null;
             }
             else if (error == $wnd.Sarissa.PARSED_UNKNOWN_ERROR) 
             {
