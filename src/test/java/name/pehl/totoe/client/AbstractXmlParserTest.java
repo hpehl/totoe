@@ -31,6 +31,7 @@ public abstract class AbstractXmlParserTest extends GWTTestCase
         System.out.println("Running " + getClass().getName() + "." + getName() + "()");
     }
 
+
     public void testParseNull()
     {
         Document document = new XmlParser().parse(NULL_STRING);
@@ -52,21 +53,12 @@ public abstract class AbstractXmlParserTest extends GWTTestCase
     }
 
 
-/*
-    FIXME Causes test failure in production mode
-    public void testParseInvalid()
-    {
-        try
-        {
-            new XmlParser().parse(INVALID_XML_STRING);
-            fail(XmlParseException.class.getName() + " expected!");
-        }
-        catch (XmlParseException e)
-        {
-
-        }
-    }
-*/
+    /*
+     * FIXME Causes test failure in production mode public void
+     * testParseInvalid() { try { new XmlParser().parse(INVALID_XML_STRING);
+     * fail(XmlParseException.class.getName() + " expected!"); } catch
+     * (XmlParseException e) { } }
+     */
 
     protected void assertDocument(Document document)
     {
