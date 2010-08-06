@@ -53,12 +53,19 @@ public abstract class AbstractXmlParserTest extends GWTTestCase
     }
 
 
-    /*
-     * FIXME Causes test failure in production mode public void
-     * testParseInvalid() { try { new XmlParser().parse(INVALID_XML_STRING);
-     * fail(XmlParseException.class.getName() + " expected!"); } catch
-     * (XmlParseException e) { } }
-     */
+    // FIXME Causes test failure in production mode
+    public void _testParseInvalid()
+    {
+        try
+        {
+            new XmlParser().parse(INVALID_XML_STRING);
+            fail(XmlParseException.class.getName() + " expected!");
+        }
+        catch (XmlParseException e)
+        {
+        }
+    }
+
 
     protected void assertDocument(Document document)
     {
