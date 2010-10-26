@@ -1,5 +1,6 @@
 package name.pehl.totoe.json.client;
 
+import com.google.gwt.core.client.JavaScriptException;
 import com.google.gwt.json.client.JSONException;
 
 /**
@@ -25,7 +26,14 @@ public class JsonParser
      */
     public JSONObject parse(String text) throws JSONException
     {
-        return parseImpl(text);
+        try
+        {
+            return parseImpl(text);
+        }
+        catch (JavaScriptException e)
+        {
+            throw new JSONException(e);
+        }
     }
 
 
