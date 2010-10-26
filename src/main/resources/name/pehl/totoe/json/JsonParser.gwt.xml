@@ -5,15 +5,15 @@
         $LastChangedBy: harald.pehl 
         $LastChangedRevision: 138 $
     -->
+    <inherits name="com.google.gwt.json.JSON" />
     <inherits name="com.google.gwt.user.User" />
-    <inherits name="com.google.gwt.xml.XML" />
 
     <source path="client">
-        <exclude name="**/TotoeApp.java" />
-        <exclude name="**/TotoeResources.java" />
+        <exclude name="**/JsonParserApp.java" />
+        <exclude name="**/JsonParserResources.java" />
         <exclude name="**/*Test.java" />
     </source>
 
-    <script src="sarissa-compressed.js" />
-    <script src="sarissa_ieemu_xpath-compressed.js" />
+    <script src="json2.js" />
+    <script src="jsonpath.js" />
 </module>

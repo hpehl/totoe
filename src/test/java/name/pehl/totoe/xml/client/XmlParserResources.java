@@ -1,4 +1,4 @@
-package name.pehl.totoe.client;
+package name.pehl.totoe.xml.client;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
@@ -9,7 +9,7 @@ import com.google.gwt.resources.client.TextResource;
  * @version $LastChangedRevision$
  */
 
-public interface TotoeResources extends ClientBundle
+public interface XmlParserResources extends ClientBundle
 {
     // -------------------------------------------------------------- constants
 
@@ -27,7 +27,7 @@ public interface TotoeResources extends ClientBundle
 
     // ------------------------------------------------------- deferred binding
 
-    TotoeResources INSTANCE = GWT.create(TotoeResources.class);
+    XmlParserResources INSTANCE = GWT.create(XmlParserResources.class);
 
 
     @Source("swissArmyKnifeDtd.xml")

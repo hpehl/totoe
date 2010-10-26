@@ -1,8 +1,17 @@
-package name.pehl.totoe.client;
+package name.pehl.totoe.xml.client;
 
-import static name.pehl.totoe.client.TotoeResources.*;
+import static name.pehl.totoe.xml.client.XmlParserResources.*;
 
 import java.util.List;
+
+import name.pehl.totoe.xml.client.Attribute;
+import name.pehl.totoe.xml.client.CDATA;
+import name.pehl.totoe.xml.client.Document;
+import name.pehl.totoe.xml.client.Element;
+import name.pehl.totoe.xml.client.Node;
+import name.pehl.totoe.xml.client.NodeType;
+import name.pehl.totoe.xml.client.XmlParseException;
+import name.pehl.totoe.xml.client.XmlParser;
 
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -21,7 +30,7 @@ public abstract class AbstractXmlParserTest extends GWTTestCase
     @Override
     public String getModuleName()
     {
-        return "name.pehl.totoe.TotoeTest";
+        return "name.pehl.totoe.xml.XmlParserTest";
     }
 
 

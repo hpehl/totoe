@@ -1,10 +1,15 @@
-package name.pehl.totoe.client;
+package name.pehl.totoe.xml.client;
 
-import static name.pehl.totoe.client.TotoeResources.*;
+import static name.pehl.totoe.xml.client.XmlParserResources.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import name.pehl.totoe.xml.client.Document;
+import name.pehl.totoe.xml.client.Element;
+import name.pehl.totoe.xml.client.Node;
+import name.pehl.totoe.xml.client.XmlParser;
 
 /**
  * @author $Author$
@@ -29,7 +34,7 @@ public class XmlParserDnsTest extends AbstractXmlParserTest
 
     public void testParseWithNamespacesAsMap()
     {
-        String xml = TotoeResources.INSTANCE.swissArmyKnifeDns().getText();
+        String xml = XmlParserResources.INSTANCE.swissArmyKnifeDns().getText();
         Document document = new XmlParser().parse(xml, NAMESPACES_MAP);
         assertDocument(document);
         assertRootElement(document, document.getRoot());
@@ -99,7 +104,7 @@ public class XmlParserDnsTest extends AbstractXmlParserTest
 
     private Document parse()
     {
-        String xml = TotoeResources.INSTANCE.swissArmyKnifeDns().getText();
+        String xml = XmlParserResources.INSTANCE.swissArmyKnifeDns().getText();
         return new XmlParser().parse(xml, NAMESPACES_STRING);
     }
 }

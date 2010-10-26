@@ -1,6 +1,12 @@
-package name.pehl.totoe.client;
+package name.pehl.totoe.xml.client;
 
 import java.util.List;
+
+import name.pehl.totoe.xml.client.Document;
+import name.pehl.totoe.xml.client.HasText;
+import name.pehl.totoe.xml.client.Node;
+import name.pehl.totoe.xml.client.XPathException;
+import name.pehl.totoe.xml.client.XmlParser;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -19,14 +25,14 @@ import com.google.gwt.user.client.ui.TextBox;
  * @version $Date$ $Revision: 629
  *          $
  */
-public class TotoeApp implements EntryPoint
+public class XmlParserApp implements EntryPoint
 {
     static final String EXAMPLE_XPATH = "//dns:functions/bttf:fluxCapacitor/bttf:power/@unit";
     static final String EXAMPLE_NAMESPACES = "xmlns:dns=\"http://code.google.com/p/totoe\" "
             + "xmlns:foo=\"http://code.google.com/p/totoe/foo\" " + "xmlns:bar=\"http://code.google.com/p/totoe/bar\" "
             + "xmlns:bttf=\"http://en.wikipedia.org/wiki/Back_to_the_Future\"";
 
-    interface Binder extends UiBinder<DockLayoutPanel, TotoeApp>
+    interface Binder extends UiBinder<DockLayoutPanel, XmlParserApp>
     {
     }
 
@@ -58,7 +64,7 @@ public class TotoeApp implements EntryPoint
         DockLayoutPanel outer = binder.createAndBindUi(this);
 
         // Load sample xml
-        String xml = TotoeResources.INSTANCE.swissArmyKnifeDns().getText();
+        String xml = XmlParserResources.INSTANCE.swissArmyKnifeDns().getText();
         xmlIn.setText(xml);
 
         // Set some default values

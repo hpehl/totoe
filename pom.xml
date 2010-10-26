@@ -9,9 +9,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>name.pehl</groupId>
     <artifactId>totoe</artifactId>
-    <version>0.1</version>
+    <version>0.2</version>
     <name>Totoe</name>
-    <description>XML parser for GWT with xpath and namespaces support</description>
+    <description>JSON and XML parser for GWT with jsonpath / xpath and namespaces support</description>
     <url>http://code.google.com/p/totoe/</url>
     <organization>
         <name>Harald Pehl</name>
@@ -187,8 +187,10 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <excludes>
-                        <exclude>name/pehl/totoe/TotoeGwtTestSuite.java</exclude>
-                        <exclude>name/pehl/totoe/client/*Test.java</exclude>
+                        <exclude>name/pehl/totoe/json/JsonParserGwtTestSuite.java</exclude>
+                        <exclude>name/pehl/totoe/json/client/*Test.java</exclude>
+                        <exclude>name/pehl/totoe/xml/XmlParserGwtTestSuite.java</exclude>
+                        <exclude>name/pehl/totoe/xml/client/*Test.java</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -208,8 +210,8 @@
                             <runStyle>HtmlUnit:FF3</runStyle>
                             <productionMode>false</productionMode>
                             <gwtVersion>${gwt.version}</gwtVersion>
-                            <module>name.pehl.totoe.TotoeTest</module>
-                            <includes>name/pehl/totoe/TotoeGwtTestSuite.java</includes>
+                            <module>name.pehl.totoe.xml.XmlParserTest</module>
+                            <includes>name/pehl/totoe/xml/XmlParserGwtTestSuite.java</includes>
                         </configuration>
                         <goals>
                             <goal>test</goal>
@@ -223,8 +225,8 @@
                             <runStyle>HtmlUnit:FF3</runStyle>
                             <productionMode>true</productionMode>
                             <gwtVersion>${gwt.version}</gwtVersion>
-                            <module>name.pehl.totoe.TotoeTest</module>
-                            <includes>name/pehl/totoe/TotoeGwtTestSuite.java</includes>
+                            <module>name.pehl.totoe.xml.XmlParserTest</module>
+                            <includes>name/pehl/totoe/xml/XmlParserGwtTestSuite.java</includes>
                         </configuration>
                         <goals>
                             <goal>test</goal>
@@ -237,8 +239,8 @@
                             <runStyle>HtmlUnit:IE7</runStyle>
                             <productionMode>false</productionMode>
                             <gwtVersion>${gwt.version}</gwtVersion>
-                            <module>name.pehl.totoe.TotoeTest</module>
-                            <includes>name/pehl/totoe/TotoeGwtTestSuite.java</includes>
+                            <module>name.pehl.totoe.xml.XmlParserTest</module>
+                            <includes>name/pehl/totoe/xml/XmlParserGwtTestSuite.java</includes>
                         </configuration>
                         <goals>
                             <goal>test</goal>
@@ -252,8 +254,8 @@
                             <runStyle>HtmlUnit:IE7</runStyle>
                             <productionMode>true</productionMode>
                             <gwtVersion>${gwt.version}</gwtVersion>
-                            <module>name.pehl.totoe.TotoeTest</module>
-                            <includes>name/pehl/totoe/TotoeGwtTestSuite.java</includes>
+                            <module>name.pehl.totoe.xml.XmlParserTest</module>
+                            <includes>name/pehl/totoe/xml/XmlParserGwtTestSuite.java</includes>
                         </configuration>
                         <goals>
                             <goal>test</goal>
