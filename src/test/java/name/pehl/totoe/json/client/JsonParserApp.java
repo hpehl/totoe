@@ -4,6 +4,7 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.json.client.JSONException;
+import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -88,8 +89,8 @@ public class JsonParserApp implements EntryPoint
             JSONObject jsonObject = new JsonParser().parse(jsonValue);
             if (contextValue != null && contextValue.trim().length() != 0)
             {
-                JSONValue cv = jsonObject.select(contextValue);
-                contextObject = (JSONObject) cv.isObject();
+                JSONValue jv = JsonPath.select(jsonObject, contextValue);
+                contextObject = jv.isObject();
             }
             else
             {
@@ -101,7 +102,7 @@ public class JsonParserApp implements EntryPoint
             }
             else
             {
-                JSONValue resultValue = contextObject.select(jsonpathValue);
+                JSONValue resultValue = JsonPath.select(contextObject, jsonpathValue);
                 result = resultValue.toString();
             }
         }

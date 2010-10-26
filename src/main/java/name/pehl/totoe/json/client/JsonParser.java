@@ -2,6 +2,7 @@ package name.pehl.totoe.json.client;
 
 import com.google.gwt.core.client.JavaScriptException;
 import com.google.gwt.json.client.JSONException;
+import com.google.gwt.json.client.JSONObject;
 
 /**
  * JsonParser using the browsers native JSON parser. More precisely this parser
@@ -42,7 +43,7 @@ public class JsonParser
         try
         {
             var v = $wnd.JSON.parse(text);
-            var jsonObject = @name.pehl.totoe.json.client.JSONObject::new(Lcom/google/gwt/core/client/JavaScriptObject;)(v);
+            var jsonObject = @com.google.gwt.json.client.JSONObject::new(Lcom/google/gwt/core/client/JavaScriptObject;)(v);
             return jsonObject;
         }
         catch (e)
