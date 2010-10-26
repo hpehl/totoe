@@ -11,11 +11,21 @@ import com.google.gwt.json.client.JSONValue;
  * href="http://www.sitepen.com/blog/2008/03/17/jsonpath-support/" >JSONPath</a>
  * expressions.
  * 
- * @author $Author:$
- * @version $Date:$ $Revision:$
+ * @see http://code.google.com/p/jsonpath/wiki/ExprSyntax
+ * @see http://code.google.com/p/jsonpath/wiki/Javascript
+ * @author $Author$
+ * @version $Date$ $Revision: 181
+ *          $
  */
 public class JSONObject extends com.google.gwt.json.client.JSONObject
 {
+    /**
+     * JSONPath special characters.
+     */
+    public static final char[] JSON_PATH_SYMBOLS = new char[] {'$', '@', '.', '[', ']', '*', '#', ',', ':', '?', '(',
+            ')',};
+
+
     public JSONObject()
     {
     }
@@ -24,6 +34,29 @@ public class JSONObject extends com.google.gwt.json.client.JSONObject
     public JSONObject(JavaScriptObject jsValue)
     {
         super(jsValue);
+    }
+
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * If the key contains {@link #JSON_PATH_SYMBOLS} this method delegates to
+     * {@link #select(String)}, otherwise
+     * {@link com.google.gwt.json.client.JSONObject#get(String)
+     * super.get(String)} is used.
+     * 
+     * @param key
+     * @return
+     * @see com.google.gwt.json.client.JSONObject#get(java.lang.String)
+     */
+    @Override
+    public JSONValue get(String key)
+    {
+        if (containsAny(key, JSON_PATH_SYMBOLS))
+        {
+            return select(key);
+        }
+        return super.get(key);
     }
 
 
@@ -38,6 +71,8 @@ public class JSONObject extends com.google.gwt.json.client.JSONObject
      *         found or the path was null.
      * @throws JSONException
      *             If the path expression could not be evaluated.
+     * @see http://code.google.com/p/jsonpath/wiki/ExprSyntax
+     * @see http://code.google.com/p/jsonpath/wiki/Javascript
      */
     public JSONValue select(String path) throws JSONException
     {
@@ -82,19 +117,46 @@ public class JSONObject extends com.google.gwt.json.client.JSONObject
             {
                 return @com.google.gwt.json.client.JSONString::new(Ljava/lang/String;)(data);
             }
-            else if (typeof(data) == "undefined")
+            else if (typeof(data) == "object")
+            {
+                return @name.pehl.totoe.json.client.JSONObject::new(Lcom/google/gwt/core/client/JavaScriptObject;)(data);
+            } 
+            else
             {
                 throw new Error("Undefined data selected");
             }
-            else
-            {
-                // It's an object
-                return @name.pehl.totoe.json.client.JSONObject::new(Lcom/google/gwt/core/client/JavaScriptObject;)(data);
-            } 
         }
         catch (e)
         {
             throw new Error(e);
         }
     }-*/;
+
+
+    /**
+     * Copy of Commons-Lang / StringUtils.containsAny(String, char[])
+     * 
+     * @param str
+     * @param searchChars
+     * @return
+     */
+    private boolean containsAny(String str, char[] searchChars)
+    {
+        if (str == null || str.length() == 0 || searchChars == null || searchChars.length == 0)
+        {
+            return false;
+        }
+        for (int i = 0; i < str.length(); i++)
+        {
+            char ch = str.charAt(i);
+            for (int j = 0; j < searchChars.length; j++)
+            {
+                if (searchChars[j] == ch)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
