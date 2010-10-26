@@ -1,25 +1,11 @@
-@CHARSET "UTF-8";
-
 h1 {
     font-size: 12pt;
     margin: 1em 0 .5em 0;
 }
 
-.form {
-    width: 100%;
-    position: relative;
-}
-
-.input {
+textarea, input {
     border: 1px solid black;
-}
-
-.fullSize {
     width: 98%;
-}
-
-.rightAlign {
-    right: 0px;
 }
 
 .spacer {

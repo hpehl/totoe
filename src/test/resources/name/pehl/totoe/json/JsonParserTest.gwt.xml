@@ -5,8 +5,8 @@
         $LastChangedBy: harald.pehl 
         $LastChangedRevision: 138 $
     -->
+    <inherits name="com.google.gwt.json.JSON" />
     <inherits name="com.google.gwt.junit.JUnit" />
-    <inherits name="com.google.gwt.xml.JSON" />
     <inherits name="com.google.gwt.resources.Resources" />
     <inherits name="com.google.gwt.user.User" />
 

@@ -96,6 +96,10 @@ public class JsonParserImpl
             {
                 return @com.google.gwt.json.client.JSONString::new(Ljava/lang/String;)(data);
             }
+            else if (typeof(data) == "undefined")
+            {
+                throw new Error("Undefined data selected");
+            }
             else
             {
                 // It's an object
