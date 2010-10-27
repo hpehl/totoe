@@ -62,6 +62,7 @@ public class NodeImpl implements Node
      * 
      * @return the hashcode based on the underlying {@link JavaScriptObject}.
      */
+    @Override
     public int hashCode()
     {
         return jso.hashCode();
@@ -131,7 +132,8 @@ public class NodeImpl implements Node
     }
 
 
-    private native JavaScriptObject getDocumentImpl() /*-{
+    private native JavaScriptObject getDocumentImpl()
+    /*-{
         var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
         return node.ownerDocument;
     }-*/;
@@ -145,7 +147,8 @@ public class NodeImpl implements Node
     }
 
 
-    private native JavaScriptObject getParentImpl() /*-{
+    private native JavaScriptObject getParentImpl()
+    /*-{
         var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
         return node.parentNode;
     }-*/;
@@ -159,7 +162,8 @@ public class NodeImpl implements Node
     }
 
 
-    private native JavaScriptObject getPreviousSiblingImpl() /*-{
+    private native JavaScriptObject getPreviousSiblingImpl()
+    /*-{
         var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
         return node.previousSibling;
     }-*/;
@@ -173,7 +177,8 @@ public class NodeImpl implements Node
     }
 
 
-    private native JavaScriptObject getNextSiblingImpl() /*-{
+    private native JavaScriptObject getNextSiblingImpl()
+    /*-{
         var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
         return node.nextSibling;
     }-*/;
@@ -202,7 +207,8 @@ public class NodeImpl implements Node
     }
 
 
-    private native void selectNodesImpl(String xpath, List<JavaScriptObject> result) /*-{
+    private native void selectNodesImpl(String xpath, List<JavaScriptObject> result)
+    /*-{
         var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
         try
         {
@@ -236,7 +242,8 @@ public class NodeImpl implements Node
     }
 
 
-    private native JavaScriptObject selectNodeImpl(String xpath) /*-{
+    private native JavaScriptObject selectNodeImpl(String xpath)
+    /*-{
         var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
         try
         {
@@ -321,7 +328,8 @@ public class NodeImpl implements Node
     }
 
 
-    private native String serializeImpl()/*-{
+    private native String serializeImpl()
+    /*-{
         var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
         return new $wnd.XMLSerializer().serializeToString(node);
     }-*/;

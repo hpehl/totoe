@@ -2,12 +2,6 @@ package name.pehl.totoe.xml.client;
 
 import java.util.List;
 
-import name.pehl.totoe.xml.client.Document;
-import name.pehl.totoe.xml.client.HasText;
-import name.pehl.totoe.xml.client.Node;
-import name.pehl.totoe.xml.client.XPathException;
-import name.pehl.totoe.xml.client.XmlParser;
-
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
