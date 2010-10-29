@@ -75,7 +75,7 @@
     <pluginRepositories>
         <pluginRepository>
             <id>gwt-plugin</id>
-            <url>http://google-web-toolkit.googlecode.com/svn/2.1.0.M3/gwt/maven</url>
+            <url>http://google-web-toolkit.googlecode.com/svn/2.1.0/gwt/maven</url>
         </pluginRepository>
         <pluginRepository>
             <id>maven2-repository.dev.java.net</id>
