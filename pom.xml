@@ -1,9 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <!--
-        $LastChangedBy: harald.pehl 
-        $LastChangedRevision: 65 $
-    -->
+    <!-- $LastChangedBy: harald.pehl $LastChangedRevision: 65 $ -->
 
 
     <modelVersion>4.0.0</modelVersion>
@@ -77,6 +74,10 @@
     </repositories>
     <pluginRepositories>
         <pluginRepository>
+            <id>gwt-plugin</id>
+            <url>http://google-web-toolkit.googlecode.com/svn/2.1.0.M3/gwt/maven</url>
+        </pluginRepository>
+        <pluginRepository>
             <id>maven2-repository.dev.java.net</id>
             <url>http://download.java.net/maven/2/</url>
         </pluginRepository>
@@ -96,12 +97,6 @@
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-user</artifactId>
-            <version>${gwt.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-dev</artifactId>
             <version>${gwt.version}</version>
             <scope>provided</scope>
         </dependency>
@@ -131,16 +126,6 @@
                 <directory>src/main/resources</directory>
             </resource>
         </resources>
-
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>gwt-maven-plugin</artifactId>
-                    <version>1.3-runStyle</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
 
         <plugins>
             <plugin>
@@ -194,60 +179,29 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
+                <version>1.3.2.google</version>
                 <executions>
                     <execution>
-                        <id>(******** ff3-dev ********)</id>
+                        <id>(******** development mode ********)</id>
                         <configuration>
-                            <testTimeOut>600</testTimeOut>
-                            <runStyle>HtmlUnit:FF3</runStyle>
+                            <manualMode>false</manualMode>
                             <productionMode>false</productionMode>
                             <gwtVersion>${gwt.version}</gwtVersion>
                             <module>name.pehl.totoe.xml.XmlParserTest</module>
-                            <includes>name/pehl/totoe/xml/XmlParserGwtTestSuite.java</includes>
+                            <includes>name/pehl/totoe/xml/*GwtTestSuite.java</includes>
                         </configuration>
                         <goals>
                             <goal>test</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>(******** ff3-prod ********)</id>
+                        <id>(******** production mode ********)</id>
                         <configuration>
-                            <testTimeOut>600</testTimeOut>
-                            <userAgents>gecko1_8</userAgents>
-                            <runStyle>HtmlUnit:FF3</runStyle>
+                            <manualMode>false</manualMode>
                             <productionMode>true</productionMode>
                             <gwtVersion>${gwt.version}</gwtVersion>
                             <module>name.pehl.totoe.xml.XmlParserTest</module>
-                            <includes>name/pehl/totoe/xml/XmlParserGwtTestSuite.java</includes>
-                        </configuration>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>(******** ie7_8-dev ********)</id>
-                        <configuration>
-                            <testTimeOut>600</testTimeOut>
-                            <runStyle>HtmlUnit:IE7</runStyle>
-                            <productionMode>false</productionMode>
-                            <gwtVersion>${gwt.version}</gwtVersion>
-                            <module>name.pehl.totoe.xml.XmlParserTest</module>
-                            <includes>name/pehl/totoe/xml/XmlParserGwtTestSuite.java</includes>
-                        </configuration>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>(******** ie7_8-prod ********)</id>
-                        <configuration>
-                            <testTimeOut>600</testTimeOut>
-                            <userAgents>ie8</userAgents>
-                            <runStyle>HtmlUnit:IE7</runStyle>
-                            <productionMode>true</productionMode>
-                            <gwtVersion>${gwt.version}</gwtVersion>
-                            <module>name.pehl.totoe.xml.XmlParserTest</module>
-                            <includes>name/pehl/totoe/xml/XmlParserGwtTestSuite.java</includes>
+                            <includes>name/pehl/totoe/xml/*GwtTestSuite.java</includes>
                         </configuration>
                         <goals>
                             <goal>test</goal>
@@ -297,7 +251,6 @@ entryPointModules=name.pehl.totoe.TotoeApp]]>
                     </additionalConfig>
                     <excludes>
                         <exclude>com.google.gwt:gwt-user</exclude>
-                        <exclude>com.google.gwt:gwt-dev</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -362,10 +315,8 @@ entryPointModules=name.pehl.totoe.TotoeApp]]>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
-                <!--
-                    the Maven Surefire Report plugin has a bug where it re-runs the tests, this is needed to avoid that
-                    - http://jira.codehaus.org/browse/SUREFIRE-257
-                -->
+                <!-- the Maven Surefire Report plugin has a bug where it re-runs the tests, this is needed to avoid that 
+                    - http://jira.codehaus.org/browse/SUREFIRE-257 -->
                 <reportSets>
                     <reportSet>
                         <reports>

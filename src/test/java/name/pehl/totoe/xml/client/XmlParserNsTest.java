@@ -6,11 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import name.pehl.totoe.xml.client.Document;
-import name.pehl.totoe.xml.client.Element;
-import name.pehl.totoe.xml.client.Node;
-import name.pehl.totoe.xml.client.XmlParser;
-
 /**
  * @author $Author: harald.pehl $
  * @version $Date: 2010-07-02 15:52:54 +0200 (Fr, 02. Jul 2010) $ $Revision: 629

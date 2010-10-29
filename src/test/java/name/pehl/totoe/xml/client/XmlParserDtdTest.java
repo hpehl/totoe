@@ -4,13 +4,6 @@ import static name.pehl.totoe.xml.client.XmlParserResources.*;
 
 import java.util.List;
 
-import name.pehl.totoe.xml.client.Document;
-import name.pehl.totoe.xml.client.DocumentType;
-import name.pehl.totoe.xml.client.Element;
-import name.pehl.totoe.xml.client.Node;
-import name.pehl.totoe.xml.client.NodeType;
-import name.pehl.totoe.xml.client.XmlParser;
-
 /**
  * @author $Author$
  * @version $Date$ $Revision: 629
@@ -35,17 +28,6 @@ public class XmlParserDtdTest extends AbstractXmlParserTest
         assertEquals(SWISS_ARMY_KNIFE_ELEMENT, documentType.getName());
         assertEquals(NodeType.DOCUMENT_TYPE, documentType.getType());
         assertEquals(document, documentType.getDocument());
-
-        // parent / siblings
-        assertNull(documentType.getParent());
-        assertNull(documentType.getPreviousSibling());
-        assertNull(documentType.getNextSibling());
-
-        // document type specific
-        assertNull(documentType.getPublicId());
-        assertNull(documentType.getSystemId());
-        assertTrue(documentType.getEntities().isEmpty());
-        assertTrue(documentType.getNotations().isEmpty());
     }
 
 

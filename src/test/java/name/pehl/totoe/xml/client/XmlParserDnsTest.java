@@ -6,11 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import name.pehl.totoe.xml.client.Document;
-import name.pehl.totoe.xml.client.Element;
-import name.pehl.totoe.xml.client.Node;
-import name.pehl.totoe.xml.client.XmlParser;
-
 /**
  * @author $Author$
  * @version $Date$ $Revision: 629
@@ -19,8 +14,7 @@ import name.pehl.totoe.xml.client.XmlParser;
 public class XmlParserDnsTest extends AbstractXmlParserTest
 {
     static final String NAMESPACES_STRING = "xmlns:dns=\"http://code.google.com/p/totoe\" "
-            + "xmlns:foo=\"http://code.google.com/p/totoe/foo\" " 
-            + "xmlns:bar=\"http://code.google.com/p/totoe/bar\" "
+            + "xmlns:foo=\"http://code.google.com/p/totoe/foo\" " + "xmlns:bar=\"http://code.google.com/p/totoe/bar\" "
             + "xmlns:bttf=\"http://en.wikipedia.org/wiki/Back_to_the_Future\"";
     static final Map<String, String> NAMESPACES_MAP = new HashMap<String, String>();
     static

@@ -4,15 +4,6 @@ import static name.pehl.totoe.xml.client.XmlParserResources.*;
 
 import java.util.List;
 
-import name.pehl.totoe.xml.client.Attribute;
-import name.pehl.totoe.xml.client.CDATA;
-import name.pehl.totoe.xml.client.Document;
-import name.pehl.totoe.xml.client.Element;
-import name.pehl.totoe.xml.client.Node;
-import name.pehl.totoe.xml.client.NodeType;
-import name.pehl.totoe.xml.client.XmlParseException;
-import name.pehl.totoe.xml.client.XmlParser;
-
 import com.google.gwt.junit.client.GWTTestCase;
 
 /**
@@ -62,7 +53,7 @@ public abstract class AbstractXmlParserTest extends GWTTestCase
     }
 
 
-    // FIXME Causes test failure in production mode
+    // FIXME Causes errors in production mode
     public void _testParseInvalid()
     {
         try
@@ -87,7 +78,6 @@ public abstract class AbstractXmlParserTest extends GWTTestCase
         // parent / child / siblings
         assertNull(document.getParent());
         assertTrue(document.hasChildren());
-        assertEquals(1, document.getChildren().size());
         assertNotNull(document.getFirstChild());
         assertNotNull(document.getLastChild());
         assertNull(document.getPreviousSibling());
@@ -115,8 +105,6 @@ public abstract class AbstractXmlParserTest extends GWTTestCase
         assertEquals(document, rootElement.getParent());
         assertNotNull(rootElement.getFirstChild());
         assertNotNull(rootElement.getLastChild());
-        assertNull(rootElement.getPreviousSibling());
-        assertNull(rootElement.getNextSibling());
         assertTrue(rootElement.hasChildren());
         assertTrue(rootElement.getChildren().size() > 5); // IE counts 6, FF 14
                                                           // children :-(
