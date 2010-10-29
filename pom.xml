@@ -184,6 +184,8 @@
                     <execution>
                         <id>(******** development mode ********)</id>
                         <configuration>
+                            <logLevel>INFO</logLevel>
+                            <extraJvmArgs>-Xmx512m</extraJvmArgs>
                             <manualMode>false</manualMode>
                             <productionMode>false</productionMode>
                             <gwtVersion>${gwt.version}</gwtVersion>
@@ -197,6 +199,8 @@
                     <execution>
                         <id>(******** production mode ********)</id>
                         <configuration>
+                            <logLevel>INFO</logLevel>
+                            <extraJvmArgs>-Xmx512m</extraJvmArgs>
                             <manualMode>false</manualMode>
                             <productionMode>true</productionMode>
                             <gwtVersion>${gwt.version}</gwtVersion>
