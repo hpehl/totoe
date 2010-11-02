@@ -14,6 +14,6 @@
         <exclude name="**/*Test.java" />
     </source>
 
-    <script src="sarissa-compressed.js" />
-    <script src="sarissa_ieemu_xpath-compressed.js" />
+    <script src="gr/abiss/js/sarissa/sarissa-compressed.js" />
+    <script src="gr/abiss/js/sarissa/sarissa_ieemu_xpath-compressed.js" />
 </module>

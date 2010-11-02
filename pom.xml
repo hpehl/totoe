@@ -86,6 +86,7 @@
 
     <properties>
         <gwt.version>2.1.0</gwt.version>
+        <sarissa.version>0.9.9.4</sarissa.version>
         <junit.version>4.8.1</junit.version>
         <easymock.version>3.0</easymock.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -98,6 +99,14 @@
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-user</artifactId>
             <version>${gwt.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Sarissa -->
+        <dependency>
+            <groupId>gr.abiss.js</groupId>
+            <artifactId>sarissa</artifactId>
+            <version>${sarissa.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -134,6 +143,30 @@
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack-sarissa</id>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>gr.abiss.js</groupId>
+                                    <artifactId>sarissa</artifactId>
+                                    <version>${sarissa.version}</version>
+                                    <type>jar</type>
+                                </artifactItem>
+                            </artifactItems>
+                            <includes>**/sarissa-compressed.js,**/sarissa_ieemu_xpath-compressed.js</includes>
+                            <outputDirectory>src/main/resources/name/pehl/totoe/xml/public</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
