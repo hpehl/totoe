@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>name.pehl</groupId>
     <artifactId>totoe</artifactId>
-    <version>0.2</version>
+    <version>0.2.1</version>
     <name>Totoe</name>
     <description>JSON and XML parser for GWT with jsonpath / xpath and namespaces support</description>
     <url>http://code.google.com/p/totoe/</url>
