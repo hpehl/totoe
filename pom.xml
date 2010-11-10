@@ -221,8 +221,10 @@
                         <configuration>
                             <logLevel>INFO</logLevel>
                             <extraJvmArgs>-Xmx512m</extraJvmArgs>
-                            <manualMode>false</manualMode>
+                            <htmlunit>FF3,IE7</htmlunit>
+                            <mode>htmlunit</mode>
                             <productionMode>false</productionMode>
+                            <testTimeOut>300</testTimeOut>
                             <gwtVersion>${gwt.version}</gwtVersion>
                             <module>name.pehl.totoe.xml.XmlParserTest</module>
                             <includes>name/pehl/totoe/xml/*GwtTestSuite.java</includes>
@@ -236,8 +238,10 @@
                         <configuration>
                             <logLevel>INFO</logLevel>
                             <extraJvmArgs>-Xmx512m</extraJvmArgs>
-                            <manualMode>false</manualMode>
+                            <htmlunit>FF3,IE7</htmlunit>
+                            <mode>htmlunit</mode>
                             <productionMode>true</productionMode>
+                            <testTimeOut>300</testTimeOut>
                             <gwtVersion>${gwt.version}</gwtVersion>
                             <module>name.pehl.totoe.xml.XmlParserTest</module>
                             <includes>name/pehl/totoe/xml/*GwtTestSuite.java</includes>
