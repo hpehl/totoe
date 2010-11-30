@@ -196,6 +196,7 @@ entryPointModules=name.pehl.totoe.TotoeApp]]>
                         </file>
                     </additionalConfig>
                     <excludes>
+                        <exclude>com.google.gwt:gwt-dev</exclude>
                         <exclude>com.google.gwt:gwt-user</exclude>
                     </excludes>
                 </configuration>
