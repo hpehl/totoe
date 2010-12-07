@@ -42,10 +42,6 @@
             <id>pehl-parent</id>
             <url>http://pehl-parent.googlecode.com/svn/repository</url>
         </repository>
-        <repository>
-            <id>totoe</id>
-            <url>http://totoe.googlecode.com/svn/repository</url>
-        </repository>
     </repositories>
 
 
