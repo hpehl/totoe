@@ -1,0 +1,17 @@
+h1 {
+    font-size: 12pt;
+    margin: 1em 0 .5em 0;
+}
+
+textarea, input {
+    border: 1px solid black;
+    width: 100%;
+}
+
+.spacer {
+    margin: 1em;
+}
+
+.spacerTop {
+    margin-top: .5em;
+}

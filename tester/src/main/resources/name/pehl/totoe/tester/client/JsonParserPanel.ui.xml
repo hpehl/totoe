@@ -1,0 +1,36 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+        
+    <ui:with field="res" type="name.pehl.totoe.tester.client.Resources"/>
+        
+    <g:DockLayoutPanel unit="PCT" addStyleNames="{res.style.spacer}">
+        <g:east size="40">
+            <g:HTMLPanel>
+                <div class="{res.style.spacer}">
+                    <h1>JSONPath</h1>
+                    JSONPath
+                    <g:TextBox ui:field="jsonpath" />
+                    <br />
+                    <div class="{res.style.spacerTop}">
+                        Context
+                        <g:TextBox ui:field="context" title="A JSONPath expression to select the context object for relative JSONPath expressions. Leave empty to use the root." />
+                        <br />
+                    </div>
+                    <div class="{res.style.spacerTop}">
+                        <g:Button ui:field="select">Select</g:Button>
+                    </div>
+                    <h1>Result</h1>
+                    <g:TextArea ui:field="jsonOut" visibleLines="15" readOnly="true" />
+                </div>
+            </g:HTMLPanel>
+        </g:east>
+        <g:center>
+            <g:HTMLPanel>
+                <div class="{res.style.spacer}">
+                    <h1>JSON</h1>
+                    <g:TextArea ui:field="jsonIn" visibleLines="30" />
+                </div>
+            </g:HTMLPanel>
+        </g:center>
+    </g:DockLayoutPanel>
+</ui:UiBinder> 

@@ -5,55 +5,17 @@
 
     <parent>
         <groupId>name.pehl</groupId>
-        <artifactId>superpom</artifactId>
-        <version>1</version>
+        <artifactId>totoe-parent</artifactId>
+        <version>0.2.2</version>
     </parent>
 
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>name.pehl</groupId>
     <artifactId>totoe</artifactId>
-    <version>0.2.1</version>
-    <name>Totoe</name>
-    <description>JSON and XML parser for GWT with jsonpath / xpath and namespaces support</description>
-    <url>http://code.google.com/p/totoe/</url>
-
-
-    <scm>
-        <connection>scm:svn:http://totoe.googlecode.com/svn/trunk</connection>
-        <developerConnection>scm:svn:https://totoe.googlecode.com/svn/trunk</developerConnection>
-        <tag>HEAD</tag>
-        <url>http://totoe.googlecode.com/svn/trunk</url>
-    </scm>
-    <distributionManagement>
-        <repository>
-            <id>totoe-repo</id>
-            <name>Taoki Repository</name>
-            <url>svn:https://totoe.googlecode.com/svn/repository</url>
-        </repository>
-        <site>
-            <id>totoe-site</id>
-            <name>Taoki Site</name>
-            <url>svn:https://totoe.googlecode.com/svn/site</url>
-        </site>
-    </distributionManagement>
-    <repositories>
-        <repository>
-            <id>pehl-parent</id>
-            <url>http://pehl-parent.googlecode.com/svn/repository</url>
-        </repository>
-    </repositories>
+    <name>Totoe Core</name>
 
 
     <dependencies>
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-user</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-dev</artifactId>
-        </dependency>
         <dependency>
             <groupId>gr.abiss.js</groupId>
             <artifactId>sarissa</artifactId>
@@ -64,16 +26,6 @@
 
 
     <build>
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
-
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -97,21 +49,6 @@
                             <includes>**/sarissa-compressed.js,**/sarissa_ieemu_xpath-compressed.js</includes>
                             <outputDirectory>src/main/resources/name/pehl/totoe/xml/public</outputDirectory>
                         </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>test</phase>
-                        <configuration>
-                            <warSourceDirectory>src/test/webapp</warSourceDirectory>
-                        </configuration>
-                        <goals>
-                            <goal>exploded</goal>
-                        </goals>
                     </execution>
                 </executions>
             </plugin>
@@ -170,29 +107,12 @@
                         <classpathContainer>com.google.gwt.eclipse.core.GWT_CONTAINER</classpathContainer>
                     </classpathContainers>
                     <additionalBuildcommands>
-                        <buildcommand>com.google.gdt.eclipse.core.webAppProjectValidator</buildcommand>
                         <buildcommand>com.google.gwt.eclipse.core.gwtProjectValidator</buildcommand>
                     </additionalBuildcommands>
                     <additionalProjectnatures>
                         <projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
                     </additionalProjectnatures>
-                    <additionalConfig>
-                        <file>
-                            <name>.settings/com.google.gdt.eclipse.core.prefs</name>
-                            <content><![CDATA[
-warSrcDir=src/test/webapp
-warSrcDirIsOutput=false]]>
-                            </content>
-                        </file>
-                        <file>
-                            <name>.settings/com.google.gwt.eclipse.core.prefs</name>
-                            <content><![CDATA[
-entryPointModules=name.pehl.totoe.TotoeApp]]>
-                            </content>
-                        </file>
-                    </additionalConfig>
                     <excludes>
-                        <exclude>com.google.gwt:gwt-dev</exclude>
                         <exclude>com.google.gwt:gwt-user</exclude>
                     </excludes>
                 </configuration>

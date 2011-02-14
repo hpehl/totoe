@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<swissArmyKnife xmlns="http://code.google.com/p/totoe" xmlns:foo="http://code.google.com/p/totoe/foo"
+    xmlns:bar="http://code.google.com/p/totoe/bar" id="B001DZTJRQ">
+    <!-- 
+        XML that has erything inside. Just like the Wenger 16999 Swiss Army Knife 
+        http://www.amazon.com/Wenger-16999-Swiss-Army-Knife/dp/B001DZTJRQ/ 
+    -->
+    <description><![CDATA[
+        Call it what you will, it's a knife that's unrivaled, impractical, 
+        and enormous, it's more knife than one can carry or would fit in one's pocket
+    ]]></description>
+    <!-- long live the metric system! -->
+    <foo:dimensions foo:unit="cm">11.8 x 10.8 x 4.3</foo:dimensions>
+    <bar:weight bar:unit="g">700</bar:weight>
+    <functions number="more than you'll ever need">
+        <rocketLauncher kind="advanced" foo:range="intercontinental" bar:dangerous="indeed">5</rocketLauncher>
+        <calculator eval="1 &lt; 2">2 &gt; 1</calculator>
+        <bttf:fluxCapacitor xmlns:bttf="http://en.wikipedia.org/wiki/Back_to_the_Future">
+            <bttf:power unit="gigawatts">1.21</bttf:power>
+        </bttf:fluxCapacitor>
+    </functions>
+</swissArmyKnife>
+ 

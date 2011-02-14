@@ -1,0 +1,42 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+    <ui:with field="res" type="name.pehl.totoe.tester.client.Resources" />
+
+    <g:DockLayoutPanel unit="PCT" addStyleNames="{res.style.spacer}">
+        <g:east size="40">
+            <g:HTMLPanel>
+                <div class="{res.style.spacer}">
+                    <h1>XPath and Namespace</h1>
+                    XPath
+                    <g:TextBox ui:field="xpath" />
+                    <br />
+                    <div class="{res.style.spacerTop}">
+                        Context
+                        <g:TextBox ui:field="context"
+                            title="An XPath expression to select the context node for relative XPath expressions. Leave empty to use the document." />
+                        <br />
+                    </div>
+                    <div class="{res.style.spacerTop}">
+                        Namespace
+                        <g:TextBox ui:field="namespaces" />
+                        <br />
+                    </div>
+                    <div class="{res.style.spacerTop}">
+                        <g:Button ui:field="select">Select</g:Button>
+                    </div>
+                    <h1>Result</h1>
+                    <g:TextArea ui:field="xmlOut" visibleLines="15" readOnly="true" />
+                </div>
+            </g:HTMLPanel>
+        </g:east>
+        <g:center>
+            <g:HTMLPanel>
+                <div class="{res.style.spacer}">
+                    <h1>XML</h1>
+                    <g:TextArea ui:field="xmlIn" visibleLines="30" />
+                </div>
+            </g:HTMLPanel>
+        </g:center>
+    </g:DockLayoutPanel>
+</ui:UiBinder> 

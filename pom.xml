@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <!-- $LastChangedBy: harald.pehl $LastChangedRevision: 1418 $ -->
+
+
+    <!-- The super pom contains most of the configuration -->
+    <parent>
+        <groupId>name.pehl</groupId>
+        <artifactId>superpom</artifactId>
+        <version>1</version>
+    </parent>
+
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>name.pehl</groupId>
+    <artifactId>totoe-parent</artifactId>
+    <version>0.2.2</version>
+    <packaging>pom</packaging>
+    <name>Totoe</name>
+    <description>JSON and XML parser for GWT with jsonpath / xpath and namespaces support</description>
+    <url>http://code.google.com/p/totoe/</url>
+
+
+    <scm>
+        <connection>scm:svn:http://totoe.googlecode.com/svn/trunk</connection>
+        <developerConnection>scm:svn:https://totoe.googlecode.com/svn/trunk</developerConnection>
+        <tag>HEAD</tag>
+        <url>http://totoe.googlecode.com/svn/trunk</url>
+    </scm>
+    <distributionManagement>
+        <repository>
+            <id>totoe-repo</id>
+            <name>Taoki Repository</name>
+            <url>svn:https://totoe.googlecode.com/svn/repository</url>
+        </repository>
+        <site>
+            <id>totoe-site</id>
+            <name>Taoki Site</name>
+            <url>svn:https://totoe.googlecode.com/svn/site</url>
+        </site>
+    </distributionManagement>
+    <repositories>
+        <repository>
+            <id>pehl-parent</id>
+            <url>http://pehl-parent.googlecode.com/svn/repository</url>
+        </repository>
+    </repositories>
+
+
+    <modules>
+        <module>core</module>
+        <module>tester</module>
+    </modules>
+
+
+    <!-- Global dependencies used in all modules -->
+    <dependencies>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/java</directory>
+            </testResource>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+        </testResources>
+    </build>
+</project>
