@@ -2,7 +2,7 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui"
     xmlns:tt="urn:import:name.pehl.totoe.tester.client">
 
-    <g:TabLayoutPanel barUnit="EM" barHeight="2">
+    <g:TabLayoutPanel barHeight="2" barUnit="EM">
         <g:tab>
             <g:header>JSON</g:header>
             <tt:JsonParserPanel />

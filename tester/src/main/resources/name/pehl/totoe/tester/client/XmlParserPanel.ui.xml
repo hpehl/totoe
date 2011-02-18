@@ -3,40 +3,41 @@
 
     <ui:with field="res" type="name.pehl.totoe.tester.client.Resources" />
 
-    <g:DockLayoutPanel unit="PCT" addStyleNames="{res.style.spacer}">
+    <g:DockLayoutPanel unit="PCT">
         <g:east size="40">
-            <g:HTMLPanel>
-                <div class="{res.style.spacer}">
-                    <h1>XPath and Namespace</h1>
-                    XPath
-                    <g:TextBox ui:field="xpath" />
-                    <br />
-                    <div class="{res.style.spacerTop}">
+            <g:ScrollPanel>
+                <g:HTMLPanel addStyleNames="{res.style.panel} {res.style.rightPanel}">
+                    <p class="{res.style.top0}">
+                        XPath
+                        <br />
+                        <g:TextBox ui:field="xpath" />
+                    </p>
+                    <p>
                         Context
+                        <br />
                         <g:TextBox ui:field="context"
                             title="An XPath expression to select the context node for relative XPath expressions. Leave empty to use the document." />
-                        <br />
-                    </div>
-                    <div class="{res.style.spacerTop}">
+                    </p>
+                    <p>
                         Namespace
-                        <g:TextBox ui:field="namespaces" />
                         <br />
-                    </div>
-                    <div class="{res.style.spacerTop}">
+                        <g:TextBox ui:field="namespaces" />
+                    </p>
+                    <p>
                         <g:Button ui:field="select">Select</g:Button>
-                    </div>
-                    <h1>Result</h1>
-                    <g:TextArea ui:field="xmlOut" visibleLines="15" readOnly="true" />
-                </div>
-            </g:HTMLPanel>
+                    </p>
+                    <p>
+                        Result
+                        <br />
+                        <g:TextArea ui:field="xmlOut" visibleLines="14" readOnly="true" />
+                    </p>
+                </g:HTMLPanel>
+            </g:ScrollPanel>
         </g:east>
         <g:center>
-            <g:HTMLPanel>
-                <div class="{res.style.spacer}">
-                    <h1>XML</h1>
-                    <g:TextArea ui:field="xmlIn" visibleLines="30" />
-                </div>
-            </g:HTMLPanel>
+            <g:ScrollPanel addStyleNames="{res.style.panel}">
+                <g:TextArea ui:field="xmlIn" visibleLines="33" />
+            </g:ScrollPanel>
         </g:center>
     </g:DockLayoutPanel>
 </ui:UiBinder> 

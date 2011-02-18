@@ -1,36 +1,38 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
-        
-    <ui:with field="res" type="name.pehl.totoe.tester.client.Resources"/>
-        
-    <g:DockLayoutPanel unit="PCT" addStyleNames="{res.style.spacer}">
+
+    <ui:with field="res" type="name.pehl.totoe.tester.client.Resources" />
+
+    <g:DockLayoutPanel unit="PCT">
         <g:east size="40">
-            <g:HTMLPanel>
-                <div class="{res.style.spacer}">
-                    <h1>JSONPath</h1>
-                    JSONPath
-                    <g:TextBox ui:field="jsonpath" />
-                    <br />
-                    <div class="{res.style.spacerTop}">
-                        Context
-                        <g:TextBox ui:field="context" title="A JSONPath expression to select the context object for relative JSONPath expressions. Leave empty to use the root." />
+            <g:ScrollPanel>
+                <g:HTMLPanel addStyleNames="{res.style.panel} {res.style.rightPanel}">
+                    <p class="{res.style.top0}">
+                        JSONPath
                         <br />
-                    </div>
-                    <div class="{res.style.spacerTop}">
+                        <g:TextBox ui:field="jsonpath" />
+                    </p>
+                    <p>
+                        Context
+                        <br />
+                        <g:TextBox ui:field="context"
+                            title="A JSONPath expression to select the context object for relative JSONPath expressions. Leave empty to use the root." />
+                    </p>
+                    <p>
                         <g:Button ui:field="select">Select</g:Button>
-                    </div>
-                    <h1>Result</h1>
-                    <g:TextArea ui:field="jsonOut" visibleLines="15" readOnly="true" />
-                </div>
-            </g:HTMLPanel>
+                    </p>
+                    <p>
+                        Result
+                        <br />
+                        <g:TextArea ui:field="jsonOut" visibleLines="14" readOnly="true" />
+                    </p>
+                </g:HTMLPanel>
+            </g:ScrollPanel>
         </g:east>
         <g:center>
-            <g:HTMLPanel>
-                <div class="{res.style.spacer}">
-                    <h1>JSON</h1>
-                    <g:TextArea ui:field="jsonIn" visibleLines="30" />
-                </div>
-            </g:HTMLPanel>
+            <g:ScrollPanel addStyleNames="{res.style.panel}">
+                        <g:TextArea ui:field="jsonIn" visibleLines="33" />
+            </g:ScrollPanel>
         </g:center>
     </g:DockLayoutPanel>
 </ui:UiBinder> 

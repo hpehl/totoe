@@ -3,15 +3,20 @@ h1 {
     margin: 1em 0 .5em 0;
 }
 
-textarea, input {
+textarea,input {
     border: 1px solid black;
-    width: 100%;
+    width: 99%;
 }
 
-.spacer {
-    margin: 1em;
+.panel {
+    margin-left: 6px;
+    margin-top: 9px;
 }
 
-.spacerTop {
-    margin-top: .5em;
+.rightPanel {
+    margin-right: 6px;
+}
+
+.top0 {
+    margin-top: 0;
 }

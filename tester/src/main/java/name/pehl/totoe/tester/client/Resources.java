@@ -46,14 +46,21 @@ public interface Resources extends ClientBundle
     TextResource swissArmyKnifeXml();
 
 
+    @Source("widgets.css")
+    CssResource widgets();
+
+
     @Source("style.css")
     Style style();
 
     interface Style extends CssResource
     {
-        String spacer();
+        String panel();
 
 
-        String spacerTop();
+        String rightPanel();
+
+
+        String top0();
     }
 }

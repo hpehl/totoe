@@ -22,6 +22,7 @@ public class TotoeTester implements EntryPoint
     public void onModuleLoad()
     {
         Resources.INSTANCE.style().ensureInjected();
+        Resources.INSTANCE.widgets().ensureInjected();
         RootLayoutPanel.get().add(binder.createAndBindUi(this));
     }
 }
