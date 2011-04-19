@@ -159,17 +159,20 @@ final class XmlParserUtils
                 default:
                     break;
             }
-            while (start != length && strip.indexOf(stripped.charAt(start)) != -1)
+            if (strip != null)
             {
-                start++;
+                while (start != length && strip.indexOf(stripped.charAt(start)) != -1)
+                {
+                    start++;
+                }
+                stripped = stripped.substring(start);
+                int end = stripped.length();
+                while (end != 0 && strip.indexOf(stripped.charAt(end - 1)) != -1)
+                {
+                    end--;
+                }
+                stripped = stripped.substring(0, end);
             }
-            stripped = stripped.substring(start);
-            int end = stripped.length();
-            while (end != 0 && strip.indexOf(stripped.charAt(end - 1)) != -1)
-            {
-                end--;
-            }
-            stripped = stripped.substring(0, end);
         }
         return stripped;
     }
