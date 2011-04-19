@@ -10,12 +10,14 @@ import name.pehl.totoe.xml.client.Element;
 import name.pehl.totoe.xml.client.HasText;
 import name.pehl.totoe.xml.client.Node;
 import name.pehl.totoe.xml.client.NodeType;
+import name.pehl.totoe.xml.client.WhitespaceHandling;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * @author $Author$
- * @version $Date$ $Revision$
+ * @version $Date$ $Revision: 174
+ *          $
  */
 public class ElementImpl extends NodeImpl implements Element
 {
@@ -38,8 +40,8 @@ public class ElementImpl extends NodeImpl implements Element
 
 
     private native JavaScriptObject getAttributeImpl(String name) /*-{
-        var element = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
-        return element.getAttributeNode(name);
+		var element = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
+		return element.getAttributeNode(name);
     }-*/;
 
 
@@ -79,14 +81,12 @@ public class ElementImpl extends NodeImpl implements Element
 
 
     private native void getAttributesImpl(List<JavaScriptObject> result)/*-{
-        var element = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
-        if (element.attributes != null && element.attributes.length != 0)
-        {
-            for (var i = 0; i < element.attributes.length; i++) 
-            {
-                result.@java.util.List::add(Ljava/lang/Object;)(element.attributes[i]);
-            }
-        }
+		var element = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
+		if (element.attributes != null && element.attributes.length != 0) {
+			for ( var i = 0; i < element.attributes.length; i++) {
+				result.@java.util.List::add(Ljava/lang/Object;)(element.attributes[i]);
+			}
+		}
     }-*/;
 
 
@@ -177,8 +177,8 @@ public class ElementImpl extends NodeImpl implements Element
 
 
     @Override
-    public String getTextStripped()
+    public String getText(WhitespaceHandling whitespaceHandling)
     {
-        return XmlParserUtils.stripWsnl(getText());
+        return XmlParserUtils.stripWhitespace(getText(), whitespaceHandling);
     }
 }

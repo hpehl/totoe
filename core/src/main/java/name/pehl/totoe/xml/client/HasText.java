@@ -13,10 +13,10 @@ public interface HasText
 
 
     /**
-     * Like {@link #getText()} but white-spaces and new-lines are stripped from
-     * the bgeinning and end of text
+     * Like {@link #getText()} but white-spaces at the bgeinning and end of text
+     * are handled according to whitespaceHandling.
      * 
      * @return
      */
-    String getTextStripped();
+    String getText(WhitespaceHandling whitespaceHandling);
 }

@@ -1,12 +1,14 @@
 package name.pehl.totoe.xml.client.internal;
 
 import name.pehl.totoe.xml.client.ProcessingInstruction;
+import name.pehl.totoe.xml.client.WhitespaceHandling;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * @author $Author$
- * @version $Date$ $Revision$
+ * @version $Date$ $Revision: 174
+ *          $
  */
 public class ProcessingInstructionImpl extends NodeImpl implements ProcessingInstruction
 {
@@ -22,8 +24,8 @@ public class ProcessingInstructionImpl extends NodeImpl implements ProcessingIns
 
     @Override
     public native String getTarget()/*-{
-        var pi = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
-        return pi.target;
+		var pi = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
+		return pi.target;
     }-*/;
 
 
@@ -31,14 +33,14 @@ public class ProcessingInstructionImpl extends NodeImpl implements ProcessingIns
 
     @Override
     public native String getText()/*-{
-        var pi = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
-        return pi.data;
+		var pi = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
+		return pi.data;
     }-*/;
 
 
     @Override
-    public String getTextStripped()
+    public String getText(WhitespaceHandling whitespaceHandling)
     {
-        return XmlParserUtils.stripWsnl(getText());
+        return XmlParserUtils.stripWhitespace(getText(), whitespaceHandling);
     }
 }

@@ -7,6 +7,7 @@ import name.pehl.totoe.xml.client.Document;
 import name.pehl.totoe.xml.client.HasText;
 import name.pehl.totoe.xml.client.Node;
 import name.pehl.totoe.xml.client.NodeType;
+import name.pehl.totoe.xml.client.WhitespaceHandling;
 import name.pehl.totoe.xml.client.XPathException;
 
 import com.google.gwt.core.client.JavaScriptException;
@@ -87,8 +88,8 @@ public class NodeImpl implements Node
 
     @Override
     public native String getName() /*-{
-        var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
-        return node.nodeName;
+		var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
+		return node.nodeName;
     }-*/;
 
 
@@ -134,8 +135,8 @@ public class NodeImpl implements Node
 
     private native JavaScriptObject getDocumentImpl()
     /*-{
-        var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
-        return node.ownerDocument;
+		var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
+		return node.ownerDocument;
     }-*/;
 
 
@@ -149,8 +150,8 @@ public class NodeImpl implements Node
 
     private native JavaScriptObject getParentImpl()
     /*-{
-        var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
-        return node.parentNode;
+		var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
+		return node.parentNode;
     }-*/;
 
 
@@ -164,8 +165,8 @@ public class NodeImpl implements Node
 
     private native JavaScriptObject getPreviousSiblingImpl()
     /*-{
-        var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
-        return node.previousSibling;
+		var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
+		return node.previousSibling;
     }-*/;
 
 
@@ -179,8 +180,8 @@ public class NodeImpl implements Node
 
     private native JavaScriptObject getNextSiblingImpl()
     /*-{
-        var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
-        return node.nextSibling;
+		var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
+		return node.nextSibling;
     }-*/;
 
 
@@ -209,22 +210,17 @@ public class NodeImpl implements Node
 
     private native void selectNodesImpl(String xpath, List<JavaScriptObject> result)
     /*-{
-        var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
-        try
-        {
-            var nodes = node.selectNodes(xpath);
-            if (nodes != null && nodes.length != 0)
-            {
-                for (var i = 0; i < nodes.length; i++) 
-                {
-                    result.@java.util.List::add(Ljava/lang/Object;)(nodes[i]);
-                }
-            }
-        }
-        catch (e)
-        {
-            throw new Error(e);
-        }
+		var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
+		try {
+			var nodes = node.selectNodes(xpath);
+			if (nodes != null && nodes.length != 0) {
+				for ( var i = 0; i < nodes.length; i++) {
+					result.@java.util.List::add(Ljava/lang/Object;)(nodes[i]);
+				}
+			}
+		} catch (e) {
+			throw new Error(e);
+		}
     }-*/;
 
 
@@ -244,16 +240,13 @@ public class NodeImpl implements Node
 
     private native JavaScriptObject selectNodeImpl(String xpath)
     /*-{
-        var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
-        try
-        {
-            var singleNode = node.selectSingleNode(xpath);
-            return singleNode;
-        }
-        catch (e)
-        {
-            throw new Error(e);
-        }
+		var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
+		try {
+			var singleNode = node.selectSingleNode(xpath);
+			return singleNode;
+		} catch (e) {
+			throw new Error(e);
+		}
     }-*/;
 
 
@@ -262,12 +255,12 @@ public class NodeImpl implements Node
     @Override
     public String[] selectValues(String xpath)
     {
-        return selectValues(xpath, false);
+        return selectValues(xpath, WhitespaceHandling.PRESERVE);
     }
 
 
     @Override
-    public String[] selectValues(String xpath, boolean stripWsnl)
+    public String[] selectValues(String xpath, WhitespaceHandling whitespaceHandling)
     {
         try
         {
@@ -278,7 +271,7 @@ public class NodeImpl implements Node
                 if (node instanceof HasText)
                 {
                     HasText textNode = (HasText) node;
-                    String text = stripWsnl ? textNode.getTextStripped() : textNode.getText();
+                    String text = textNode.getText(whitespaceHandling);
                     result.add(text);
                 }
             }
@@ -294,12 +287,12 @@ public class NodeImpl implements Node
     @Override
     public String selectValue(String xpath)
     {
-        return selectValue(xpath, false);
+        return selectValue(xpath, WhitespaceHandling.PRESERVE);
     }
 
 
     @Override
-    public String selectValue(String xpath, boolean stripWsnl)
+    public String selectValue(String xpath, WhitespaceHandling whitespaceHandling)
     {
         try
         {
@@ -307,7 +300,7 @@ public class NodeImpl implements Node
             if (singleNode instanceof HasText)
             {
                 HasText textNode = (HasText) singleNode;
-                String text = stripWsnl ? textNode.getTextStripped() : textNode.getText();
+                String text = textNode.getText(whitespaceHandling);
                 return text;
             }
             return null;
@@ -330,7 +323,7 @@ public class NodeImpl implements Node
 
     private native String serializeImpl()
     /*-{
-        var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
-        return new $wnd.XMLSerializer().serializeToString(node);
+		var node = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
+		return new $wnd.XMLSerializer().serializeToString(node);
     }-*/;
 }

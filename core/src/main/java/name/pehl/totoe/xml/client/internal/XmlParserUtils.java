@@ -7,6 +7,7 @@ import name.pehl.totoe.xml.client.HasChildren;
 import name.pehl.totoe.xml.client.HasText;
 import name.pehl.totoe.xml.client.Node;
 import name.pehl.totoe.xml.client.NodeType;
+import name.pehl.totoe.xml.client.WhitespaceHandling;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
@@ -15,7 +16,8 @@ import com.google.gwt.core.client.JavaScriptObject;
  * implementations.
  * 
  * @author $Author$
- * @version $Date$ $Revision$
+ * @version $Date$ $Revision: 174
+ *          $
  */
 final class XmlParserUtils
 {
@@ -53,18 +55,16 @@ final class XmlParserUtils
 
 
     private static native void getChildrenImpl(JavaScriptObject node, int nodeType, List<JavaScriptObject> result) /*-{
-        var children = node.childNodes;
-        if (children != null && children.length != 0)
-        {
-            for (var i = 0; i < children.length; i++) 
-            {
-                var addChild = nodeType != -1 ? children[i].nodeType == nodeType : true;
-                if (addChild)
-                {
-                    result.@java.util.List::add(Ljava/lang/Object;)(children[i]);
-                }
-            }
-        }
+		var children = node.childNodes;
+		if (children != null && children.length != 0) {
+			for ( var i = 0; i < children.length; i++) {
+				var addChild = nodeType != -1 ? children[i].nodeType == nodeType
+						: true;
+				if (addChild) {
+					result.@java.util.List::add(Ljava/lang/Object;)(children[i]);
+				}
+			}
+		}
     }-*/;
 
 
@@ -81,7 +81,7 @@ final class XmlParserUtils
 
 
     private static native boolean hasChildrenImpl(JavaScriptObject node) /*-{
-        return node.hasChildNodes();
+		return node.hasChildNodes();
     }-*/;
 
 
@@ -93,7 +93,7 @@ final class XmlParserUtils
 
 
     private static native JavaScriptObject getFirstChildImpl(JavaScriptObject node) /*-{
-        return node.firstChild;
+		return node.firstChild;
     }-*/;
 
 
@@ -105,14 +105,14 @@ final class XmlParserUtils
 
 
     private static native JavaScriptObject getLastChildImpl(JavaScriptObject node) /*-{
-        return node.lastChild;
+		return node.lastChild;
     }-*/;
 
 
     // ------------------------------------------------------------------- text
 
     static native String getNodeValue(JavaScriptObject node) /*-{
-        return node.nodeValue;
+		return node.nodeValue;
     }-*/;
 
 
@@ -137,21 +137,35 @@ final class XmlParserUtils
     }
 
 
-    static String stripWsnl(String value)
+    static String stripWhitespace(String value, WhitespaceHandling whitespaceHandling)
     {
         String stripped = value;
         if (stripped != null && stripped.length() != 0)
         {
             int start = 0;
             int length = stripped.length();
-            String wsnl = " \n\r\t";
-            while ((start != length) && (wsnl.indexOf(stripped.charAt(start)) != -1))
+            String strip = null;
+            switch (whitespaceHandling)
+            {
+                case REMOVE_NEWLINE:
+                    strip = "\n\r";
+                    break;
+                case REMOVE_WHITESPACE:
+                    strip = " \t";
+                    break;
+                case REMOVE:
+                    strip = " \n\r\t";
+                    break;
+                default:
+                    break;
+            }
+            while (start != length && strip.indexOf(stripped.charAt(start)) != -1)
             {
                 start++;
             }
             stripped = stripped.substring(start);
             int end = stripped.length();
-            while ((end != 0) && (wsnl.indexOf(stripped.charAt(end - 1)) != -1))
+            while (end != 0 && strip.indexOf(stripped.charAt(end - 1)) != -1)
             {
                 end--;
             }

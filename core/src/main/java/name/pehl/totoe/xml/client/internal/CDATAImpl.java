@@ -1,12 +1,14 @@
 package name.pehl.totoe.xml.client.internal;
 
 import name.pehl.totoe.xml.client.CDATA;
+import name.pehl.totoe.xml.client.WhitespaceHandling;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * @author $Author$
- * @version $Date$ $Revision$
+ * @version $Date$ $Revision: 174
+ *          $
  */
 public class CDATAImpl extends NodeImpl implements CDATA
 {
@@ -34,8 +36,8 @@ public class CDATAImpl extends NodeImpl implements CDATA
 
 
     @Override
-    public String getTextStripped()
+    public String getText(WhitespaceHandling whitespaceHandling)
     {
-        return XmlParserUtils.stripWsnl(getText());
+        return XmlParserUtils.stripWhitespace(getText(), whitespaceHandling);
     }
 }

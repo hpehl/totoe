@@ -3,12 +3,14 @@ package name.pehl.totoe.xml.client.internal;
 import name.pehl.totoe.xml.client.Attribute;
 import name.pehl.totoe.xml.client.Element;
 import name.pehl.totoe.xml.client.Node;
+import name.pehl.totoe.xml.client.WhitespaceHandling;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * @author $Author$
- * @version $Date$ $Revision$
+ * @version $Date$ $Revision: 174
+ *          $
  */
 public class AttributeImpl extends NodeImpl implements Attribute
 {
@@ -31,8 +33,8 @@ public class AttributeImpl extends NodeImpl implements Attribute
 
 
     private native JavaScriptObject getElementImpl()/*-{
-        var attribute = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
-        return attribute.ownerElement;
+		var attribute = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
+		return attribute.ownerElement;
     }-*/;
 
 
@@ -85,14 +87,14 @@ public class AttributeImpl extends NodeImpl implements Attribute
      */
     @Override
     public native String getText()/*-{
-        var attribute = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
-        return attribute.value;
+		var attribute = this.@name.pehl.totoe.xml.client.internal.NodeImpl::jso;
+		return attribute.value;
     }-*/;
 
 
     @Override
-    public String getTextStripped()
+    public String getText(WhitespaceHandling whitespaceHandling)
     {
-        return XmlParserUtils.stripWsnl(getText());
+        return XmlParserUtils.stripWhitespace(getText(), whitespaceHandling);
     }
 }

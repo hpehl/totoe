@@ -165,7 +165,7 @@ public interface Node
      * paramter <code>stripWsnl</code>.
      * 
      * @param xpath
-     * @param stripWsnl
+     * @param whitespaceHandling
      *            whether to strip white-spaces and new-lines from the values.
      * @return the string values matched by the xpath or an empty array if no
      *         mathing nodes were found.
@@ -173,7 +173,7 @@ public interface Node
      *             if the XPath expression could not be evaluated (e.g. no
      *             namespace URI was found for a given prefix).
      */
-    String[] selectValues(String xpath, boolean stripWsnl) throws XPathException;
+    String[] selectValues(String xpath, WhitespaceHandling whitespaceHandling) throws XPathException;
 
 
     /**
@@ -196,7 +196,7 @@ public interface Node
      * paramter <code>stripWsnl</code>.
      * 
      * @param xpath
-     * @param stripWsnl
+     * @param whitespaceHandling
      *            whether to strip white-spaces and new-lines from the value.
      * @return the string value matched by the xpath or <code>null</code> if no
      *         mathing node were found.
@@ -204,7 +204,7 @@ public interface Node
      *             if the XPath expression could not be evaluated (e.g. no
      *             namespace URI was found for a given prefix).
      */
-    String selectValue(String xpath, boolean stripWsnl) throws XPathException;
+    String selectValue(String xpath, WhitespaceHandling whitespaceHandling) throws XPathException;
 
 
     // -------------------------------------------------------------- serialize
