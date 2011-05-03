@@ -7,7 +7,7 @@
     <parent>
         <groupId>name.pehl</groupId>
         <artifactId>superpom</artifactId>
-        <version>6</version>
+        <version>7</version>
     </parent>
 
 
