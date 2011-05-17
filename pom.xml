@@ -7,7 +7,7 @@
     <parent>
         <groupId>name.pehl</groupId>
         <artifactId>superpom</artifactId>
-        <version>8</version>
+        <version>11</version>
     </parent>
 
 
@@ -55,6 +55,10 @@
 
     <!-- Global dependencies used in all modules -->
     <dependencies>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-user</artifactId>

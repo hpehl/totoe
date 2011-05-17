@@ -47,15 +47,7 @@
         </dependency>
         <dependency>
             <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-api-stubs</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-testing</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>geronimo-jpa_3.0_spec</artifactId>
+            <artifactId>appengine-jsr107cache</artifactId>
         </dependency>
         <dependency>
             <groupId>com.google.appengine.orm</groupId>
@@ -70,16 +62,16 @@
             <artifactId>datanucleus-jpa</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax.jdo</groupId>
-            <artifactId>jdo2-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.transaction</groupId>
-            <artifactId>jta</artifactId>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-jpa_3.0_spec</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-servlet_2.5_spec</artifactId>
+            <artifactId>geronimo-jta_1.1_spec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
