@@ -15,7 +15,7 @@ public class TotoeGwtTestSuiteDns extends GWTTestSuite
 {
     public static Test suite()
     {
-        TestSuite suite = new TestSuite("GWT tests for Totoe with namespace");
+        TestSuite suite = new TestSuite("GWT namespace tests for Totoe");
 
         suite.addTestSuite(XmlParserDnsTest.class);
 

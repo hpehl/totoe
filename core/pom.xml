@@ -74,7 +74,7 @@
                             <productionMode>false</productionMode>
                             <testTimeOut>300</testTimeOut>
                             <module>name.pehl.totoe.TotoeTest</module>
-                            <includes>name/pehl/totoe/TotoeGwtTestSuite*.java</includes>
+                            <includes>name/pehl/totoe/TotoeGwtTestSuite.java</includes>
                         </configuration>
                         <goals>
                             <goal>test</goal>
@@ -88,7 +88,7 @@
                             <productionMode>true</productionMode>
                             <testTimeOut>300</testTimeOut>
                             <module>name.pehl.totoe.TotoeTest</module>
-                            <includes>name/pehl/totoe/TotoeGwtTestSuite*.java</includes>
+                            <includes>name/pehl/totoe/TotoeGwtTestSuite.java</includes>
                         </configuration>
                         <goals>
                             <goal>test</goal>

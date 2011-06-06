@@ -1,12 +1,12 @@
 package name.pehl.totoe.tester.client;
 
-import name.pehl.totoe.json.client.JsonParser;
 import name.pehl.totoe.json.client.JsonPath;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.json.client.JSONException;
 import com.google.gwt.json.client.JSONObject;
+import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -68,7 +68,7 @@ public class JsonParserPanel extends ResizeComposite
 
         try
         {
-            JSONObject jsonObject = new JsonParser().parse(jsonValue);
+            JSONObject jsonObject = JSONParser.parseStrict(jsonValue).isObject();
             if (contextValue != null && contextValue.trim().length() != 0)
             {
                 JSONValue jv = JsonPath.select(jsonObject, contextValue);
