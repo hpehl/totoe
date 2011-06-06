@@ -1,4 +1,4 @@
-package name.pehl.totoe.xml.client;
+package name.pehl.totoe.commons.client;
 
 public enum WhitespaceHandling
 {

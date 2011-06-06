@@ -3,11 +3,11 @@ package name.pehl.totoe.xml.client.internal;
 import java.util.ArrayList;
 import java.util.List;
 
+import name.pehl.totoe.commons.client.WhitespaceHandling;
 import name.pehl.totoe.xml.client.HasChildren;
 import name.pehl.totoe.xml.client.HasText;
 import name.pehl.totoe.xml.client.Node;
 import name.pehl.totoe.xml.client.NodeType;
-import name.pehl.totoe.xml.client.WhitespaceHandling;
 
 import com.google.gwt.core.client.JavaScriptObject;
 

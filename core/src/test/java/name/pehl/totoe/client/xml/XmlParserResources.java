@@ -1,4 +1,4 @@
-package name.pehl.totoe.xml.client;
+package name.pehl.totoe.client.xml;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;

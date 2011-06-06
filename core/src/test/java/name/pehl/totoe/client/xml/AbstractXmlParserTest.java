@@ -1,37 +1,32 @@
-package name.pehl.totoe.xml.client;
+package name.pehl.totoe.client.xml;
 
-import static name.pehl.totoe.xml.client.XmlParserResources.*;
+import static name.pehl.totoe.client.xml.XmlParserResources.ASIN;
+import static name.pehl.totoe.client.xml.XmlParserResources.CALL_IT_WHAT_YOU_WILL;
+import static name.pehl.totoe.client.xml.XmlParserResources.DESCRIPTION_ELEMENT;
+import static name.pehl.totoe.client.xml.XmlParserResources.GIGAWATTS;
+import static name.pehl.totoe.client.xml.XmlParserResources.ID_ATTRIBUTE;
+import static name.pehl.totoe.client.xml.XmlParserResources.MORE_THAN_YOU_WILL_EVER_NEED;
+import static name.pehl.totoe.client.xml.XmlParserResources.NUMBER_ATTRIBUTE;
+import static name.pehl.totoe.client.xml.XmlParserResources.SWISS_ARMY_KNIFE_ELEMENT;
 
 import java.util.List;
 
-import com.google.gwt.junit.client.GWTTestCase;
+import name.pehl.totoe.client.AbstractTotoeTest;
+import name.pehl.totoe.xml.client.Attribute;
+import name.pehl.totoe.xml.client.CDATA;
+import name.pehl.totoe.xml.client.Document;
+import name.pehl.totoe.xml.client.Element;
+import name.pehl.totoe.xml.client.Node;
+import name.pehl.totoe.xml.client.NodeType;
+import name.pehl.totoe.xml.client.XmlParseException;
+import name.pehl.totoe.xml.client.XmlParser;
 
 /**
  * @author $LastChangedBy:$
  * @version $LastChangedRevision:$
  */
-public abstract class AbstractXmlParserTest extends GWTTestCase
+public abstract class AbstractXmlParserTest extends AbstractTotoeTest
 {
-    public static final String NULL_STRING = null;
-    public static final String EMPTY_STRING = "";
-    public static final String BLANK_STRING = "          ";
-    public static final String INVALID_XML_STRING = "________invalid________";
-
-
-    @Override
-    public String getModuleName()
-    {
-        return "name.pehl.totoe.xml.XmlParserTest";
-    }
-
-
-    @Override
-    protected void gwtSetUp() throws Exception
-    {
-        System.out.println("Running " + getClass().getName() + "." + getName() + "()");
-    }
-
-
     public void testParseNull()
     {
         Document document = new XmlParser().parse(NULL_STRING);
@@ -58,7 +53,7 @@ public abstract class AbstractXmlParserTest extends GWTTestCase
     {
         try
         {
-            new XmlParser().parse(INVALID_XML_STRING);
+            new XmlParser().parse(INVALID_STRING);
             fail(XmlParseException.class.getName() + " expected!");
         }
         catch (XmlParseException e)

@@ -2,6 +2,8 @@ package name.pehl.totoe.xml.client;
 
 import java.util.List;
 
+import name.pehl.totoe.commons.client.WhitespaceHandling;
+
 /**
  * The Node interface is the primary datatype for the entire Document Object
  * Model. It represents a single node in the document tree.

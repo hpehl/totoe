@@ -1,7 +1,7 @@
 package name.pehl.totoe.xml.client.internal;
 
+import name.pehl.totoe.commons.client.WhitespaceHandling;
 import name.pehl.totoe.xml.client.Text;
-import name.pehl.totoe.xml.client.WhitespaceHandling;
 
 import com.google.gwt.core.client.JavaScriptObject;
 

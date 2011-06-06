@@ -5,12 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import name.pehl.totoe.commons.client.WhitespaceHandling;
 import name.pehl.totoe.xml.client.Attribute;
 import name.pehl.totoe.xml.client.Element;
 import name.pehl.totoe.xml.client.HasText;
 import name.pehl.totoe.xml.client.Node;
 import name.pehl.totoe.xml.client.NodeType;
-import name.pehl.totoe.xml.client.WhitespaceHandling;
 
 import com.google.gwt.core.client.JavaScriptObject;
 

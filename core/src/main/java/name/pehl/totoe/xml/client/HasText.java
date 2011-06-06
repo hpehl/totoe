@@ -1,5 +1,7 @@
 package name.pehl.totoe.xml.client;
 
+import name.pehl.totoe.commons.client.WhitespaceHandling;
+
 /**
  * Interface for providing a text value.
  * 

@@ -1,8 +1,15 @@
-package name.pehl.totoe.xml.client;
+package name.pehl.totoe.client.xml;
 
-import static name.pehl.totoe.xml.client.XmlParserResources.*;
+import static name.pehl.totoe.client.xml.XmlParserResources.*;
 
 import java.util.List;
+
+import name.pehl.totoe.xml.client.Document;
+import name.pehl.totoe.xml.client.DocumentType;
+import name.pehl.totoe.xml.client.Element;
+import name.pehl.totoe.xml.client.Node;
+import name.pehl.totoe.xml.client.NodeType;
+import name.pehl.totoe.xml.client.XmlParser;
 
 /**
  * @author $Author$

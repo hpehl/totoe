@@ -6,14 +6,4 @@
         $LastChangedRevision: 138 $
     -->
     <inherits name="com.google.gwt.user.User" />
-    <inherits name="com.google.gwt.xml.XML" />
-
-    <source path="client">
-        <exclude name="**/XmlParserApp.java" />
-        <exclude name="**/XmlParserResources.java" />
-        <exclude name="**/*Test.java" />
-    </source>
-
-    <script src="gr/abiss/js/sarissa/sarissa-compressed.js" />
-    <script src="gr/abiss/js/sarissa/sarissa_ieemu_xpath-compressed.js" />
 </module>

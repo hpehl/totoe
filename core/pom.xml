@@ -6,7 +6,7 @@
     <parent>
         <groupId>name.pehl</groupId>
         <artifactId>totoe-parent</artifactId>
-        <version>0.2.3</version>
+        <version>0.2.4</version>
     </parent>
 
 
@@ -57,10 +57,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <excludes>
-                        <exclude>name/pehl/totoe/json/JsonParserGwtTestSuite.java</exclude>
-                        <exclude>name/pehl/totoe/json/client/*Test.java</exclude>
-                        <exclude>name/pehl/totoe/xml/XmlParserGwtTestSuite.java</exclude>
-                        <exclude>name/pehl/totoe/xml/client/*Test.java</exclude>
+                        <exclude>name/pehl/totoe/TotoeGwtTestSuite*.java</exclude>
+                        <exclude>name/pehl/totoe/client/**/*Test.java</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -75,8 +73,8 @@
                             <mode>htmlunit</mode>
                             <productionMode>false</productionMode>
                             <testTimeOut>300</testTimeOut>
-                            <module>name.pehl.totoe.xml.XmlParserTest</module>
-                            <includes>name/pehl/totoe/xml/*GwtTestSuite.java</includes>
+                            <module>name.pehl.totoe.TotoeTest</module>
+                            <includes>name/pehl/totoe/TotoeGwtTestSuite*.java</includes>
                         </configuration>
                         <goals>
                             <goal>test</goal>
@@ -89,8 +87,8 @@
                             <mode>htmlunit</mode>
                             <productionMode>true</productionMode>
                             <testTimeOut>300</testTimeOut>
-                            <module>name.pehl.totoe.xml.XmlParserTest</module>
-                            <includes>name/pehl/totoe/xml/*GwtTestSuite.java</includes>
+                            <module>name.pehl.totoe.TotoeTest</module>
+                            <includes>name/pehl/totoe/TotoeGwtTestSuite*.java</includes>
                         </configuration>
                         <goals>
                             <goal>test</goal>
