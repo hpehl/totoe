@@ -9,11 +9,5 @@
     <inherits name="com.google.gwt.user.User" />
     <inherits name="name.pehl.totoe.commons.Commons" />
 
-    <source path="client">
-        <exclude name="**/JsonParserApp.java" />
-        <exclude name="**/JsonParserResources.java" />
-        <exclude name="**/*Test.java" />
-    </source>
-
     <script src="jsonpath.js" />
 </module>
