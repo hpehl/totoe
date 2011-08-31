@@ -153,6 +153,7 @@
                         <projectnature>com.google.appengine.eclipse.core.gaeNature</projectnature>
                     </additionalProjectnatures>
                     <excludes>
+                        <exclude>com.google.gwt:gwt-dev</exclude>
                         <exclude>com.google.gwt:gwt-user</exclude>
                         <exclude>com.google.appengine:appengine-api-1.0-sdk</exclude>
                         <exclude>com.google.appengine:appengine-api-labs</exclude>

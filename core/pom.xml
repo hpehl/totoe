@@ -96,25 +96,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <configuration>
-                    <classpathContainers>
-                        <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
-                        <classpathContainer>com.google.gwt.eclipse.core.GWT_CONTAINER</classpathContainer>
-                    </classpathContainers>
-                    <additionalBuildcommands>
-                        <buildcommand>com.google.gwt.eclipse.core.gwtProjectValidator</buildcommand>
-                    </additionalBuildcommands>
-                    <additionalProjectnatures>
-                        <projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
-                    </additionalProjectnatures>
-                    <excludes>
-                        <exclude>com.google.gwt:gwt-user</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 </project>
