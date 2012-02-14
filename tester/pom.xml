@@ -1,12 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <!-- $LastChangedBy: harald.pehl $LastChangedRevision: 1418 $ -->
 
 
     <parent>
         <groupId>name.pehl</groupId>
         <artifactId>totoe-parent</artifactId>
-        <version>0.3-SNAPSHOT</version>
+        <version>0.3</version>
     </parent>
 
 
@@ -15,9 +14,9 @@
     <packaging>war</packaging>
     <name>Totoe Tester</name>
     <scm>
-        <connection>scm:svn:http://totoe.googlecode.com/svn/trunk/tester/</connection>
-        <developerConnection>scm:svn:https://totoe.googlecode.com/svn/trunk/tester/</developerConnection>
-        <url>http://totoe.googlecode.com/svn/trunk/tester/</url>
+        <connection>scm:svn:http://totoe.googlecode.com/svn/tags/totoe-0.3/tester</connection>
+        <developerConnection>scm:svn:https://totoe.googlecode.com/svn/tags/totoe-0.3/tester</developerConnection>
+        <url>http://totoe.googlecode.com/svn/tags/totoe-0.3/tester</url>
     </scm>
 
 
