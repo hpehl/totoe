@@ -14,6 +14,11 @@
     <artifactId>totoe-tester</artifactId>
     <packaging>war</packaging>
     <name>Totoe Tester</name>
+    <scm>
+        <connection>scm:svn:http://totoe.googlecode.com/svn/trunk/tester/</connection>
+        <developerConnection>scm:svn:https://totoe.googlecode.com/svn/trunk/tester/</developerConnection>
+        <url>http://totoe.googlecode.com/svn/trunk/tester/</url>
+    </scm>
 
 
     <dependencies>
@@ -38,36 +43,9 @@
             <artifactId>gin</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-api-1.0-sdk</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-api-labs</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-jsr107cache</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.appengine.orm</groupId>
-            <artifactId>datanucleus-appengine</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.datanucleus</groupId>
-            <artifactId>datanucleus-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.datanucleus</groupId>
-            <artifactId>datanucleus-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-jpa_3.0_spec</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-jta_1.1_spec</artifactId>
+            <groupId>net.kindleit</groupId>
+            <artifactId>gae-runtime</artifactId>
+            <type>pom</type>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -171,7 +149,6 @@
             <plugin>
                 <groupId>net.kindleit</groupId>
                 <artifactId>maven-gae-plugin</artifactId>
-                <version>0.7.2</version>
                 <dependencies>
                     <dependency>
                         <groupId>net.kindleit</groupId>
