@@ -5,7 +5,7 @@
     <parent>
         <groupId>name.pehl</groupId>
         <artifactId>totoe-parent</artifactId>
-        <version>0.3</version>
+        <version>0.4-SNAPSHOT</version>
     </parent>
 
 
@@ -14,9 +14,9 @@
     <packaging>war</packaging>
     <name>Totoe Tester</name>
     <scm>
-        <connection>scm:svn:http://totoe.googlecode.com/svn/tags/totoe-0.3/tester</connection>
-        <developerConnection>scm:svn:https://totoe.googlecode.com/svn/tags/totoe-0.3/tester</developerConnection>
-        <url>http://totoe.googlecode.com/svn/tags/totoe-0.3/tester</url>
+        <connection>scm:svn:http://totoe.googlecode.com/svn/trunk/tester/</connection>
+        <developerConnection>scm:svn:https://totoe.googlecode.com/svn/trunk/tester/</developerConnection>
+        <url>http://totoe.googlecode.com/svn/trunk/tester/</url>
     </scm>
 
 
