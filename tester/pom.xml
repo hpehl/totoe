@@ -13,6 +13,7 @@
     <artifactId>totoe-tester</artifactId>
     <packaging>war</packaging>
     <name>Totoe Tester</name>
+    <url>http://code.google.com/p/totoe/</url>
     <scm>
         <connection>scm:svn:http://totoe.googlecode.com/svn/trunk/tester/</connection>
         <developerConnection>scm:svn:https://totoe.googlecode.com/svn/trunk/tester/</developerConnection>

@@ -12,6 +12,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>totoe</artifactId>
     <name>Totoe Core</name>
+    <url>http://code.google.com/p/totoe/</url>
     <scm>
         <connection>scm:svn:http://totoe.googlecode.com/svn/trunk/core/</connection>
         <developerConnection>scm:svn:https://totoe.googlecode.com/svn/trunk/core/</developerConnection>
