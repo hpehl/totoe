@@ -22,12 +22,15 @@
         <developerConnection>scm:svn:https://totoe.googlecode.com/svn/trunk/</developerConnection>
         <url>http://totoe.googlecode.com/svn/trunk/</url>
     </scm>
+    <!-- Currently disabled due to http://jira.codehaus.org/browse/MPIR-240 -->
+    <!--
     <distributionManagement>
         <site>
             <id>s3.site</id>
             <url>s3://pehl.mvnsite/totoe/${project.version}</url>
         </site>
     </distributionManagement>
+    -->
 
     
     <properties>
