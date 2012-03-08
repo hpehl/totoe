@@ -5,7 +5,7 @@
     <parent>
         <groupId>name.pehl</groupId>
         <artifactId>totoe-parent</artifactId>
-        <version>0.4-SNAPSHOT</version>
+        <version>0.4</version>
     </parent>
 
 
@@ -14,9 +14,9 @@
     <name>Totoe Core</name>
     <url>http://code.google.com/p/totoe/</url>
     <scm>
-        <connection>scm:svn:http://totoe.googlecode.com/svn/trunk/core/</connection>
-        <developerConnection>scm:svn:https://totoe.googlecode.com/svn/trunk/core/</developerConnection>
-        <url>http://totoe.googlecode.com/svn/trunk/core/</url>
+        <connection>scm:svn:http://totoe.googlecode.com/svn/tags/totoe-0.4/core</connection>
+        <developerConnection>scm:svn:https://totoe.googlecode.com/svn/tags/totoe-0.4/core</developerConnection>
+        <url>http://totoe.googlecode.com/svn/tags/totoe-0.4/core</url>
     </scm>
 
 

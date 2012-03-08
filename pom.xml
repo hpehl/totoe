@@ -12,15 +12,15 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>name.pehl</groupId>
     <artifactId>totoe-parent</artifactId>
-    <version>0.4-SNAPSHOT</version>
+    <version>0.4</version>
     <packaging>pom</packaging>
     <name>Totoe</name>
     <description>JSON and XML parser for GWT with jsonpath / xpath and namespaces support</description>
     <url>http://code.google.com/p/totoe/</url>
     <scm>
-        <connection>scm:svn:http://totoe.googlecode.com/svn/trunk/</connection>
-        <developerConnection>scm:svn:https://totoe.googlecode.com/svn/trunk/</developerConnection>
-        <url>http://totoe.googlecode.com/svn/trunk/</url>
+        <connection>scm:svn:http://totoe.googlecode.com/svn/tags/totoe-0.4</connection>
+        <developerConnection>scm:svn:https://totoe.googlecode.com/svn/tags/totoe-0.4</developerConnection>
+        <url>http://totoe.googlecode.com/svn/tags/totoe-0.4</url>
     </scm>
     <!-- Currently disabled due to http://jira.codehaus.org/browse/MPIR-240 -->
     <!--
