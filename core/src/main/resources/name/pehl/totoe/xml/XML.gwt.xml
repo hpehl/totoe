@@ -9,6 +9,6 @@
     <inherits name="com.google.gwt.xml.XML" />
     <inherits name="name.pehl.totoe.commons.Commons" />
 
-    <script src="gr/abiss/js/sarissa/sarissa-compressed.js" />
-    <script src="gr/abiss/js/sarissa/sarissa_ieemu_xpath-compressed.js" />
+    <script src="gr/abiss/js/sarissa/sarissa.js" />
+    <script src="gr/abiss/js/sarissa/sarissa_ieemu_xpath.js" />
 </module>

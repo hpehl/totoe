@@ -20,41 +20,8 @@
     </scm>
 
 
-    <dependencies>
-        <dependency>
-            <groupId>gr.abiss.js</groupId>
-            <artifactId>sarissa</artifactId>
-        </dependency>
-    </dependencies>
-
-
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>unpack-sarissa</id>
-                        <goals>
-                            <goal>unpack</goal>
-                        </goals>
-                        <phase>generate-resources</phase>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>gr.abiss.js</groupId>
-                                    <artifactId>sarissa</artifactId>
-                                    <version>${sarissa.version}</version>
-                                    <type>jar</type>
-                                </artifactItem>
-                            </artifactItems>
-                            <includes>**/sarissa-compressed.js,**/sarissa_ieemu_xpath-compressed.js</includes>
-                            <outputDirectory>src/main/resources/name/pehl/totoe/xml/public</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
