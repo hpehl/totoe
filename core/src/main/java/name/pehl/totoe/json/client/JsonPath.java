@@ -68,7 +68,7 @@ public final class JsonPath
         try
         {
             var data = $wnd.jsonPath(json, path, {evalType:"RESULT", safeEval:true});
-            if (!data || typeof(data) == "undefined")
+            if (typeof(data) == "undefined")
             {
                 return null;
             }
@@ -90,6 +90,11 @@ public final class JsonPath
             }
             else
             {
+                if (!data)
+                {
+                    return null;
+                }
+
                 // Try as object
                 return @com.google.gwt.json.client.JSONObject::new(Lcom/google/gwt/core/client/JavaScriptObject;)(data);
             }
