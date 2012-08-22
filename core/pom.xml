@@ -37,6 +37,11 @@
                 <artifactId>gwt-maven-plugin</artifactId>
                 <executions>
                     <execution>
+                        <goals>
+                            <goal>resources</goal>
+                        </goals>
+                    </execution>
+                    <execution>
                         <id>(******** development mode ********)</id>
                         <configuration>
                             <module>name.pehl.totoe.TotoeTest</module>
