@@ -18,4 +18,3 @@ For the XML parsing Totoe relies on [Sarissa](http://dev.abiss.gr/sarissa/). Sar
 
 ## Totoe-Tester
 If you want to take a quick look at Totoes features feel free to go to http://totoe-tester.appspot.com/. There you can enter arbitrary JSON / XML and test your XPath / JSONPath expressions.
-
