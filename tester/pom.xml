@@ -13,7 +13,6 @@
     <artifactId>totoe-tester</artifactId>
     <packaging>war</packaging>
     <name>Totoe Tester</name>
-    <url>http://hpehl.github.com/totoe/</url>
 
 
     <dependencies>

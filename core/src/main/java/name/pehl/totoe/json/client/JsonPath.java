@@ -1,11 +1,15 @@
 package name.pehl.totoe.json.client;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptException;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.ScriptInjector;
 import com.google.gwt.json.client.JSONException;
 import com.google.gwt.json.client.JSONNull;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONValue;
+import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.TextResource;
 
 /**
  * Java wrapper for <a
@@ -20,6 +24,14 @@ import com.google.gwt.json.client.JSONValue;
 
 public final class JsonPath
 {
+    interface ResourceBundle extends ClientBundle
+    {
+        ResourceBundle INSTANCE = GWT.create(ResourceBundle.class);
+
+        @Source("jsonpath.js")
+        TextResource jsonPathJs();
+    }
+
     /**
      * Private constructor to ensure that the class acts as a true utility class
      * i.e. it isn't instantiable and extensible.
@@ -27,6 +39,24 @@ public final class JsonPath
     private JsonPath()
     {
     }
+
+
+    private static void injectScript()
+    {
+        if (!isScriptInjected())
+        {
+            ScriptInjector.fromString(ResourceBundle.INSTANCE.jsonPathJs().getText())
+                    .setWindow(ScriptInjector.TOP_WINDOW).inject();
+        }
+    }
+
+
+    private static final native boolean isScriptInjected() /*-{
+        if (!(typeof $wnd.jsonPath === "undefined") && !(null === $wnd.jsonPath)) {
+            return true;
+        }
+        return false;
+    }-*/;
 
 
     /**
@@ -53,6 +83,7 @@ public final class JsonPath
         }
         try
         {
+            injectScript();
             JSONValue value = selectImpl(json.getJavaScriptObject(), path);
             return value != null ? value : JSONNull.getInstance();
         }

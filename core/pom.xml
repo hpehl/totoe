@@ -12,7 +12,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>totoe</artifactId>
     <name>Totoe Core</name>
-    <url>http://hpehl.github.com/totoe/</url>
 
 
     <build>

@@ -1,10 +1,13 @@
 package name.pehl.totoe.xml.client.internal;
 
-import name.pehl.totoe.xml.client.Document;
-import name.pehl.totoe.xml.client.XmlParseException;
-
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptException;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.ScriptInjector;
+import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.TextResource;
+import name.pehl.totoe.xml.client.Document;
+import name.pehl.totoe.xml.client.XmlParseException;
 
 /**
  * @author $Author$
@@ -13,6 +16,20 @@ import com.google.gwt.core.client.JavaScriptObject;
  */
 public class XmlParserImpl
 {
+    // ------------------------------------------------------- script resources
+
+    interface ResourceBundle extends ClientBundle
+    {
+        ResourceBundle INSTANCE = GWT.create(ResourceBundle.class);
+
+        @Source("sarissa.js")
+        TextResource sarissaJs();
+
+        @Source("sarissa_ieemu_xpath.js")
+        TextResource sarissaXPathJs();
+    }
+
+
     // ------------------------------------------------------------------- JSNI
 
     private static final JavaScriptObject nativeParser = XmlParserImpl.initialize();
@@ -20,9 +37,30 @@ public class XmlParserImpl
 
     private static JavaScriptObject initialize()
     {
+        injectScript();
         setupSarissaPrototypes();
         return initializeDOMParser();
     }
+
+
+    private static void injectScript()
+    {
+        if (!isScriptInjected())
+        {
+            ScriptInjector.fromString(ResourceBundle.INSTANCE.sarissaJs().getText())
+                    .setWindow(ScriptInjector.TOP_WINDOW).inject();
+            ScriptInjector.fromString(ResourceBundle.INSTANCE.sarissaXPathJs().getText())
+                    .setWindow(ScriptInjector.TOP_WINDOW).inject();
+        }
+    }
+
+
+    private static final native boolean isScriptInjected() /*-{
+        if (!(typeof $wnd.Sarissa === "undefined") && !(null === $wnd.Sarissa)) {
+            return true;
+        }
+        return false;
+    }-*/;
 
 
     /**
