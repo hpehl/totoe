@@ -35,8 +35,8 @@
         <gae.plugin.version>0.9.5</gae.plugin.version>
         <gin.version>2.0.0</gin.version>
         <guice.version>3.0</guice.version>
-        <gwt.version>2.5.0</gwt.version>
-        <gwt.plugin.version>2.5.0-rc2</gwt.plugin.version>
+        <gwt.version>2.5.1</gwt.version>
+        <gwt.plugin.version>2.5.1</gwt.plugin.version>
         <logback.version>1.0.0</logback.version>
         <slf4j.version>1.7.2</slf4j.version>
     </properties>
