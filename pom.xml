@@ -12,7 +12,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>name.pehl</groupId>
     <artifactId>totoe-parent</artifactId>
-    <version>0.6</version>
+    <version>0.7-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Totoe</name>
     <description>JSON and XML parser for GWT with jsonpath / xpath and namespaces support</description>
@@ -21,7 +21,7 @@
         <connection>scm:git:git@github.com:hpehl/totoe.git</connection>
         <developerConnection>scm:git:git@github.com:hpehl/totoe.git</developerConnection>
         <url>git@github.com:hpehl/totoe.git</url>
-      <tag>totoe-parent-0.6</tag>
+      <tag>HEAD</tag>
   </scm>
     <distributionManagement>
         <site>
