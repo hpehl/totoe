@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/hpehl/totoe.png?branch=master)](https://travis-ci.org/hpehl/totoe)
-
 # Genesis
 Totoe ([Maori for "to split, devide"](http://www.maoridictionary.co.nz/index.cfm?dictionaryKeywords=totoe)) is a XML parser for GWT. Totoe comes with [JSONPath](http://www.sitepen.com/blog/2008/03/17/jsonpath-support/) support when parsing JSON and XPath and namespace support when parsing XML. It originated from [Pirit](https://github.com/hpehl/piriti) a JSON and XML mapper for GWT.
 
